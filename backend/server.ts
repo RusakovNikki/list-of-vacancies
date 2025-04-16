@@ -1,5 +1,5 @@
 import express from "express";
-import { vacationRouter } from "./src/controllers/vacations.controller.js"
+import { vacationRouter } from "./src/controllers/vacations.controller"
 import dotenv from "dotenv"
 
 dotenv.config()
