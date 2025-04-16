@@ -6,4 +6,10 @@ export default class VacationsService {
     async getVacations(): Promise<Vacation[]> {
         return this.prisma.vacation.findMany();
     }
+
+    async createVacation(vacation: Vacation): Promise<Vacation> {
+        return this.prisma.vacation.create({
+            data: vacation
+        })
+    }
 }

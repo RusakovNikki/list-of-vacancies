@@ -14,21 +14,21 @@ datasource db {
 }
 
 model Vacation {
-  id                 Int    @id @default(autoincrement())
+  id                 Int     @id @default(autoincrement())
   // Имя вакансии
   name               String
   // Ссылка на вакансию компании в hh.ru
-  URL                String
+  URL                String?
   // Город, где находится вакансия
-  areaName           String
+  areaName           String?
   // Название компании
-  employerName       String
+  employerName       String?
   // ID вида занятости
-  employmentTypeId   String
+  employmentTypeId   String?
   // Вид занятости
-  employmentTypeName String
+  employmentTypeName String?
   // Описание вакансии (с тэгами html)
-  description        String
+  description        String?
   // Ссыдка на иконку компании
-  logoURL            String
+  logoURL            String?
 }
