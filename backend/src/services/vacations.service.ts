@@ -1,5 +1,9 @@
+import { PrismaClient, Vacation } from "@prisma/client";
+
 export default class VacationsService {
-    getVacations() {
-        return { test: true }
+    private prisma = new PrismaClient();
+
+    async getVacations(): Promise<Vacation[]> {
+        return this.prisma.vacation.findMany();
     }
 }

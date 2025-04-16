@@ -5,8 +5,8 @@ const router = Router()
 
 const vacationsService = new VacationsService()
 
-router.get("/vacations", (req, res) => {
-    const vacations = vacationsService.getVacations();
+router.get("/vacations", async (req, res) => {
+    const vacations = await vacationsService.getVacations();
     res.status(200).json(vacations);
 })
 
