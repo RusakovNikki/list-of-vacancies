@@ -7,7 +7,7 @@ const vacancyService = new VacancyService()
 
 router.get("/vacancies", async (req, res) => {
     const vacancies = await vacancyService.getVacancies();
-    if (!vacancies) res.status(500).json({ message: "Ошибка при просмотре сообщения" })
+    if (!vacancies) res.status(500).json({ message: "Ошибка при просмотре вакансий" })
     else res.status(200).json(vacancies);
 })
 
@@ -20,7 +20,22 @@ router.post("/vacancies", async (req, res) => {
 })
 
 router.get("/vacancies/:id", async (req, res) => {
-    // const vacancyService
+    try {
+        const vacationId = parseInt(req.params.id);
+        if (!vacationId) throw new Error();
+        console.log(vacationId);
+
+        const vacation = await vacancyService.getVacancy(vacationId);
+
+        if (!vacation) {
+            res.status(404).json({ error: "Вакансия не найдена" });
+        }
+
+        res.status(200).json(vacation);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Ошибка при просмотре вакансии" });
+    }
 })
 
 export const vacancyRouter = router
