@@ -1,6 +1,6 @@
 import express from "express";
-import { vacationRouter } from "./src/controllers/vacations.controller"
 import dotenv from "dotenv"
+import { vacationRouter } from "./controllers/vacations.controller";
 
 dotenv.config()
 
