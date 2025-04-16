@@ -1,9 +1,10 @@
 import express from "express";
 import dotenv from "dotenv"
 import { vacationRouter } from "./controllers/vacations.controller";
+import { PrismaClient } from "@prisma/client"
 
 dotenv.config()
-
+const prismaClient = new PrismaClient();
 const app = express();
 
 async function main() {
@@ -23,3 +24,11 @@ async function main() {
 }
 
 main()
+    .then(async () => {
+        await prismaClient.$connect();
+    })
+    .catch(async (error) => {
+        console.log(error);
+        await prismaClient.$disconnect();
+        process.exit(1);
+    })
