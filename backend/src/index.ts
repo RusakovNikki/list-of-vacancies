@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv"
-import { vacationRouter } from "./controllers/vacations.controller";
+import { vacancyRouter } from "./controllers/vacancy.controller";
 import { PrismaClient } from "@prisma/client"
 
 dotenv.config()
@@ -10,7 +10,7 @@ const app = express();
 async function main() {
     app.use(express.json());
 
-    app.use('/api', vacationRouter)
+    app.use('/api', vacancyRouter)
 
     app.use(function (req, res,) {
         res.status(404);
