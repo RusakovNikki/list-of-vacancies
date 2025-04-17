@@ -6,15 +6,22 @@ export default class VacanciesService {
     async getVacancies(filters?: {
         name?: string;
         employmentTypeId?: string;
+        page?: string;
+        size?: string;
     }): Promise<Vacancy[] | null> {
         try {
+            const page = parseInt(filters?.page || "") || 1;
+            const size = parseInt(filters?.size || "") || 5;
+
             return await this.prisma.vacancy.findMany({
                 where: {
                     name: {
                         contains: filters?.name
                     },
-                    employmentTypeId: filters?.employmentTypeId
-                }
+                    employmentTypeId: filters?.employmentTypeId,
+                },
+                take: size,
+                skip: page && size ? (page - 1) * size : undefined,
             });
         } catch (error) {
             console.log(error);
