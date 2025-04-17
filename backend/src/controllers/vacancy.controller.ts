@@ -26,7 +26,6 @@ router.get("/vacancies/:id", async (req, res) => {
     try {
         const vacationId = parseInt(req.params.id);
         if (!vacationId) throw new Error();
-        console.log(vacationId);
 
         const vacation = await vacancyService.getVacancy(vacationId);
 
