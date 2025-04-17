@@ -6,7 +6,7 @@ import JobListSelect from "./components/JobListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
-import JobBlock from "../JobBlock";
+import JobBlock from "../VacancyListItem";
 import { useDebounce } from "@/hooks/useDebounce";
 import SortPosition from "./components/JobListSearchInput";
 import { ISort } from "@/schemas/interfaces/sort";
@@ -68,7 +68,6 @@ const JobList = () => {
           Смотреть еще...
         </button>
       </section>
-      {/* <Modal children={<></>} isOpen={qqq} onClose={() => setQQQ(false)} /> */}
     </>
   );
 };

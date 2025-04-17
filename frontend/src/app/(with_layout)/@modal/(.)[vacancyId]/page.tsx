@@ -1,4 +1,4 @@
-import JobBlock from "@/components/JobBlock";
+import JobBlock from "@/components/VacancyListItem";
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";
 
