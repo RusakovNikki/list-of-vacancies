@@ -6,7 +6,10 @@ const router = Router()
 const vacancyService = new VacancyService()
 
 router.get("/vacancies", async (req, res) => {
-    const vacancies = await vacancyService.getVacancies();
+
+    const { name, employmentTypeId } = req.query as Record<string, string | undefined>;
+
+    const vacancies = await vacancyService.getVacancies({ name, employmentTypeId });
     if (!vacancies) res.status(500).json({ message: "Ошибка при просмотре вакансий" })
     else res.status(200).json(vacancies);
 })
