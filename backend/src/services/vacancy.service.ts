@@ -29,7 +29,7 @@ export default class VacanciesService {
         }
     }
 
-    async createVacancy(vacancies: Vacancy): Promise<Vacancy | null> {
+    async createVacancy(vacancies: Omit<Vacancy, "id">): Promise<Vacancy | null> {
         try {
             return await this.prisma.vacancy.create({
                 data: vacancies
