@@ -6,7 +6,7 @@ export const headHunterApi = createApi({
   tagTypes: ["headHunter"],
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.hh.ru" }),
   endpoints: (builder) => ({
-    getVacations: builder.query<IVacancy[], void | Record<string, any>>({
+    getVacancies: builder.query<IVacancy[], void | Record<string, any>>({
       query: (params) => ({
         url: "/vacancies",
         params: params || {},
@@ -21,4 +21,4 @@ export const headHunterApi = createApi({
   }),
 });
 
-export const { useGetVacationsQuery, useGetVacancyQuery } = headHunterApi;
+export const { useGetVacanciesQuery, useGetVacancyQuery } = headHunterApi;

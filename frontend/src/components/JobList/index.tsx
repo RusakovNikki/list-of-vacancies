@@ -6,10 +6,9 @@ import SortForm from "../SortForm";
 import SortPosition from "../SortPosition";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
-import { useGetVacationsQuery } from "@/store/api/headHunter";
+import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import JobBlock from "../JobBlock";
 import { useDebounce } from "@/hooks/useDebounce";
-import Modal from "../Modal";
 
 const PER_PAGE = 10;
 
@@ -24,7 +23,7 @@ const JobList = () => {
 
   const text = useDebounce(sortByType.searchByPosition, 500);
 
-  const { data: vacancies = [] } = useGetVacationsQuery({
+  const { data: vacancies = [] } = useGetVacanciesQuery({
     page: 0,
     per_page: PER_PAGE * page,
     ...(sortByType.sortBy && { schedule: sortByType.sortBy }),
@@ -34,8 +33,6 @@ const JobList = () => {
   });
 
   const [positionForm, setPositionForm] = useState(false);
-
-  const [qqq, setQQQ] = useState(true);
 
   return (
     <>

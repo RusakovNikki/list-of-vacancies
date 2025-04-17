@@ -24,16 +24,16 @@ router.post("/vacancies", async (req, res) => {
 
 router.get("/vacancies/:id", async (req, res) => {
     try {
-        const vacationId = parseInt(req.params.id);
-        if (!vacationId) throw new Error();
+        const vacancyId = parseInt(req.params.id);
+        if (!vacancyId) throw new Error();
 
-        const vacation = await vacancyService.getVacancy(vacationId);
+        const vacancy = await vacancyService.getVacancy(vacancyId);
 
-        if (!vacation) {
+        if (!vacancy) {
             res.status(404).json({ error: "Вакансия не найдена" });
         }
 
-        res.status(200).json(vacation);
+        res.status(200).json(vacancy);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Ошибка при просмотре вакансии" });
