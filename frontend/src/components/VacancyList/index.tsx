@@ -2,18 +2,18 @@
 
 import { useState } from "react";
 import NotFoundBlock from "@/components/NotFoundBlock";
-import JobListSelect from "./components/JobListSelect";
+import VacancyListSelect from "./components/VacancyListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
-import JobBlock from "../VacancyListItem";
+import JobBlock from "../VacancyComponent";
 import { useDebounce } from "@/hooks/useDebounce";
-import SortPosition from "./components/JobListSearchInput";
+import VacancyListSearchInput from "./components/VacancyListSearchInput";
 import { ISort } from "@/schemas/interfaces/sort";
 
 const PER_PAGE = 5;
 
-const JobList = () => {
+const VacancyList = () => {
   const [page, setPage] = useState(1);
 
   const [sortByType, setSortByType] = useState<ISort>({
@@ -35,13 +35,13 @@ const JobList = () => {
   return (
     <>
       <div className="header__sortby sortby">
-        <JobListSelect
+        <VacancyListSelect
           sortByType={sortByType}
           setSortByType={setSortByType}
           setPositionForm={setPositionForm}
           positionForm={positionForm}
         />
-        <SortPosition sortByType={sortByType} setSortByType={setSortByType} />
+        <VacancyListSearchInput sortByType={sortByType} setSortByType={setSortByType} />
         <div
           className="header__clear"
           onClick={() =>
@@ -72,4 +72,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export default VacancyList;

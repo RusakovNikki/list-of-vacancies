@@ -1,5 +1,5 @@
-import JobList from "@/components/JobList";
+import VacancyList from "@/components/VacancyList";
 
 export default function Home() {
-  return <JobList />;
+  return <VacancyList />;
 }

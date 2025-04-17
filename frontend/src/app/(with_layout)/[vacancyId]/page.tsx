@@ -1,4 +1,4 @@
-import JobBlock from "@/components/VacancyListItem";
+import JobBlock from "@/components/VacancyComponent";
 import { notFound } from "next/navigation";
 
 interface VacancyPage {

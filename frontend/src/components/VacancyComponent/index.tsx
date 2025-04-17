@@ -19,7 +19,7 @@ interface IJobBlockWithVacancyIdProps {
 
 type TJobBlockProps = IJobBlockWithVacancyProps | IJobBlockWithVacancyIdProps;
 
-const VacancyListItem = (props: TJobBlockProps) => {
+const VacancyComponent = (props: TJobBlockProps) => {
   const { vacancy, vacancyId } = props;
 
   const { data: vacancyRequestData, isLoading } = useGetVacancyQuery(
@@ -106,4 +106,4 @@ const VacancyListItem = (props: TJobBlockProps) => {
   );
 };
 
-export default VacancyListItem;
+export default VacancyComponent;
