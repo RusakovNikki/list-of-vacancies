@@ -8,21 +8,33 @@ export default class VacanciesService {
         employmentTypeId?: string;
         page?: string;
         size?: string;
-    }): Promise<Vacancy[] | null> {
+    }): Promise<Omit<Vacancy, "description">[] | null> {
         try {
             const page = parseInt(filters?.page || "") || 1;
             const size = parseInt(filters?.size || "") || 5;
 
-            return await this.prisma.vacancy.findMany({
+            return (await this.prisma.vacancy.findMany({
                 where: {
                     name: {
                         contains: filters?.name
                     },
                     employmentTypeId: filters?.employmentTypeId,
                 },
+                select: {
+                    id: true,
+                    name: true,
+                    URL: true,
+                    areaName: true,
+                    employerName: true,
+                    employmentTypeId: true,
+                    employmentTypeName: true,
+                    description: false,
+                    logoURL:
+                        true,
+                },
                 take: size,
                 skip: page && size ? (page - 1) * size : undefined,
-            });
+            }));
         } catch (error) {
             console.log(error);
             return null;
