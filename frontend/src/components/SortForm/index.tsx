@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 import btnDown from "/public/down-btn.svg";
 import Image from "next/image";
-import { ISortByType } from "../JobList";
 import { EVacancyType } from "@/schemas/enums/vacancy";
+import { ISort } from "@/schemas/interfaces/sort";
 
 interface ISortForm {
-  sortByType: ISortByType;
-  setSortByType: Dispatch<SetStateAction<ISortByType>>;
+  sortByType: ISort;
+  setSortByType: Dispatch<SetStateAction<ISort>>;
   setPositionForm: React.Dispatch<React.SetStateAction<boolean>>;
   positionForm: boolean;
 }

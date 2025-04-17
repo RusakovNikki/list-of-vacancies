@@ -1,9 +1,9 @@
+import { ISort } from "@/schemas/interfaces/sort";
 import { Dispatch, SetStateAction } from "react";
-import { ISortByType } from "../JobList"
 
 interface ISortPosition {
-  sortByType: ISortByType;
-  setSortByType: Dispatch<SetStateAction<ISortByType>>
+  sortByType: ISort;
+  setSortByType: Dispatch<SetStateAction<ISort>>
 
 }
 

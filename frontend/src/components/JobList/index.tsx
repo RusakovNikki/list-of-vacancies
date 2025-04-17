@@ -8,20 +8,15 @@ import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import JobBlock from "../JobBlock";
 import { useDebounce } from "@/hooks/useDebounce";
-import { EVacancyType } from "@/schemas/enums/vacancy";
 import SortPosition from "../SortPosition";
+import { ISort } from "@/schemas/interfaces/sort";
 
 const PER_PAGE = 5;
-
-export interface ISortByType {
-  employmentType: EVacancyType | null,
-  name: string | null
-}
 
 const JobList = () => {
   const [page, setPage] = useState(1);
 
-  const [sortByType, setSortByType] = useState<ISortByType>({
+  const [sortByType, setSortByType] = useState<ISort>({
     employmentType: null,
     name: null,
   });
