@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import NotFoundBlock from "@/components/NotFoundBlock";
+import NotFoundComponent from "@/components/NotFoundComponent";
 import VacancyListSelect from "./components/VacancyListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
-import JobBlock from "../VacancyComponent";
+import VacancyComponent from "../VacancyComponent";
 import { useDebounce } from "@/hooks/useDebounce";
 import VacancyListSearchInput from "./components/VacancyListSearchInput";
 import { ISort } from "@/schemas/interfaces/sort";
@@ -59,10 +59,10 @@ const VacancyList = () => {
       <section className="jobs-container">
         {vacancies.length ? (
           vacancies.map((vacancy) => {
-            return <JobBlock key={vacancy.id} vacancy={vacancy} />;
+            return <VacancyComponent key={vacancy.id} vacancy={vacancy} />;
           })
         ) : (
-          <NotFoundBlock />
+          <NotFoundComponent />
         )}
         <button className="button" onClick={() => setPage((prev) => prev + 1)}>
           Смотреть еще...

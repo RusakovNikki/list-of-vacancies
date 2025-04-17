@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
-import Root from "@/components/Root";
+import Root from "./root";
 
 export const metadata: Metadata = {
   title: "Create Next App",

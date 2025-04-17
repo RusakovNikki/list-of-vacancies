@@ -1,6 +1,6 @@
 import React from "react"
 
-const NotFoundBlock = () => {
+const NotFoundComponent = () => {
   return (
     <div className="notfound-container">
       <p className="title rubik-regular">Ничего не найдено </p>
@@ -9,4 +9,4 @@ const NotFoundBlock = () => {
   )
 }
 
-export default NotFoundBlock
+export default NotFoundComponent
