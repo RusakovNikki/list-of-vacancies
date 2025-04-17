@@ -16,36 +16,44 @@ const PER_PAGE = 5;
 const VacancyList = () => {
   const [page, setPage] = useState(1);
 
-  const [sortByType, setSortByType] = useState<ISort>({
+  const [sortBy, setSortBy] = useState<ISort>({
     employmentType: null,
     name: null,
   });
 
-  const vacancyName = useDebounce(sortByType.name, 500);
+  const vacancyName = useDebounce(sortBy.name, 500);
 
   const { data: vacancies = [] } = useGetVacanciesQuery({
     page: 1,
     size: PER_PAGE * page,
-    ...(sortByType.name && { name: vacancyName }),
-    ...(sortByType.employmentType && { employmentTypeId: sortByType.employmentType })
+    ...(sortBy.name && { name: vacancyName }),
+    ...(sortBy.employmentType && { employmentTypeId: sortBy.employmentType })
   });
 
-  const [positionForm, setPositionForm] = useState(false);
+
 
   return (
     <>
       <div className="header__sortby sortby">
         <VacancyListSelect
-          sortByType={sortByType}
-          setSortByType={setSortByType}
-          setPositionForm={setPositionForm}
-          positionForm={positionForm}
+          employmentType={sortBy.employmentType}
+          onChange={(value) => setSortBy({
+            ...sortBy,
+            employmentType: value,
+          })}
         />
-        <VacancyListSearchInput sortByType={sortByType} setSortByType={setSortByType} />
+        <VacancyListSearchInput vacancyName={sortBy.name} onChange={(value) =>
+          setSortBy((prev) => {
+            return {
+              ...prev,
+              name: value
+            }
+          })}
+        />
         <div
           className="header__clear"
           onClick={() =>
-            setSortByType({ employmentType: null, name: null })
+            setSortBy({ employmentType: null, name: null })
           }
         >
           <label htmlFor="close" className="header__title-clear formular">

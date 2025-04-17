@@ -1,14 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import btnDown from "/public/down-btn.svg";
 import Image from "next/image";
 import { EVacancyType } from "@/schemas/enums/vacancy";
-import { ISort } from "@/schemas/interfaces/sort";
 
-interface ISortForm {
-  sortByType: ISort;
-  setSortByType: Dispatch<SetStateAction<ISort>>;
-  setPositionForm: React.Dispatch<React.SetStateAction<boolean>>;
-  positionForm: boolean;
+interface IVacancyListSelect {
+  employmentType: EVacancyType | null;
+  onChange: (employmentType: EVacancyType) => void;
 }
 
 const EmploymentTypeNameByTypeId: Record<EVacancyType, string> = {
@@ -18,8 +15,11 @@ const EmploymentTypeNameByTypeId: Record<EVacancyType, string> = {
   [EVacancyType.SHIFT]: "Сменный график"
 }
 
-const VacancyListSelect = (props: ISortForm) => {
-  const { sortByType, setSortByType, setPositionForm, positionForm } = props;
+const VacancyListSelect = (props: IVacancyListSelect) => {
+  const { employmentType, onChange } = props;
+
+  const [positionForm, setPositionForm] = useState(false);
+
   return (
     <div
       className="sortby__form form-item"
@@ -30,7 +30,7 @@ const VacancyListSelect = (props: ISortForm) => {
       </label>
       <input
         id="text"
-        value={sortByType.employmentType ? EmploymentTypeNameByTypeId[sortByType.employmentType] : ""}
+        value={employmentType ? EmploymentTypeNameByTypeId[employmentType] : ""}
         type="text"
         placeholder="Not selected"
         className="form-item__field rubik-regular"
@@ -46,10 +46,7 @@ const VacancyListSelect = (props: ISortForm) => {
         <ul
           className="header__ul"
           onClick={(event: any) =>
-            setSortByType({
-              ...sortByType,
-              employmentType: event.target.getAttribute("value"),
-            })
+            onChange(event.target.getAttribute("value"))
           }
         >
           {Object.values(EVacancyType).map(vacancyType => (
