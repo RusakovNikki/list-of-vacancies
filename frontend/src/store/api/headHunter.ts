@@ -1,17 +1,16 @@
-import { IVacancy, IVacancyWrapper } from "@/interfaces/vacancy";
+import { IVacancy } from "@/schemas/interfaces/vacancy";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const headHunterApi = createApi({
   reducerPath: "headHunterApi",
   tagTypes: ["headHunter"],
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.hh.ru" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api" }),
   endpoints: (builder) => ({
     getVacancies: builder.query<IVacancy[], void | Record<string, any>>({
       query: (params) => ({
         url: "/vacancies",
         params: params || {},
-      }),
-      transformResponse: (value: IVacancyWrapper) => value.items,
+      })
     }),
     getVacancy: builder.query<IVacancy, number>({
       query: (vacancyId) => ({

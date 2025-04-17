@@ -3,33 +3,36 @@
 import { useState } from "react";
 import NotFoundBlock from "@/components/NotFoundBlock";
 import SortForm from "../SortForm";
-import SortPosition from "../SortPosition";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import JobBlock from "../JobBlock";
 import { useDebounce } from "@/hooks/useDebounce";
+import { EVacancyType } from "@/schemas/enums/vacancy";
+import SortPosition from "../SortPosition";
 
-const PER_PAGE = 10;
+const PER_PAGE = 5;
+
+export interface ISortByType {
+  employmentType: EVacancyType | null,
+  name: string | null
+}
 
 const JobList = () => {
   const [page, setPage] = useState(1);
 
-  const [sortByType, setSortByType] = useState({
-    nameSort: "",
-    sortBy: "",
-    searchByPosition: "",
+  const [sortByType, setSortByType] = useState<ISortByType>({
+    employmentType: null,
+    name: null,
   });
 
-  const text = useDebounce(sortByType.searchByPosition, 500);
+  const vacancyName = useDebounce(sortByType.name, 500);
 
   const { data: vacancies = [] } = useGetVacanciesQuery({
-    page: 0,
-    per_page: PER_PAGE * page,
-    ...(sortByType.sortBy && { schedule: sortByType.sortBy }),
-    ...(sortByType.searchByPosition && {
-      text,
-    }),
+    page: 1,
+    size: PER_PAGE * page,
+    ...(sortByType.name && { name: vacancyName }),
+    ...(sortByType.employmentType && { employmentTypeId: sortByType.employmentType })
   });
 
   const [positionForm, setPositionForm] = useState(false);
@@ -47,7 +50,7 @@ const JobList = () => {
         <div
           className="header__clear"
           onClick={() =>
-            setSortByType({ nameSort: "", sortBy: "", searchByPosition: "" })
+            setSortByType({ employmentType: null, name: null })
           }
         >
           <label htmlFor="close" className="header__title-clear formular">

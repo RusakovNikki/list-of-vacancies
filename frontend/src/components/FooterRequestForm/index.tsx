@@ -76,7 +76,7 @@ const FooterRequestForm = () => {
           className="form-item__field rubik-regular"
         />
       </div>
-      <input type="submit" className="button footer__buttom" value="Send" />
+      <input type="submit" className="button footer__buttom" value="Send" onChange={() => { }} />
     </form>
   );
 };

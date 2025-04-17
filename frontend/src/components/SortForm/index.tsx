@@ -1,22 +1,21 @@
 import { Dispatch, SetStateAction } from "react";
 import btnDown from "/public/down-btn.svg";
 import Image from "next/image";
+import { ISortByType } from "../JobList";
+import { EVacancyType } from "@/schemas/enums/vacancy";
 
 interface ISortForm {
-  sortByType: {
-    sortBy: string;
-    searchByPosition: string;
-    nameSort: string;
-  };
-  setSortByType: Dispatch<
-    SetStateAction<{
-      nameSort: string;
-      sortBy: string;
-      searchByPosition: string;
-    }>
-  >;
+  sortByType: ISortByType;
+  setSortByType: Dispatch<SetStateAction<ISortByType>>;
   setPositionForm: React.Dispatch<React.SetStateAction<boolean>>;
   positionForm: boolean;
+}
+
+const EmploymentTypeNameByTypeId: Record<EVacancyType, string> = {
+  [EVacancyType.FLEXIBLE]: "Гибкий график",
+  [EVacancyType.FULL_DAY]: "Полный день",
+  [EVacancyType.REMOTE]: "Удаленная работа",
+  [EVacancyType.SHIFT]: "Сменный график"
 }
 
 const SortForm = (props: ISortForm) => {
@@ -31,16 +30,15 @@ const SortForm = (props: ISortForm) => {
       </label>
       <input
         id="text"
-        value={sortByType.nameSort}
+        value={sortByType.employmentType ? EmploymentTypeNameByTypeId[sortByType.employmentType] : ""}
         type="text"
         placeholder="Not selected"
         className="form-item__field rubik-regular"
-        onChange={() => {}}
+        onChange={() => { }}
       />
       <div
-        className={`header__show-btn ${
-          positionForm ? "header__show-btn--rotate" : ""
-        }`}
+        className={`header__show-btn ${positionForm ? "header__show-btn--rotate" : ""
+          }`}
       >
         <Image src={btnDown} alt="" />
       </div>
@@ -50,15 +48,13 @@ const SortForm = (props: ISortForm) => {
           onClick={(event: any) =>
             setSortByType({
               ...sortByType,
-              nameSort: event.target.innerHTML,
-              sortBy: event.target.getAttribute("value"),
+              employmentType: event.target.getAttribute("value"),
             })
           }
         >
-          <li value="fullDay">Полный день</li>
-          <li value="remote">Удаленная работа</li>
-          <li value="flexible">Гибкий график</li>
-          <li value="shift">Сменный график</li>
+          {Object.values(EVacancyType).map(vacancyType => (
+            <li key={vacancyType} value={vacancyType}>{EmploymentTypeNameByTypeId[vacancyType]}</li>
+          ))}
         </ul>
       )}
     </div>

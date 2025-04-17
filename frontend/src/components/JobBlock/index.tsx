@@ -1,7 +1,7 @@
 "use client";
 
 import Parser from "html-react-parser";
-import { IVacancy } from "@/interfaces/vacancy";
+import { IVacancy } from "@/schemas/interfaces/vacancy";
 import preview from "/public/preview_company.svg";
 import { useState } from "react";
 import { useGetVacancyQuery } from "@/store/api/headHunter";
@@ -35,7 +35,7 @@ const JobBlock = (props: TJobBlockProps) => {
 
   const [showMoreDesc, setShowMoreDesc] = useState(true);
 
-  const { employer, schedule, area, name, description, alternate_url } =
+  const { name, description, id, URL, areaName, employerName, employmentTypeId, employmentTypeName, logoURL } =
     vacancyData || {};
 
   const router = useRouter();
@@ -47,7 +47,7 @@ const JobBlock = (props: TJobBlockProps) => {
           <div className="jobs-container__flex-item">
             <div className="jobs-container__logo-container">
               <img
-                src={employer?.logo_urls?.original || preview}
+                src={logoURL || preview}
                 alt="логотип компании"
                 className="jobs-container__logo"
               />
@@ -56,24 +56,24 @@ const JobBlock = (props: TJobBlockProps) => {
             <div className="jobs-container__about about rubik-regular">
               <p className="about__type">
                 Form:
-                <span className="about__desc"> {schedule?.name}</span>
+                <span className="about__desc"> {employmentTypeName}</span>
               </p>
 
               <p className="about__type">
                 Company:
-                <span className="about__desc"> {employer?.name}</span>
+                <span className="about__desc"> {employerName}</span>
               </p>
 
               <p className="about__type">
                 Web:
                 <span className="about__desc">
-                  <a href={alternate_url}>{alternate_url}</a>
+                  <a href={URL}>{URL}</a>
                 </span>
               </p>
 
               <p className="about__type">
                 Address:
-                <span className="about__desc"> {area?.name}</span>
+                <span className="about__desc"> {areaName}</span>
               </p>
             </div>
           </div>
@@ -81,9 +81,8 @@ const JobBlock = (props: TJobBlockProps) => {
             <div className="jobs-container__desc">
               <div className="jobs-container__title roboto">{name}</div>
               <div
-                className={`jobs-container__specifics ${
-                  showMoreDesc ? "jobs-container__specifics--height" : ""
-                } roboto`}
+                className={`jobs-container__specifics ${showMoreDesc ? "jobs-container__specifics--height" : ""
+                  } roboto`}
               >
                 {Parser(String(description || ""))}
               </div>
@@ -94,7 +93,7 @@ const JobBlock = (props: TJobBlockProps) => {
                 if (vacancyRequestData && !vacancy) {
                   setShowMoreDesc((prev) => !prev);
                 } else if (vacancy?.id) {
-                  router.push(vacancy?.id);
+                  router.push(vacancy.id.toString());
                 }
               }}
             >
