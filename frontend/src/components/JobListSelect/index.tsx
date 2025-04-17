@@ -18,7 +18,7 @@ const EmploymentTypeNameByTypeId: Record<EVacancyType, string> = {
   [EVacancyType.SHIFT]: "Сменный график"
 }
 
-const SortForm = (props: ISortForm) => {
+const JobListSelect = (props: ISortForm) => {
   const { sortByType, setSortByType, setPositionForm, positionForm } = props;
   return (
     <div
@@ -61,4 +61,4 @@ const SortForm = (props: ISortForm) => {
   );
 };
 
-export default SortForm;
+export default JobListSelect;

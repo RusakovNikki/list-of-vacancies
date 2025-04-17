@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import NotFoundBlock from "@/components/NotFoundBlock";
-import SortForm from "../SortForm";
+import JobListSelect from "../JobListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import JobBlock from "../JobBlock";
 import { useDebounce } from "@/hooks/useDebounce";
-import SortPosition from "../SortPosition";
+import SortPosition from "../JobListSearchInput";
 import { ISort } from "@/schemas/interfaces/sort";
 
 const PER_PAGE = 5;
@@ -35,7 +35,7 @@ const JobList = () => {
   return (
     <>
       <div className="header__sortby sortby">
-        <SortForm
+        <JobListSelect
           sortByType={sortByType}
           setSortByType={setSortByType}
           setPositionForm={setPositionForm}

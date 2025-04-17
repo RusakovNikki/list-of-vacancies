@@ -7,7 +7,7 @@ interface ISortPosition {
 
 }
 
-const SortPosition = (props: ISortPosition) => {
+const JobListSearchInput = (props: ISortPosition) => {
   const { sortByType, setSortByType } = props;
   return (
     <div className="header__position form-item">
@@ -33,4 +33,4 @@ const SortPosition = (props: ISortPosition) => {
   )
 }
 
-export default SortPosition
+export default JobListSearchInput
