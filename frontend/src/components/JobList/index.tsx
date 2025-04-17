@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import NotFoundBlock from "@/components/NotFoundBlock";
-import JobListSelect from "../JobListSelect";
+import JobListSelect from "./components/JobListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
 import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import JobBlock from "../JobBlock";
 import { useDebounce } from "@/hooks/useDebounce";
-import SortPosition from "../JobListSearchInput";
+import SortPosition from "./components/JobListSearchInput";
 import { ISort } from "@/schemas/interfaces/sort";
 
 const PER_PAGE = 5;
