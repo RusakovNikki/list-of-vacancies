@@ -7,19 +7,19 @@ import { useState } from "react";
 import { useGetVacancyQuery } from "@/store/api/headHunter";
 import { notFound, useRouter } from "next/navigation";
 
-interface IJobBlockWithVacancyProps {
+interface IVacancyComponentWithVacancyProps {
   vacancy: IVacancy;
   vacancyId?: never;
 }
 
-interface IJobBlockWithVacancyIdProps {
+interface IVacancyComponentVacancyIdProps {
   vacancyId: number;
   vacancy?: never;
 }
 
-type TJobBlockProps = IJobBlockWithVacancyProps | IJobBlockWithVacancyIdProps;
+type TVacancyComponentProps = IVacancyComponentWithVacancyProps | IVacancyComponentVacancyIdProps;
 
-const VacancyComponent = (props: TJobBlockProps) => {
+const VacancyComponent = (props: TVacancyComponentProps) => {
   const { vacancy, vacancyId } = props;
 
   const { data: vacancyRequestData, isLoading } = useGetVacancyQuery(

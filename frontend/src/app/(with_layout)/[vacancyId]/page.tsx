@@ -1,4 +1,4 @@
-import JobBlock from "@/components/VacancyComponent";
+import VacancyComponent from "@/components/VacancyComponent";
 import { notFound } from "next/navigation";
 
 interface VacancyPage {
@@ -12,7 +12,7 @@ const VacancyPage = async (props: VacancyPage) => {
     return notFound();
   }
 
-  return <JobBlock vacancyId={parseInt(vacancyId)} />;
+  return <VacancyComponent vacancyId={parseInt(vacancyId)} />;
 };
 
 export default VacancyPage;

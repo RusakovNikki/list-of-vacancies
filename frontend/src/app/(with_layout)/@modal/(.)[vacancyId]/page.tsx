@@ -1,4 +1,4 @@
-import JobBlock from "@/components/VacancyComponent";
+import VacancyComponent from "@/components/VacancyComponent";
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ const ModalVacancyPage = async (props: VacancyPage) => {
 
   return (
     <Modal isOpen={Boolean(vacancyId)}>
-      <JobBlock vacancyId={parseInt(vacancyId)} />
+      <VacancyComponent vacancyId={parseInt(vacancyId)} />
     </Modal>
   );
 };
