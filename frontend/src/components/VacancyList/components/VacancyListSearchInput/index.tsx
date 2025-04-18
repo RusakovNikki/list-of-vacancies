@@ -1,11 +1,3 @@
-import { ISort } from "@/schemas/interfaces/sort";
-import { Dispatch, SetStateAction } from "react";
-
-// interface IVacancyListSearchInput {
-//   sortByType: ISort;
-//   setSortByType: Dispatch<SetStateAction<ISort>>
-// }
-
 interface IVacancyListSearchInput {
   vacancyName: string | null;
   onChange: (value: string) => void;
