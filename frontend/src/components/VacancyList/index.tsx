@@ -4,7 +4,6 @@ import { useState } from "react";
 import VacancyListSelect from "./components/VacancyListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
-import { useGetVacanciesQuery } from "@/store/api/headHunter";
 import VacancyComponent from "../VacancyComponent";
 import { useDebounce } from "@/hooks/useDebounce";
 import VacancyListSearchInput from "./components/VacancyListSearchInput";
@@ -22,12 +21,12 @@ const VacancyList = () => {
 
   const vacancyName = useDebounce(sortBy.name, 500);
 
-  const { data: vacancies = [] } = useGetVacanciesQuery({
-    page: 1,
-    size: PER_PAGE * page,
-    ...(sortBy.name && { name: vacancyName }),
-    ...(sortBy.employmentType && { employmentTypeId: sortBy.employmentType })
-  });
+  // const { data: vacancies = [] } = useGetVacanciesQuery({
+  //   page: 1,
+  //   size: PER_PAGE * page,
+  //   ...(sortBy.name && { name: vacancyName }),
+  //   ...(sortBy.employmentType && { employmentTypeId: sortBy.employmentType })
+  // });
 
 
 

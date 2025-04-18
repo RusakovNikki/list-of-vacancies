@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
-import Root from "./root";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,10 +20,8 @@ export default function VacancyLayout({
         <header className="header">
           <h1 className="title header__title rubik-light">List of vacancies</h1>
         </header>
-        <Root>
-          {modal}
-          {children}
-        </Root>
+        {modal}
+        {children}
         <footer className="footer">
           <div className="footer__title title rubik-light">Leave a request</div>
           <div className="footer__flex-container">
