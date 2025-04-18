@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import NotFoundComponent from "@/components/NotFoundComponent";
 import VacancyListSelect from "./components/VacancyListSelect";
 import btnClose from "/public/close-btn.svg";
 import Image from "next/image";
@@ -64,7 +63,7 @@ const VacancyList = () => {
           </span>
         </div>
       </div>
-      <section className="jobs-container">
+      {/* <section className="jobs-container">
         {vacancies.length ? (
           vacancies.map((vacancy) => {
             return <VacancyComponent key={vacancy.id} vacancy={vacancy} />;
@@ -75,7 +74,7 @@ const VacancyList = () => {
         <button className="button" onClick={() => setPage((prev) => prev + 1)}>
           Смотреть еще...
         </button>
-      </section>
+      </section> */}
     </>
   );
 };
