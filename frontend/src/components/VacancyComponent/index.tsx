@@ -15,7 +15,6 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
     if (!vacancy) return notFound();
 
     const {
-        name,
         URL,
         areaName,
         employerName,
