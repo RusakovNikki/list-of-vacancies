@@ -1,6 +1,6 @@
 "use server";
 
-import VacancyComponent from "@/components/VacancyComponent";
+import VacancyComponent from "../VacancyComponent";
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import { notFound } from "next/navigation";
 
