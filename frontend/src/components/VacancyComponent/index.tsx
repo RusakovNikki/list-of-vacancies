@@ -1,109 +1,62 @@
-"use client";
+"use server";
 
-import Parser from "html-react-parser";
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import preview from "/public/preview_company.svg";
-import { useState } from "react";
-import { useGetVacancyQuery } from "@/store/api/headHunter";
-import { notFound, useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 
-interface IVacancyComponentWithVacancyProps {
-  vacancy: IVacancy;
-  vacancyId?: never;
+interface IVacancyComponentV2Props {
+    vacancy: IVacancy;
+    children: React.ReactNode;
 }
 
-interface IVacancyComponentVacancyIdProps {
-  vacancyId: number;
-  vacancy?: never;
-}
+const VacancyComponent = (props: IVacancyComponentV2Props) => {
+    const { vacancy, children } = props;
 
-type TVacancyComponentProps = IVacancyComponentWithVacancyProps | IVacancyComponentVacancyIdProps;
+    if (!vacancy) return notFound();
 
-const VacancyComponent = (props: TVacancyComponentProps) => {
-  const { vacancy, vacancyId } = props;
+    const {
+        name,
+        URL,
+        areaName,
+        employerName,
+        employmentTypeName,
+        logoURL,
+    } = vacancy;
 
-  const { data: vacancyRequestData, isLoading } = useGetVacancyQuery(
-    vacancyId!,
-    {
-      skip: !vacancyId && Boolean(vacancy),
-    }
-  );
-
-  const vacancyData = vacancy || vacancyRequestData;
-
-  if (!vacancyData && !isLoading) return notFound();
-
-  const [showMoreDesc, setShowMoreDesc] = useState(true);
-
-  const { name, description, id, URL, areaName, employerName, employmentTypeId, employmentTypeName, logoURL } =
-    vacancyData || {};
-
-  const router = useRouter();
-
-  return (
-    <>
-      {vacancyData && (
+    return (
         <div className="jobs-container__item">
-          <div className="jobs-container__flex-item">
-            <div className="jobs-container__logo-container">
-              <img
-                src={logoURL || preview}
-                alt="логотип компании"
-                className="jobs-container__logo"
-              />
+            <div className="jobs-container__flex-item">
+                <div className="jobs-container__logo-container">
+                    <img
+                        src={logoURL || preview}
+                        alt="логотип компании"
+                        className="jobs-container__logo"
+                    />
+                </div>
+                <div className="jobs-container__about about rubik-regular">
+                    <p className="about__type">
+                        Тип занятости:
+                        <span className="about__desc"> {employmentTypeName}</span>
+                    </p>
+                    <p className="about__type">
+                        Компания:
+                        <span className="about__desc"> {employerName}</span>
+                    </p>
+                    <p className="about__type">
+                        Ссылка на вакансию:
+                        <span className="about__desc">
+                            <a href={URL}> {URL}</a>
+                        </span>
+                    </p>
+                    <p className="about__type">
+                        Адрес:
+                        <span className="about__desc"> {areaName}</span>
+                    </p>
+                </div>
             </div>
-
-            <div className="jobs-container__about about rubik-regular">
-              <p className="about__type">
-                Form:
-                <span className="about__desc"> {employmentTypeName}</span>
-              </p>
-
-              <p className="about__type">
-                Company:
-                <span className="about__desc"> {employerName}</span>
-              </p>
-
-              <p className="about__type">
-                Web:
-                <span className="about__desc">
-                  <a href={URL}>{URL}</a>
-                </span>
-              </p>
-
-              <p className="about__type">
-                Address:
-                <span className="about__desc"> {areaName}</span>
-              </p>
-            </div>
-          </div>
-          <div className="jobs-container__flex-item">
-            <div className="jobs-container__desc">
-              <div className="jobs-container__title roboto">{name}</div>
-              <div
-                className={`jobs-container__specifics ${showMoreDesc ? "jobs-container__specifics--height" : ""
-                  } roboto`}
-              >
-                {Parser(String(description || ""))}
-              </div>
-            </div>
-            <div
-              className="jobs-container__more-btn roboto"
-              onClick={() => {
-                if (vacancyRequestData && !vacancy) {
-                  setShowMoreDesc((prev) => !prev);
-                } else if (vacancy?.id) {
-                  router.push(vacancy.id.toString());
-                }
-              }}
-            >
-              {showMoreDesc ? `more details` : "close"}
-            </div>
-          </div>
+            {children}
         </div>
-      )}
-    </>
-  );
+    );
 };
 
 export default VacancyComponent;

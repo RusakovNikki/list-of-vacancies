@@ -2,8 +2,9 @@
 
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";
-import VacancyComponent from "./components/VacancyComponent";
 import { getVacancy } from "@/actions/getVacancy";
+import VacancyComponent from "@/components/VacancyComponent";
+import VacancyDescription from "@/components/VacancyDescription";
 
 interface VacancyPage {
   params: Promise<{ vacancyId: string }>;
@@ -20,7 +21,9 @@ const ModalVacancyPage = async (props: VacancyPage) => {
 
   return (
     <Modal isOpen={Boolean(vacancyId)}>
-      <VacancyComponent vacancy={vacancy} />
+      <VacancyComponent vacancy={vacancy}>
+        <VacancyDescription name={vacancy.name} description={vacancy.description} />
+      </VacancyComponent>
     </Modal>
   );
 };
