@@ -74,4 +74,15 @@ export default class VacanciesService {
             return null;
         }
     }
+
+    async deleteVacancy(vacancyId: number): Promise<Vacancy | null> {
+        try {
+            return await this.prisma.vacancy.delete({
+                where: { id: vacancyId }
+            });
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
 }

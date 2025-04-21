@@ -93,7 +93,7 @@ const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
                     name="description"
                 />
             </div>
-            <button className='button' type='submit'>Отправить</button>
+            <button className='button' type='submit'>Создать</button>
         </Form>
     )
 }
