@@ -2,8 +2,14 @@
 
 import Form from "next/form";
 import { redirect } from "next/navigation";
+import { TSearchParams } from "../../page";
 
-const SearchForm = async () => {
+interface ISearchFormProps {
+    searchParams?: TSearchParams;
+}
+
+const SearchForm = async (props: ISearchFormProps) => {
+    const { employmentTypeId, name, page } = props.searchParams || {};
 
     async function getVacanciesByFilterForm(formData: FormData) {
         "use server";
@@ -11,15 +17,15 @@ const SearchForm = async () => {
         const employerType = formData.get("employerType");
         const name = formData.get("name");
 
-        let path = "/";
-        if (employerType) {
-            path += `?employmentTypeId=${encodeURIComponent(employerType.toString())}`;
-            if (name) path += `&name=${encodeURIComponent(name.toString())}`;
-        } else if (name) {
-            path += `?name=${encodeURIComponent(name.toString())}`;
-        }
+        const params = new URLSearchParams();
 
-        redirect(path);
+        if (employerType) params.append('employmentTypeId', employerType.toString());
+        if (name) params.append('name', name.toString());
+        if (page) params.append('page', `${page}`);
+        console.log("params: ", params.toString());
+
+
+        redirect(`/?${params}`);
     }
 
 
@@ -35,7 +41,7 @@ const SearchForm = async () => {
                     placeholder="Не указано"
                     className="form-item__field"
                     name="employerType"
-                // value={""}
+                    defaultValue={employmentTypeId}
                 />
             </div>
             <div className="header__position form-item">
@@ -48,12 +54,13 @@ const SearchForm = async () => {
                     placeholder="Не указано"
                     className="form-item__field"
                     name="name"
-                // value={""}
+                    defaultValue={name}
                 />
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
-                <button type="reset">Отменить</button>
+                <button type="reset">Сбросить</button>
                 <button type="submit">Поиск вакансий</button>
+                <button type="button">Создать вакансию</button>
             </div>
         </Form>
     )

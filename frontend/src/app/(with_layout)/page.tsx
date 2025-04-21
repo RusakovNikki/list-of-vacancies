@@ -6,8 +6,9 @@ import SearchForm from "./components/SearchForm";
 import { EVacancyType } from "@/schemas/enums/vacancy";
 
 export type TSearchParams = {
-  employmentTypeId: EVacancyType;
-  name: string;
+  employmentTypeId?: EVacancyType;
+  name?: string;
+  page?: string;
 }
 
 interface HomePage {
@@ -15,10 +16,11 @@ interface HomePage {
 }
 
 export default async function Home(props: HomePage) {
-  const vacancies = await getVacancies(await props.searchParams);
+  const searchParams = await props.searchParams;
+  const vacancies = await getVacancies(searchParams);
 
   return <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-    <SearchForm />
-    <VacancyList vacancies={vacancies} />
+    <SearchForm searchParams={searchParams} />
+    <VacancyList vacancies={vacancies} searchParams={searchParams} />
   </div>
 }
