@@ -12,11 +12,11 @@ interface VacancyPage {
 const VacancyPage = async (props: VacancyPage) => {
   const { vacancyId } = await props.params;
 
-  if (!vacancyId || !Number(vacancyId)) {
+  const vacancy = await getVacancy(vacancyId);
+
+  if (!vacancyId || "error" in vacancy || !Number(vacancyId)) {
     return notFound();
   }
-
-  const vacancy = await getVacancy(vacancyId);
 
   return <VacancyComponent vacancy={vacancy}>
     <VacancyDescription name={vacancy.name} description={vacancy.description} />
