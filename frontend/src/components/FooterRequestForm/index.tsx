@@ -1,16 +1,18 @@
-"use client";
+"use server";
 
-import { FormEvent, useState } from "react";
+import Form from "next/form";
 
 const FooterRequestForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [comment, setComment] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    alert(`
+  async function handleSubmit(formData: FormData) {
+    "use server";
+
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const comment = formData.get("comment");
+
+    console.log(`
       Ваше имя ${name}
       Ваша почта ${email}
       Ваш номер ${phone}
@@ -19,15 +21,13 @@ const FooterRequestForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form action={handleSubmit}>
       <div className="form-item footer__form">
         <label htmlFor="name" className="form-item__title rubik-regular">
           Your name
         </label>
         <input
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
           name="name"
           type="text"
           placeholder="Please introduce yourself"
@@ -41,8 +41,6 @@ const FooterRequestForm = () => {
         </label>
         <input
           id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
           name="email"
           type="email"
           placeholder="ivanov@mail.ru"
@@ -58,8 +56,7 @@ const FooterRequestForm = () => {
           className="form-item__field rubik-regular"
           placeholder="+7(999) 999 9999"
           id="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          name="phone"
         />
       </div>
       <div className="form-item footer__form">
@@ -68,16 +65,14 @@ const FooterRequestForm = () => {
         </label>
         <input
           id="comment"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
           type="text"
           name="comment"
           placeholder="Message text"
           className="form-item__field rubik-regular"
         />
       </div>
-      <input type="submit" className="button footer__buttom" value="Send" onChange={() => { }} />
-    </form>
+      <button type="submit" className="button footer__buttom">Отправить</button>
+    </Form>
   );
 };
 
