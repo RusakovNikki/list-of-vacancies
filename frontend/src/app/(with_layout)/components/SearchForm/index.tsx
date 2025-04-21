@@ -1,6 +1,5 @@
 "use server"
 
-import Form from "next/form";
 import { redirect } from "next/navigation";
 import { TSearchParams } from "../../page";
 import CreateVacancyButton from "./components/CreateVacancyButton";
@@ -23,14 +22,12 @@ const SearchForm = async (props: ISearchFormProps) => {
         if (employerType) params.append('employmentTypeId', employerType.toString());
         if (name) params.append('name', name.toString());
         if (page) params.append('page', `${page}`);
-        console.log("params: ", params.toString());
-
 
         redirect(`/?${params}`);
     }
 
     return (
-        <Form action={getVacanciesByFilterForm} className="header__sortby sortby">
+        <form action={getVacanciesByFilterForm} className="header__sortby sortby">
             <div className="header__position form-item">
                 <label htmlFor="employerType" className="form-item__title rubik-regular">
                     Поиск по типу занятости
@@ -62,7 +59,7 @@ const SearchForm = async (props: ISearchFormProps) => {
                 <button type="submit">Поиск вакансий</button>
                 <CreateVacancyButton />
             </div>
-        </Form>
+        </form>
     )
 }
 

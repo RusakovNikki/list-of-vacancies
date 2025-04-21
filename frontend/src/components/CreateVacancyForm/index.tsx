@@ -1,5 +1,3 @@
-import Form from "next/form"
-
 interface ICreateVacancyFormProps {
     handleCreateVacation: (formData: FormData) => void;
 }
@@ -7,7 +5,7 @@ interface ICreateVacancyFormProps {
 const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
     const { handleCreateVacation } = props;
     return (
-        <Form action={handleCreateVacation}>
+        <form action={handleCreateVacation}>
             <div className="header__position form-item">
                 <label htmlFor="employerType" className="form-item__title rubik-regular">
                     Тип занятости
@@ -94,7 +92,7 @@ const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
                 />
             </div>
             <button className='button' type='submit'>Создать</button>
-        </Form>
+        </form>
     )
 }
 

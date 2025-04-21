@@ -1,7 +1,5 @@
 "use server";
 
-import Form from "next/form";
-
 const FooterRequestForm = () => {
 
   async function handleSubmit(formData: FormData) {
@@ -21,7 +19,7 @@ const FooterRequestForm = () => {
   };
 
   return (
-    <Form action={handleSubmit}>
+    <form action={handleSubmit}>
       <div className="form-item footer__form">
         <label htmlFor="name" className="form-item__title rubik-regular">
           Your name
@@ -72,7 +70,7 @@ const FooterRequestForm = () => {
         />
       </div>
       <button type="submit" className="button footer__buttom">Отправить</button>
-    </Form>
+    </form>
   );
 };
 
