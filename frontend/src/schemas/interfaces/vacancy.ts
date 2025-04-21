@@ -12,3 +12,9 @@ export interface IVacancy {
   logoURL?: string
 }
 
+export interface IVacancyWrapper {
+  result: IVacancy[],
+  page: number,
+  size: number,
+  count: number
+}

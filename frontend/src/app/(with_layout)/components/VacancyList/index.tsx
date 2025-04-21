@@ -1,13 +1,13 @@
 "use server";
 
 import VacancyComponent from "@/components/VacancyComponent";
-import { IVacancy } from "@/schemas/interfaces/vacancy";
+import { IVacancy, IVacancyWrapper } from "@/schemas/interfaces/vacancy";
 import { notFound, redirect } from "next/navigation";
 import MoreDetailsButton from "../MoreDetailsButton";
 import { TSearchParams } from "../../page";
 
 interface IVacancyListProps {
-  vacancies: IVacancy[];
+  vacancies: IVacancyWrapper;
   searchParams: TSearchParams;
 }
 
@@ -43,8 +43,8 @@ const VacancyList = (props: IVacancyListProps) => {
   return (
     <>
       <section className="jobs-container">
-        {vacancies.length ? (
-          vacancies.map((vacancy) => {
+        {vacancies.result.length ? (
+          vacancies.result.map((vacancy) => {
             return <VacancyComponent key={vacancy.id} vacancy={vacancy}>
               <MoreDetailsButton vacancy={vacancy} />
             </VacancyComponent>;
@@ -58,10 +58,12 @@ const VacancyList = (props: IVacancyListProps) => {
               Предыдущая страница
             </button>
           }
+          {vacancies.count === vacancies.size &&
+            <button className="button" onClick={handleClickNextPage}>
+              Следующая страница
+            </button>
+          }
 
-          <button className="button" onClick={handleClickNextPage}>
-            Следующая страница
-          </button>
         </div>
       </section>
     </>
