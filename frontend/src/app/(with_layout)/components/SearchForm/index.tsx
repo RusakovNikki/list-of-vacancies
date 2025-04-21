@@ -29,6 +29,12 @@ const SearchForm = async (props: ISearchFormProps) => {
     }
 
 
+    async function handleCreateVacancy() {
+        "use server";
+
+        redirect("/create")
+    }
+
     return (
         <Form action={getVacanciesByFilterForm} className="header__sortby sortby">
             <div className="header__position form-item">
@@ -60,7 +66,7 @@ const SearchForm = async (props: ISearchFormProps) => {
             <div style={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
                 <button type="reset">Сбросить</button>
                 <button type="submit">Поиск вакансий</button>
-                <button type="button">Создать вакансию</button>
+                <button type="button" onClick={handleCreateVacancy}>Создать вакансию</button>
             </div>
         </Form>
     )
