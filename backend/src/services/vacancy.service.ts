@@ -8,12 +8,17 @@ export default class VacanciesService {
         employmentTypeId?: string;
         page?: string;
         size?: string;
-    }): Promise<Omit<Vacancy, "description">[] | null> {
+    }): Promise<{
+        result: Omit<Vacancy, "description">[],
+        page: number;
+        size: number;
+        count: number;
+    } | null> {
         try {
             const page = parseInt(filters?.page || "") || 1;
             const size = parseInt(filters?.size || "") || 5;
 
-            return (await this.prisma.vacancy.findMany({
+            const result = (await this.prisma.vacancy.findMany({
                 where: {
                     name: {
                         contains: filters?.name
@@ -35,6 +40,13 @@ export default class VacanciesService {
                 take: size,
                 skip: page && size ? (page - 1) * size : undefined,
             }));
+
+            return {
+                result,
+                page,
+                size,
+                count: result.length
+            }
         } catch (error) {
             console.log(error);
             return null;
