@@ -3,6 +3,7 @@
 import Form from "next/form";
 import { redirect } from "next/navigation";
 import { TSearchParams } from "../../page";
+import CreateVacancyButton from "./components/CreateVacancyButton";
 
 interface ISearchFormProps {
     searchParams?: TSearchParams;
@@ -26,13 +27,6 @@ const SearchForm = async (props: ISearchFormProps) => {
 
 
         redirect(`/?${params}`);
-    }
-
-
-    async function handleCreateVacancy() {
-        "use server";
-
-        redirect("/create")
     }
 
     return (
@@ -66,7 +60,7 @@ const SearchForm = async (props: ISearchFormProps) => {
             <div style={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
                 <button type="reset">Сбросить</button>
                 <button type="submit">Поиск вакансий</button>
-                <button type="button" onClick={handleCreateVacancy}>Создать вакансию</button>
+                <CreateVacancyButton />
             </div>
         </Form>
     )

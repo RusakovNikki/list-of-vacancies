@@ -19,6 +19,8 @@ const ModalVacancyPage = async (props: VacancyPage) => {
 
   const vacancy = await getVacancy(vacancyId);
 
+  if ("error" in vacancy) throw new Error();
+
   return (
     <Modal isOpen={Boolean(vacancyId)}>
       <VacancyComponent vacancy={vacancy}>

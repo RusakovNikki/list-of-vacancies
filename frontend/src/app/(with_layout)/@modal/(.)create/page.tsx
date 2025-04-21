@@ -1,14 +1,18 @@
-"use server";
+"use client";
 
 import { createVacancy } from '@/actions/createVacancy';
 import CreateVacancyForm from '@/components/CreateVacancyForm';
-import { redirect } from 'next/navigation';
+import Modal from '@/components/Modal';
+import { usePathname, useRouter } from 'next/navigation';
 
 const CreateVacationPage = () => {
+    const router = useRouter();
+    const path = usePathname();
+
+    console.log(path);
+
 
     async function handleCreateVacation(formData: FormData) {
-        "use server"
-
         const employmentTypeName = formData.get("employerType")?.toString();
         const name = formData.get("name")!.toString();
         const logoURL = formData.get("logoURL")?.toString();
@@ -19,12 +23,17 @@ const CreateVacationPage = () => {
 
         const result = await createVacancy({ name, areaName, description, employerName, employmentTypeName, logoURL, URL });
 
-        if ("id" in result) redirect("/");
+        if ("id" in result) {
+            router.back();
+            router.refresh();
+        }
         else throw new Error();
     }
 
     return (
-        <CreateVacancyForm handleCreateVacation={handleCreateVacation} />
+        <Modal isOpen={path === "/create"}>
+            <CreateVacancyForm handleCreateVacation={handleCreateVacation} />
+        </Modal>
     )
 }
 

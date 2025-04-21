@@ -2,6 +2,7 @@
 
 import { JSX, useEffect } from "react";
 import styles from "./style.module.scss";
+import { useRouter } from "next/navigation";
 
 interface IModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface IModalProps {
 
 const Modal = (props: IModalProps) => {
   const { isOpen, onClose, children } = props;
+  const router = useRouter();
 
   useEffect(() => {
     if (isOpen) {
@@ -29,11 +31,11 @@ const Modal = (props: IModalProps) => {
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        {onClose && (
-          <button className={styles.closeButton} onClick={onClose}>
-            ×
-          </button>
-        )}
+        <button className={styles.closeButton} onClick={() => {
+          router.back();
+        }}>
+          ×
+        </button>
 
         {children}
       </div>
