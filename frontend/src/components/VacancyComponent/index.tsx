@@ -3,7 +3,6 @@
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import preview from "/public/preview_company.svg";
 import { notFound } from "next/navigation";
-import "./styles.scss";
 
 interface IVacancyComponentV2Props {
     vacancy: IVacancy;

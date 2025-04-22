@@ -1,21 +1,28 @@
+@use "styles/not-found";
+@use "styles/sortby";
+@use "styles/vacancy-component";
+@use "styles/footer";
+@use "styles/header";
+@use "styles/vacancy-list";
+
 @font-face {
     font-family: "Formular";
-    src: url("../../fonts/Formular.woff");
+    src: url("../fonts/Formular.woff");
 }
 
 @font-face {
     font-family: "Rubik-light";
-    src: url("../../fonts/Rubik-Light.woff");
+    src: url("../fonts/Rubik-Light.woff");
 }
 
 @font-face {
     font-family: "Rubik-regular";
-    src: url("../../fonts/Rubik-Regular.woff");
+    src: url("../fonts/Rubik-Regular.woff");
 }
 
 @font-face {
     font-family: "Roboto";
-    src: url("../../fonts/Roboto-Regular.woff");
+    src: url("../fonts/Roboto-Regular.woff");
 }
 
 * {

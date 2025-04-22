@@ -1,5 +1,3 @@
-import "./css/not-found.scss";
-
 const NotFoundPage = () => {
   return (
     <div className="notfound-container">

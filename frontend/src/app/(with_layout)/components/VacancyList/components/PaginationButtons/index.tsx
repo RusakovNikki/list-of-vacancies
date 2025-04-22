@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { IVacancyListProps } from "../..";
 
-interface IPaginationButtonsProps extends IVacancyListProps { }
+type IPaginationButtonsProps = IVacancyListProps
 
 const PaginationButtons = (props: IPaginationButtonsProps) => {
     const router = useRouter();

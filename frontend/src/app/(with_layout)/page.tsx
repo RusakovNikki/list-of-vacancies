@@ -3,7 +3,6 @@
 import { getVacancies } from "@/actions/getVacancies"
 import VacancyList from "./components/VacancyList";
 import SearchForm from "./components/SearchForm";
-import "./styles.scss";
 
 export type TSearchParams = {
   employmentTypeName?: string;
