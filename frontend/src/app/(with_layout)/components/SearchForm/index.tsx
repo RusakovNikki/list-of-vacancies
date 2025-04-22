@@ -55,9 +55,6 @@ const SearchForm = async (props: ISearchFormProps) => {
         />
       </div>
       <div className="vacancy-list__buttons">
-        <button type="reset" className="button button--small">
-          Сбросить
-        </button>
         <button type="submit" className="button button--small">
           Поиск вакансий
         </button>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
-import { ThemeProvider } from "@greensight/gds";
+import ThemeProviderComponent from "./themeProvider";
 
 export const metadata: Metadata = {
   title: "List of vacancies",
@@ -21,8 +21,10 @@ export default function VacancyLayout({
         <header className="header">
           <h1 className="title header__title rubik-light">List of vacancies</h1>
         </header>
-        {modal}
-        {children}
+        <ThemeProviderComponent>
+          {modal}
+          {children}
+        </ThemeProviderComponent>
         <footer className="footer">
           <div className="container">
             <div className="footer__title rubik-light">Leave a request</div>
