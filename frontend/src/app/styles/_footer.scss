@@ -9,6 +9,8 @@
 
     &__title {
         margin-bottom: 74px;
+        line-height: 76px;
+        font-size: clamp(2rem, 0.364rem + 5.82vw, 4rem);
 
         @media (max-width: 450px) {
             margin-bottom: 32px;
@@ -27,6 +29,7 @@
     &__flex-container {
         display: flex;
         justify-content: space-between;
+        gap: 1rem;
 
         @media (max-width: 450px) {
             flex-direction: column;
@@ -43,6 +46,10 @@
         line-height: 160%;
         margin-top: 43px;
 
+        @media (max-width: 770px) {
+            width: 100%;
+        }
+
         @media (max-width: 450px) {
             width: 283px;
         }
@@ -54,7 +61,7 @@
     }
 
     &__message {
-        font-size: 18px;
+        font-size: clamp(0.75rem, 0.443rem + 1.09vw, 1.125rem);
         line-height: 160%;
         width: 307px;
         margin-bottom: 74px;
@@ -66,7 +73,7 @@
     }
 
     &__phone {
-        font-size: 32px;
+        font-size: clamp(1rem, 0.182rem + 2.91vw, 2rem);
         line-height: 24px;
         margin-bottom: 8px;
 
@@ -77,7 +84,7 @@
     }
 
     &__mail {
-        font-size: 32px;
+        font-size: clamp(1rem, 0.182rem + 2.91vw, 2rem);
         line-height: 32px;
         margin-bottom: 78px;
 
@@ -88,14 +95,20 @@
     }
 
     &__adres {
-        font-size: 16px;
+        font-size: clamp(0.75rem, 0.443rem + 1.09vw, 1.125rem);
         line-height: 160%;
         width: 275px;
         margin-bottom: 5px;
     }
 
     &__route {
-        font-size: 16px;
+        font-size: clamp(0.75rem, 0.443rem + 1.09vw, 1.125rem);
         line-height: 24px;
+    }
+
+    .button {
+        @media (max-width: 620px) {
+            width: 100%;
+        }
     }
 }

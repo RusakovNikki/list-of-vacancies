@@ -8,6 +8,10 @@
     box-sizing: border-box;
     overflow: hidden;
 
+    @media (max-width: 770px) {
+        flex-direction: column;
+    }
+
     @media (max-width: 450px) {
         width: inherit;
         flex-direction: column;
@@ -24,6 +28,11 @@
         background-color: #fff;
         margin-right: 20px;
         margin-bottom: 24px;
+
+        @media (max-width: 980px) {
+            width: 250px;
+            height: 70px;
+        }
 
         @media (max-width: 450px) {
             width: 232px;

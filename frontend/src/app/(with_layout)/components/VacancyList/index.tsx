@@ -18,11 +18,11 @@ const VacancyList = (props: IVacancyListProps) => {
   const { vacancies, searchParams } = props;
 
   return (
-    <section className="vacancy-list__content">
+    <section>
       {vacancies.result.length ? (
         vacancies.result.map((vacancy) => {
           return <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-            <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+            <div className="vacancy-list__content">
               <MoreDetailsButton vacancy={vacancy} />
               <DeleteVacancyButton vacancyId={vacancy.id} />
             </div>

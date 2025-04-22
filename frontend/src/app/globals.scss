@@ -104,7 +104,6 @@ ul {
     max-width: 466px;
     width: 100%;
     height: 67px;
-    border-bottom: 1px solid black;
 
     @media (max-width: 450px) {
         width: 272px;
@@ -125,6 +124,7 @@ ul {
         line-height: 160%;
         color: #a3a6a9;
         margin-top: 7px;
+        border-bottom: 1px solid black;
     }
 
     &__field:focus {
