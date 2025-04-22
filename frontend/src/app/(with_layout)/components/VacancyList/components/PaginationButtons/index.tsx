@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { IVacancyListProps } from "../..";
+import { css } from "@emotion/react";
 
 type IPaginationButtonsProps = IVacancyListProps;
 
@@ -34,7 +35,13 @@ const PaginationButtons = (props: IPaginationButtonsProps) => {
   }
 
   return (
-    <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+    <div
+      css={css`
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      `}
+    >
       {page && parseInt(page) > 1 && (
         <button className="button" onClick={handleClickPrevPage}>
           Предыдущая страница

@@ -1,5 +1,6 @@
 "use client";
 import { deleteVacancy } from "@/actions/deleteVacancy";
+import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 
 interface IDeleteVacancyButtonProps {
@@ -17,11 +18,11 @@ const DeleteVacancyButton = (props: IDeleteVacancyButtonProps) => {
   return (
     <button
       className="button button--small"
-      style={{
-        alignSelf: "flex-start",
-        minWidth: "200px",
-        width: "200px",
-      }}
+      css={css`
+        align-self: flex-start;
+        min-width: 200px;
+        width: 200px;
+      `}
       onClick={handleClickDeleteVacancy}
     >
       Удалить
