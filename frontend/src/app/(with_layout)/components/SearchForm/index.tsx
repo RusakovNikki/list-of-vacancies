@@ -9,7 +9,7 @@ interface ISearchFormProps {
 }
 
 const SearchForm = async (props: ISearchFormProps) => {
-    const { employmentTypeId, name, page } = props.searchParams || {};
+    const { employmentTypeName, name, page } = props.searchParams || {};
 
     async function getVacanciesByFilterForm(formData: FormData) {
         "use server";
@@ -19,7 +19,7 @@ const SearchForm = async (props: ISearchFormProps) => {
 
         const params = new URLSearchParams();
 
-        if (employerType) params.append('employmentTypeId', employerType.toString());
+        if (employerType) params.append('employmentTypeName', employerType.toString());
         if (name) params.append('name', name.toString());
         if (page) params.append('page', `${page}`);
 
@@ -38,7 +38,7 @@ const SearchForm = async (props: ISearchFormProps) => {
                     placeholder="Не указано"
                     className="form-item__field"
                     name="employerType"
-                    defaultValue={employmentTypeId}
+                    defaultValue={employmentTypeName}
                 />
             </div>
             <div className="form-item">

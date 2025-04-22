@@ -8,12 +8,12 @@ interface IPaginationButtonsProps extends IVacancyListProps { }
 const PaginationButtons = (props: IPaginationButtonsProps) => {
     const router = useRouter();
     const { searchParams, vacancies } = props;
-    const { employmentTypeId, name, page } = searchParams;
+    const { employmentTypeName, name, page } = searchParams;
 
     async function handleClickNextPage() {
         const params = new URLSearchParams();
 
-        if (employmentTypeId) params.append('employmentTypeId', encodeURIComponent(employmentTypeId?.toString()));
+        if (employmentTypeName) params.append('employmentTypeName', encodeURIComponent(employmentTypeName?.toString()));
         if (name) params.append('name', encodeURIComponent(name?.toString()));
         params.append('page', `${page ? parseInt(page) + 1 : 2}`);
         console.log(params.toString());
@@ -24,7 +24,7 @@ const PaginationButtons = (props: IPaginationButtonsProps) => {
     async function handleClickPrevPage() {
         const params = new URLSearchParams();
 
-        if (employmentTypeId) params.append('employmentTypeId', encodeURIComponent(employmentTypeId?.toString()));
+        if (employmentTypeName) params.append('employmentTypeName', encodeURIComponent(employmentTypeName?.toString()));
         if (name) params.append('name', encodeURIComponent(name?.toString()));
         params.append('page', `${page ? parseInt(page) - 1 : 1}`);
 

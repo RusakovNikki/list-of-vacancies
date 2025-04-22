@@ -1,5 +1,5 @@
 import { TSearchParams } from "@/app/(with_layout)/page"
-import { IVacancy, IVacancyWrapper } from "@/schemas/interfaces/vacancy"
+import { IVacancyWrapper } from "@/schemas/interfaces/vacancy"
 
 export const getVacancies = async (searchParams?: TSearchParams): Promise<IVacancyWrapper> => {
     const params = new URLSearchParams(searchParams).toString();

@@ -3,11 +3,10 @@
 import { getVacancies } from "@/actions/getVacancies"
 import VacancyList from "./components/VacancyList";
 import SearchForm from "./components/SearchForm";
-import { EVacancyType } from "@/schemas/enums/vacancy";
 import "./styles.scss";
 
 export type TSearchParams = {
-  employmentTypeId?: EVacancyType;
+  employmentTypeName?: string;
   name?: string;
   page?: string;
 }

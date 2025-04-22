@@ -5,7 +5,7 @@ export default class VacanciesService {
 
     async getVacancies(filters?: {
         name?: string;
-        employmentTypeId?: string;
+        employmentTypeName?: string;
         page?: string;
         size?: string;
     }): Promise<{
@@ -23,7 +23,9 @@ export default class VacanciesService {
                     name: {
                         contains: filters?.name
                     },
-                    employmentTypeId: filters?.employmentTypeId,
+                    employmentTypeName: {
+                        contains: filters?.employmentTypeName
+                    }
                 },
                 select: {
                     id: true,
