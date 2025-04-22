@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
+import { ThemeProvider } from "@greensight/gds";
 
 export const metadata: Metadata = {
   title: "List of vacancies",

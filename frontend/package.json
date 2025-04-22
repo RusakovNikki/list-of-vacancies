@@ -6,13 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gds-init": "gds-init",
+    "tokens": "gds-tokens"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.13.5",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@greensight/gds": "^4.1.11",
     "html-react-parser": "^5.2.3",
     "next": "14.2.28",
     "react": "^18",
