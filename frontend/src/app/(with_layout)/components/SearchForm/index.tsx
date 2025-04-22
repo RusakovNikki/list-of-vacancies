@@ -27,9 +27,9 @@ const SearchForm = async (props: ISearchFormProps) => {
     }
 
     return (
-        <form action={getVacanciesByFilterForm} className="header__sortby sortby">
-            <div className="header__position form-item">
-                <label htmlFor="employerType" className="form-item__title rubik-regular">
+        <form action={getVacanciesByFilterForm} className="vacancy-list__filter-form">
+            <div className="form-item">
+                <label htmlFor="employerType" className="form-item__title">
                     Поиск по типу занятости
                 </label>
                 <input
@@ -41,8 +41,8 @@ const SearchForm = async (props: ISearchFormProps) => {
                     defaultValue={employmentTypeId}
                 />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="name" className="form-item__title rubik-regular">
+            <div className="form-item">
+                <label htmlFor="name" className="form-item__title">
                     Поиск по названию
                 </label>
                 <input
@@ -54,9 +54,9 @@ const SearchForm = async (props: ISearchFormProps) => {
                     defaultValue={name}
                 />
             </div>
-            <div style={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
-                <button type="reset">Сбросить</button>
-                <button type="submit">Поиск вакансий</button>
+            <div className="vacancy-list__buttons">
+                <button type="reset" className="button button--small">Сбросить</button>
+                <button type="submit" className="button button--small">Поиск вакансий</button>
                 <CreateVacancyButton />
             </div>
         </form>

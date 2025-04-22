@@ -4,6 +4,7 @@ import { getVacancies } from "@/actions/getVacancies"
 import VacancyList from "./components/VacancyList";
 import SearchForm from "./components/SearchForm";
 import { EVacancyType } from "@/schemas/enums/vacancy";
+import "./styles.scss";
 
 export type TSearchParams = {
   employmentTypeId?: EVacancyType;
@@ -19,7 +20,7 @@ export default async function Home(props: HomePage) {
   const searchParams = await props.searchParams;
   const vacancies = await getVacancies(searchParams);
 
-  return <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+  return <div className="vacancy-list">
     <SearchForm searchParams={searchParams} />
     <VacancyList vacancies={vacancies} searchParams={searchParams} />
   </div>

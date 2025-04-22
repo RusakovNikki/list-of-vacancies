@@ -15,7 +15,7 @@ const DeleteVacancyButton = (props: IDeleteVacancyButtonProps) => {
         router.refresh();
     }
     return (
-        <button className="button" style={{
+        <button className="button button--small" style={{
             alignSelf: "flex-start",
             minWidth: "200px",
             width: "200px",

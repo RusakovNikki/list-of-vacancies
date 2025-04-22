@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.scss";
+import "./css/global.scss";
 
 export const metadata: Metadata = {
   title: "List of vacancies",

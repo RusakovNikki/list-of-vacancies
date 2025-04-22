@@ -12,17 +12,17 @@ const MoreDetailsButton = (props: IMoreDetailsButtonProps) => {
     const router = useRouter();
 
     return (
-        <div className="jobs-container__flex-item">
-            <div className="jobs-container__desc">
-                <div className="jobs-container__title roboto">{vacancy.name}</div>
+        <div className="vacancy-list__flex-item">
+            <div className="vacancy-list__desc">
+                <div className="vacancy-list__title roboto">{vacancy.name}</div>
             </div>
             <div
-                className="jobs-container__more-btn roboto"
+                className="vacancy-list__more-btn roboto"
                 onClick={() => {
                     router.push(vacancy.id.toString());
                 }}
             >
-                more details
+                Подробнее
             </div>
         </div>
     )

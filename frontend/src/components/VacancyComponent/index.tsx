@@ -3,6 +3,7 @@
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import preview from "/public/preview_company.svg";
 import { notFound } from "next/navigation";
+import "./styles.scss";
 
 interface IVacancyComponentV2Props {
     vacancy: IVacancy;
@@ -23,33 +24,33 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
     } = vacancy;
 
     return (
-        <div className="jobs-container__item">
-            <div className="jobs-container__flex-item">
-                <div className="jobs-container__logo-container">
+        <div className="vacancy-component">
+            <div className="vacancy-component__flex-item">
+                <div className="vacancy-component__logo-container">
                     <img
                         src={logoURL || preview}
                         alt="логотип компании"
-                        className="jobs-container__logo"
+                        className="vacancy-component__logo"
                     />
                 </div>
-                <div className="jobs-container__about about rubik-regular">
-                    <p className="about__type">
+                <div className="vacancy-component__about rubik-regular">
+                    <p className="vacancy-component__type">
                         Тип занятости:
-                        <span className="about__desc"> {employmentTypeName}</span>
+                        <span className="vacancy-component__desc"> {employmentTypeName}</span>
                     </p>
-                    <p className="about__type">
+                    <p className="vacancy-component__type">
                         Компания:
-                        <span className="about__desc"> {employerName}</span>
+                        <span className="vacancy-component__desc"> {employerName}</span>
                     </p>
-                    <p className="about__type">
+                    <p className="vacancy-component__type">
                         Ссылка на вакансию:
-                        <span className="about__desc">
+                        <span className="vacancy-component__desc">
                             <a href={URL}> {URL}</a>
                         </span>
                     </p>
-                    <p className="about__type">
+                    <p className="vacancy-component__type">
                         Адрес:
-                        <span className="about__desc"> {areaName}</span>
+                        <span className="vacancy-component__desc"> {areaName}</span>
                     </p>
                 </div>
             </div>

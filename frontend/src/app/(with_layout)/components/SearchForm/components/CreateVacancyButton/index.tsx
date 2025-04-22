@@ -10,7 +10,7 @@ const CreateVacancyButton = () => {
         router.push("/create")
     }
     return (
-        <button type="button" onClick={handleCreateVacancy}>Создать вакансию</button>
+        <button type="button" onClick={handleCreateVacancy} className="button button--small">Создать вакансию</button>
     )
 }
 

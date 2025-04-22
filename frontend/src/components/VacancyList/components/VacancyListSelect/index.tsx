@@ -2,6 +2,7 @@ import { useState } from "react";
 import btnDown from "/public/down-btn.svg";
 import Image from "next/image";
 import { EVacancyType } from "@/schemas/enums/vacancy";
+import "./styles.scss";
 
 interface IVacancyListSelect {
   employmentType: EVacancyType | null;
@@ -25,7 +26,7 @@ const VacancyListSelect = (props: IVacancyListSelect) => {
       className="sortby__form form-item"
       onClick={() => setPositionForm((prev) => !prev)}
     >
-      <label htmlFor="text" className="form-item__title rubik-regular">
+      <label htmlFor="text" className="form-item__title">
         Form
       </label>
       <input
@@ -33,7 +34,7 @@ const VacancyListSelect = (props: IVacancyListSelect) => {
         value={employmentType ? EmploymentTypeNameByTypeId[employmentType] : ""}
         type="text"
         placeholder="Not selected"
-        className="form-item__field rubik-regular"
+        className="form-item__field"
         onChange={() => { }}
       />
       <div
