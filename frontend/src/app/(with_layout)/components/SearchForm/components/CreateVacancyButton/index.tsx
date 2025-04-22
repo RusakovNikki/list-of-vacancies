@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 
 const CreateVacancyButton = () => {
-    const router = useRouter();
+  const router = useRouter();
 
-    async function handleCreateVacancy() {
+  async function handleCreateVacancy() {
+    router.push("/create");
+  }
+  return (
+    <button type="button" onClick={handleCreateVacancy} className="button button--small">
+      Создать вакансию
+    </button>
+  );
+};
 
-        router.push("/create")
-    }
-    return (
-        <button type="button" onClick={handleCreateVacancy} className="button button--small">Создать вакансию</button>
-    )
-}
-
-export default CreateVacancyButton
+export default CreateVacancyButton;

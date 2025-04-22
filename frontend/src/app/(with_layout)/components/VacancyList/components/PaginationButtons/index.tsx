@@ -3,49 +3,50 @@
 import { useRouter } from "next/navigation";
 import { IVacancyListProps } from "../..";
 
-type IPaginationButtonsProps = IVacancyListProps
+type IPaginationButtonsProps = IVacancyListProps;
 
 const PaginationButtons = (props: IPaginationButtonsProps) => {
-    const router = useRouter();
-    const { searchParams, vacancies } = props;
-    const { employmentTypeName, name, page } = searchParams;
+  const router = useRouter();
+  const { searchParams, vacancies } = props;
+  const { employmentTypeName, name, page } = searchParams;
 
-    async function handleClickNextPage() {
-        const params = new URLSearchParams();
+  async function handleClickNextPage() {
+    const params = new URLSearchParams();
 
-        if (employmentTypeName) params.append('employmentTypeName', encodeURIComponent(employmentTypeName?.toString()));
-        if (name) params.append('name', encodeURIComponent(name?.toString()));
-        params.append('page', `${page ? parseInt(page) + 1 : 2}`);
-        console.log(params.toString());
+    if (employmentTypeName)
+      params.append("employmentTypeName", encodeURIComponent(employmentTypeName?.toString()));
+    if (name) params.append("name", encodeURIComponent(name?.toString()));
+    params.append("page", `${page ? parseInt(page) + 1 : 2}`);
+    console.log(params.toString());
 
-        router.push(`/?${params}`);
-    }
+    router.push(`/?${params}`);
+  }
 
-    async function handleClickPrevPage() {
-        const params = new URLSearchParams();
+  async function handleClickPrevPage() {
+    const params = new URLSearchParams();
 
-        if (employmentTypeName) params.append('employmentTypeName', encodeURIComponent(employmentTypeName?.toString()));
-        if (name) params.append('name', encodeURIComponent(name?.toString()));
-        params.append('page', `${page ? parseInt(page) - 1 : 1}`);
+    if (employmentTypeName)
+      params.append("employmentTypeName", encodeURIComponent(employmentTypeName?.toString()));
+    if (name) params.append("name", encodeURIComponent(name?.toString()));
+    params.append("page", `${page ? parseInt(page) - 1 : 1}`);
 
-        router.push(`/?${params}`);
-    }
+    router.push(`/?${params}`);
+  }
 
-    return (
-        <div style={{ display: "flex", width: "100%", justifyContent: "space-between", }}>
-            {page && parseInt(page) > 1 &&
-                <button className="button" onClick={handleClickPrevPage}>
-                    Предыдущая страница
-                </button>
-            }
-            {vacancies.count === vacancies.size &&
-                <button className="button" onClick={handleClickNextPage}>
-                    Следующая страница
-                </button>
-            }
+  return (
+    <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+      {page && parseInt(page) > 1 && (
+        <button className="button" onClick={handleClickPrevPage}>
+          Предыдущая страница
+        </button>
+      )}
+      {vacancies.count === vacancies.size && (
+        <button className="button" onClick={handleClickNextPage}>
+          Следующая страница
+        </button>
+      )}
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default PaginationButtons
+export default PaginationButtons;

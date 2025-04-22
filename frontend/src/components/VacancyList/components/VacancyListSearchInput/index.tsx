@@ -16,12 +16,10 @@ const VacancyListSearchInput = (props: IVacancyListSearchInput) => {
         placeholder="Unspecified"
         className="form-item__field"
         value={vacancyName || ""}
-        onChange={(e) =>
-          onChange(e.target.value)
-        }
+        onChange={(e) => onChange(e.target.value)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default VacancyListSearchInput
+export default VacancyListSearchInput;

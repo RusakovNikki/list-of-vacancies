@@ -28,31 +28,32 @@ const VacancyList = () => {
   //   ...(sortBy.employmentType && { employmentTypeId: sortBy.employmentType })
   // });
 
-
-
   return (
     <>
       <div className="header__sortby sortby">
         <VacancyListSelect
           employmentType={sortBy.employmentType}
-          onChange={(value) => setSortBy({
-            ...sortBy,
-            employmentType: value,
-          })}
+          onChange={(value) =>
+            setSortBy({
+              ...sortBy,
+              employmentType: value,
+            })
+          }
         />
-        <VacancyListSearchInput vacancyName={sortBy.name} onChange={(value) =>
-          setSortBy((prev) => {
-            return {
-              ...prev,
-              name: value
-            }
-          })}
+        <VacancyListSearchInput
+          vacancyName={sortBy.name}
+          onChange={(value) =>
+            setSortBy((prev) => {
+              return {
+                ...prev,
+                name: value,
+              };
+            })
+          }
         />
         <div
           className="header__clear"
-          onClick={() =>
-            setSortBy({ employmentType: null, name: null })
-          }
+          onClick={() => setSortBy({ employmentType: null, name: null })}
         >
           <label htmlFor="close" className="header__title-clear formular">
             Clear sorting

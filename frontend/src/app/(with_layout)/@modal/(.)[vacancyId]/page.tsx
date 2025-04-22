@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";

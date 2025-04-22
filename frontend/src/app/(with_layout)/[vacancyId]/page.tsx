@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { notFound } from "next/navigation";
 import { getVacancy } from "@/actions/getVacancy";
@@ -18,9 +18,11 @@ const VacancyPage = async (props: VacancyPage) => {
     return notFound();
   }
 
-  return <VacancyComponent vacancy={vacancy}>
-    <VacancyDescription name={vacancy.name} description={vacancy.description} />
-  </VacancyComponent>;
+  return (
+    <VacancyComponent vacancy={vacancy}>
+      <VacancyDescription name={vacancy.name} description={vacancy.description} />
+    </VacancyComponent>
+  );
 };
 
 export default VacancyPage;

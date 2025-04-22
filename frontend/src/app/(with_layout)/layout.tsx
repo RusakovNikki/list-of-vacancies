@@ -51,10 +51,7 @@ export default function VacancyLayout({
                     Moscow, Zelenograd, Central Ave., bldg. 305, 3rd floor
                   </div>
                   <div className="footer__route">
-                    <a
-                      href="https://goo.gl/maps/N2EVxAnkKmJN4Uj87"
-                      target="_blank"
-                    >
+                    <a href="https://goo.gl/maps/N2EVxAnkKmJN4Uj87" target="_blank">
                       How to get
                     </a>
                     there?

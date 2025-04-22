@@ -1,9 +1,5 @@
 const VacancyLoader = () => {
-    return (
-        <div>
-            Loading....
-        </div>
-    )
-}
+  return <div>Loading....</div>;
+};
 
-export default VacancyLoader
+export default VacancyLoader;

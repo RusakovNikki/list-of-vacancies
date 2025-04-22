@@ -1,11 +1,7 @@
-"use client"
+"use client";
 
 const ErrorBoundary = () => {
-    return (
-        <div>
-            Ошибка
-        </div>
-    )
-}
+  return <div>Ошибка</div>;
+};
 
-export default ErrorBoundary
+export default ErrorBoundary;

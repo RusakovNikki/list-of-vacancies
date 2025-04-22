@@ -1,7 +1,6 @@
 "use server";
 
 const FooterRequestForm = () => {
-
   async function handleSubmit(formData: FormData) {
     "use server";
 
@@ -16,7 +15,7 @@ const FooterRequestForm = () => {
       Ваш номер ${phone}
       Ваш коментарий ${comment}
     `);
-  };
+  }
 
   return (
     <form action={handleSubmit}>
@@ -47,7 +46,7 @@ const FooterRequestForm = () => {
         />
       </div>
       <div className="form-item footer__form">
-        <label htmlFor="phone" className="form-item__title  rubik-regular">
+        <label htmlFor="phone" className="form-item__title rubik-regular">
           Phone number
         </label>
         <input
@@ -69,7 +68,9 @@ const FooterRequestForm = () => {
           className="form-item__field rubik-regular"
         />
       </div>
-      <button type="submit" className="button footer__buttom">Отправить</button>
+      <button type="submit" className="button footer__buttom">
+        Отправить
+      </button>
     </form>
   );
 };

@@ -13,24 +13,23 @@ export interface IVacancyListProps {
   searchParams: TSearchParams;
 }
 
-
 const VacancyList = (props: IVacancyListProps) => {
   const { vacancies, searchParams } = props;
 
   return (
     <section>
-      {vacancies.result.length ? (
-        vacancies.result.map((vacancy) => {
-          return <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-            <div className="vacancy-list__content">
-              <MoreDetailsButton vacancy={vacancy} />
-              <DeleteVacancyButton vacancyId={vacancy.id} />
-            </div>
-          </VacancyComponent>;
-        })
-      ) : (
-        notFound()
-      )}
+      {vacancies.result.length
+        ? vacancies.result.map((vacancy) => {
+            return (
+              <VacancyComponent key={vacancy.id} vacancy={vacancy}>
+                <div className="vacancy-list__content">
+                  <MoreDetailsButton vacancy={vacancy} />
+                  <DeleteVacancyButton vacancyId={vacancy.id} />
+                </div>
+              </VacancyComponent>
+            );
+          })
+        : notFound()}
       <PaginationButtons searchParams={searchParams} vacancies={vacancies} />
     </section>
   );

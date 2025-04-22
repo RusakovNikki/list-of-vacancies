@@ -13,8 +13,8 @@ const EmploymentTypeNameByTypeId: Record<EVacancyType, string> = {
   [EVacancyType.FLEXIBLE]: "Гибкий график",
   [EVacancyType.FULL_DAY]: "Полный день",
   [EVacancyType.REMOTE]: "Удаленная работа",
-  [EVacancyType.SHIFT]: "Сменный график"
-}
+  [EVacancyType.SHIFT]: "Сменный график",
+};
 
 const VacancyListSelect = (props: IVacancyListSelect) => {
   const { employmentType, onChange } = props;
@@ -22,10 +22,7 @@ const VacancyListSelect = (props: IVacancyListSelect) => {
   const [positionForm, setPositionForm] = useState(false);
 
   return (
-    <div
-      className="sortby__form form-item"
-      onClick={() => setPositionForm((prev) => !prev)}
-    >
+    <div className="sortby__form form-item" onClick={() => setPositionForm((prev) => !prev)}>
       <label htmlFor="text" className="form-item__title">
         Form
       </label>
@@ -35,23 +32,20 @@ const VacancyListSelect = (props: IVacancyListSelect) => {
         type="text"
         placeholder="Not selected"
         className="form-item__field"
-        onChange={() => { }}
+        onChange={() => {}}
       />
-      <div
-        className={`header__show-btn ${positionForm ? "header__show-btn--rotate" : ""
-          }`}
-      >
+      <div className={`header__show-btn ${positionForm ? "header__show-btn--rotate" : ""}`}>
         <Image src={btnDown} alt="" />
       </div>
       {positionForm && (
         <ul
           className="header__ul"
-          onClick={(event: any) =>
-            onChange(event.target.getAttribute("value"))
-          }
+          onClick={(event: any) => onChange(event.target.getAttribute("value"))}
         >
-          {Object.values(EVacancyType).map(vacancyType => (
-            <li key={vacancyType} value={vacancyType}>{EmploymentTypeNameByTypeId[vacancyType]}</li>
+          {Object.values(EVacancyType).map((vacancyType) => (
+            <li key={vacancyType} value={vacancyType}>
+              {EmploymentTypeNameByTypeId[vacancyType]}
+            </li>
           ))}
         </ul>
       )}
