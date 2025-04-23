@@ -1,7 +1,9 @@
 "use server";
 
 import { notFound } from "next/navigation";
-import VacancyData from "./components/VacancyData";
+import { getVacancy } from "@/actions/server/getVacancy";
+import VacancyComponent from "@/components/VacancyComponent";
+import VacancyDescription from "@/components/VacancyDescription";
 
 interface VacancyPage {
   params: Promise<{ vacancyId: string }>;
@@ -14,7 +16,15 @@ const VacancyPage = async (props: VacancyPage) => {
     return notFound();
   }
 
-  return <VacancyData vacancyId={vacancyId} />;
+  const vacancy = await getVacancy(vacancyId);
+
+  if ("error" in vacancy) throw new Error();
+
+  return (
+    <VacancyComponent vacancy={vacancy}>
+      <VacancyDescription name={vacancy.name} description={vacancy.description} />
+    </VacancyComponent>
+  );
 };
 
 export default VacancyPage;
