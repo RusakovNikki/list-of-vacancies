@@ -2,7 +2,7 @@
 
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";
-import { getVacancy } from "@/actions/getVacancy";
+import { getVacancy } from "@/actions/server/getVacancy";
 import VacancyComponent from "@/components/VacancyComponent";
 import VacancyDescription from "@/components/VacancyDescription";
 

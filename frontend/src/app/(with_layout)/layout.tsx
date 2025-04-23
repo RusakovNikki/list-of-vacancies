@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
-import ThemeProviderComponent from "./themeProvider";
+import CommonComponent from "./commonProvider";
 
 export const metadata: Metadata = {
   title: "List of vacancies",
@@ -21,10 +21,10 @@ export default function VacancyLayout({
         <header className="header">
           <h1 className="title header__title rubik-light">List of vacancies</h1>
         </header>
-        <ThemeProviderComponent>
+        <CommonComponent>
           {modal}
           {children}
-        </ThemeProviderComponent>
+        </CommonComponent>
         <footer className="footer">
           <div className="container">
             <div className="footer__title rubik-light">Leave a request</div>

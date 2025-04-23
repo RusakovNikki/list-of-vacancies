@@ -1,5 +1,5 @@
 "use client";
-import { deleteVacancy } from "@/actions/deleteVacancy";
+import { deleteVacancy } from "@/actions/server/deleteVacancy";
 import { css } from "@emotion/react";
 import { useRouter } from "next/navigation";
 

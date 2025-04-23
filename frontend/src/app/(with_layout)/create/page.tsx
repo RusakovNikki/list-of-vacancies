@@ -1,6 +1,6 @@
 "use server";
 
-import { createVacancy } from "@/actions/createVacancy";
+import { createVacancy } from "@/actions/server/createVacancy";
 import CreateVacancyForm from "@/components/CreateVacancyForm";
 import { redirect } from "next/navigation";
 

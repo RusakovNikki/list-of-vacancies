@@ -1,8 +1,5 @@
-"use server";
-
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import PreviewImage from "/public/preview_company.svg";
-import { notFound } from "next/navigation";
 
 interface IVacancyComponentV2Props {
   vacancy: IVacancy;
@@ -11,8 +8,6 @@ interface IVacancyComponentV2Props {
 
 const VacancyComponent = (props: IVacancyComponentV2Props) => {
   const { vacancy, children } = props;
-
-  if (!vacancy) return notFound();
 
   const { URL, areaName, employerName, employmentTypeName, logoURL } = vacancy;
 

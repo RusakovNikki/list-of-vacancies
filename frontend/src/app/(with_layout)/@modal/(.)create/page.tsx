@@ -1,6 +1,6 @@
 "use client";
 
-import { createVacancy } from "@/actions/createVacancy";
+import { createVacancy } from "@/actions/server/createVacancy";
 import CreateVacancyForm from "@/components/CreateVacancyForm";
 import Modal from "@/components/Modal";
 import { usePathname, useRouter } from "next/navigation";
