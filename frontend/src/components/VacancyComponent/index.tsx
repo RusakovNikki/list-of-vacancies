@@ -1,7 +1,7 @@
 "use server";
 
 import { IVacancy } from "@/schemas/interfaces/vacancy";
-import preview from "/public/preview_company.svg";
+import PreviewImage from "/public/preview_company.svg";
 import { notFound } from "next/navigation";
 
 interface IVacancyComponentV2Props {
@@ -20,11 +20,11 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
     <div className="vacancy-component">
       <div className="vacancy-component__flex-item">
         <div className="vacancy-component__logo-container">
-          <img
-            src={logoURL || preview}
-            alt="логотип компании"
-            className="vacancy-component__logo"
-          />
+          {logoURL ? (
+            <img src={logoURL} alt="логотип компании" className="vacancy-component__logo" />
+          ) : (
+            <PreviewImage className="vacancy-component__logo" />
+          )}
         </div>
         <div className="vacancy-component__about rubik-regular">
           <p className="vacancy-component__type">
