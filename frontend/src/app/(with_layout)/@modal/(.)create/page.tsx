@@ -9,8 +9,6 @@ const CreateVacationPage = () => {
   const router = useRouter();
   const path = usePathname();
 
-  console.log(path);
-
   async function handleCreateVacation(formData: FormData) {
     const employmentTypeName = formData.get("employerType")?.toString();
     const name = formData.get("name")!.toString();

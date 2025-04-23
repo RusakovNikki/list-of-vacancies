@@ -18,7 +18,6 @@ const PaginationButtons = (props: IPaginationButtonsProps) => {
       params.append("employmentTypeName", encodeURIComponent(employmentTypeName?.toString()));
     if (name) params.append("name", encodeURIComponent(name?.toString()));
     params.append("page", `${page ? parseInt(page) + 1 : 2}`);
-    console.log(params.toString());
 
     router.push(`/?${params}`);
   }

@@ -2,7 +2,7 @@
 
 import { IVacancy } from "@/schemas/interfaces/vacancy";
 import { css } from "@emotion/react";
-import { Layout, useTheme } from "@greensight/gds/emotion";
+import { Layout } from "@greensight/gds/emotion";
 import { useRouter } from "next/navigation";
 
 interface IMoreDetailsButtonProps {
@@ -12,8 +12,6 @@ interface IMoreDetailsButtonProps {
 const MoreDetailsButton = (props: IMoreDetailsButtonProps) => {
   const { vacancy } = props;
   const router = useRouter();
-  const theme = useTheme();
-  console.log(theme.global?.fonts?.fontFace?.[0].Roboto);
 
   return (
     <Layout
