@@ -5,7 +5,7 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 const useGetVacancy = (vacancyId: number): UseQueryResult<IVacancy, Error> => {
   return useQuery<IVacancy>({
-    queryKey: ["vacancy"],
+    queryKey: ["vacancy", vacancyId],
     queryFn: async () => {
       return await fetch(`http://localhost:3001/api/vacancies/${vacancyId}`).then((res) =>
         res.json(),
