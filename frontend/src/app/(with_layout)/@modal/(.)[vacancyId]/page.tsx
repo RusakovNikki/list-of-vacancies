@@ -2,9 +2,7 @@
 
 import Modal from "@/components/Modal";
 import { notFound } from "next/navigation";
-import { getVacancy } from "@/actions/server/getVacancy";
-import VacancyComponent from "@/components/VacancyComponent";
-import VacancyDescription from "@/components/VacancyDescription";
+import VacancyData from "./components/VacancyData";
 
 interface VacancyPage {
   params: Promise<{ vacancyId: string }>;
@@ -17,15 +15,9 @@ const ModalVacancyPage = async (props: VacancyPage) => {
     return notFound();
   }
 
-  const vacancy = await getVacancy(vacancyId);
-
-  if ("error" in vacancy) throw new Error();
-
   return (
     <Modal isOpen={Boolean(vacancyId)}>
-      <VacancyComponent vacancy={vacancy}>
-        <VacancyDescription name={vacancy.name} description={vacancy.description} />
-      </VacancyComponent>
+      <VacancyData vacancyId={vacancyId} />
     </Modal>
   );
 };
