@@ -1,29 +1,38 @@
-"use server";
+"use client";
 
-import { redirect } from "next/navigation";
+import useSearchStore from "@/store";
 import { TSearchParams } from "../../page";
 import CreateVacancyButton from "./components/CreateVacancyButton";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface ISearchFormProps {
   searchParams?: TSearchParams;
 }
 
-const SearchForm = async (props: ISearchFormProps) => {
-  const { employmentTypeName, name, page } = props.searchParams || {};
+const SearchForm = (props: ISearchFormProps) => {
+  const {
+    employmentTypeName: employmentTypeNameParam,
+    name: nameParam,
+    page,
+  } = props.searchParams || {};
 
-  async function getVacanciesByFilterForm(formData: FormData) {
-    "use server";
+  const { employmentTypeName, name, setField } = useSearchStore((state) => state);
+  const router = useRouter();
 
+  useEffect(() => {
+    setField(employmentTypeNameParam || "", "employmentTypeName");
+    setField(nameParam || "", "name");
+  }, [employmentTypeNameParam, nameParam, setField]);
+
+  function getVacanciesByFilterForm(formData: FormData) {
     const employerType = formData.get("employerType");
     const name = formData.get("name");
-
     const params = new URLSearchParams();
-
     if (employerType) params.append("employmentTypeName", employerType.toString());
     if (name) params.append("name", name.toString());
     if (page) params.append("page", `${page}`);
-
-    redirect(`/?${params}`);
+    router.push(`/?${params}`);
   }
 
   return (
@@ -38,7 +47,8 @@ const SearchForm = async (props: ISearchFormProps) => {
           placeholder="Не указано"
           className="form-item__field"
           name="employerType"
-          defaultValue={employmentTypeName}
+          value={employmentTypeName}
+          onChange={(e) => setField(e.target.value, "employmentTypeName")}
         />
       </div>
       <div className="form-item">
@@ -51,10 +61,20 @@ const SearchForm = async (props: ISearchFormProps) => {
           placeholder="Не указано"
           className="form-item__field"
           name="name"
-          defaultValue={name}
+          value={name}
+          onChange={(e) => setField(e.target.value, "name")}
         />
       </div>
       <div className="vacancy-list__buttons">
+        <button
+          className="button button--small"
+          onClick={() => {
+            setField("", "employmentTypeName");
+            setField("", "name");
+          }}
+        >
+          Сбросить
+        </button>
         <button type="submit" className="button button--small">
           Поиск вакансий
         </button>
