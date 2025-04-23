@@ -18,7 +18,7 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
           {logoURL ? (
             <img src={logoURL} alt="логотип компании" className="vacancy-component__logo" />
           ) : (
-            <PreviewImage className="vacancy-component__logo" />
+            <PreviewImage className="vacancy-component__logo--svg" />
           )}
         </div>
         <div className="vacancy-component__about rubik-regular">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.scss";
 import FooterRequestForm from "@/components/FooterRequestForm";
 import CommonComponent from "./commonProvider";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "List of vacancies",
@@ -19,7 +20,9 @@ export default function VacancyLayout({
     <html lang="en">
       <body className="container">
         <header className="header">
-          <h1 className="title header__title rubik-light">List of vacancies</h1>
+          <Link href="/">
+            <h1 className="title header__title rubik-light">List of vacancies</h1>
+          </Link>
         </header>
         <CommonComponent>
           {modal}
