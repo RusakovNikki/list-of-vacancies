@@ -1,9 +1,12 @@
 import VacancyComponent from '@/components/VacancyComponent';
+import { useButton } from '@/hooks/useButton';
 import { TSearchParams } from '@/pages';
 import { IVacancyWrapper } from '@/schemas/interfaces/vacancy';
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
 import { notFound } from 'next/navigation';
+
+import styles from './VacancyList.module.scss';
 
 export interface IVacancyListProps {
     vacancies: IVacancyWrapper;
@@ -13,13 +16,16 @@ export interface IVacancyListProps {
 const VacancyList = (props: IVacancyListProps) => {
     const { vacancies, searchParams } = props;
 
+    const buttonStyles = useButton(true);
+    const buttonBigStyles = useButton();
+
     return (
         <section>
             {vacancies.result.length
                 ? vacancies.result.map(vacancy => {
                       return (
                           <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-                              <div className="vacancy-list__content">
+                              <div className={styles['vacancy-list__content']}>
                                   <Layout
                                       type="flex"
                                       direction="column"
@@ -33,57 +39,21 @@ const VacancyList = (props: IVacancyListProps) => {
                                           margin: '0',
                                       }}
                                   >
-                                      <div
-                                          css={css`
-                                              background: rgb(255, 255, 255);
-                                          `}
-                                      >
-                                          <div
-                                              css={css`
-                                                  font-size: 32px;
-                                                  line-height: 160%; /* or 51px */
-                                                  color: #000000;
-                                                  font-family: 'Roboto';
-                                                  @media (max-width: 450px) {
-                                                      font-size: 22px;
-                                                      margin-bottom: 16px;
-                                                  }
-                                              `}
-                                          >
-                                              {vacancy.name}
-                                          </div>
+                                      <div className={styles['vacancy-list__desc']}>
+                                          <div className={styles['vacancy-list__title']}>{vacancy.name}</div>
                                       </div>
-                                      <div
-                                          css={css`
-                                              font-size: 16px;
-                                              line-height: 140%;
-                                              margin-top: 8px;
-                                              text-align: center;
-                                              color: #a3a6a9;
-                                              cursor: pointer;
-                                              font-family: 'Roboto';
-                                              @media (max-width: 770px) {
-                                                  align-self: start;
-                                              }
-                                              @media (max-width: 450px) {
-                                                  align-self: center;
-                                              }
-                                          `}
-                                      >
-                                          Подробнее
-                                      </div>
+                                      <div className={styles['vacancy-list__more-btn']}>Подробнее</div>
                                   </Layout>
                                   <button
-                                      className="button button--small"
-                                      css={css`
-                                          align-self: flex-start;
-                                          min-width: 200px;
-                                          width: 200px;
-                                      `}
+                                      css={{
+                                          ...buttonStyles,
+                                          alignSelf: 'flex-start',
+                                          minWidth: '200px',
+                                          width: '200px',
+                                      }}
                                   >
                                       Удалить
                                   </button>
-                                  u
                               </div>
                           </VacancyComponent>
                       );
@@ -97,9 +67,9 @@ const VacancyList = (props: IVacancyListProps) => {
                 `}
             >
                 {/* {page && parseInt(page) > 1 && ( */}
-                <button className="button">Предыдущая страница</button>
+                <button style={buttonBigStyles}>Предыдущая страница</button>
                 {/* )} */}
-                {vacancies.count === vacancies.size && <button className="button">Следующая страница</button>}
+                {vacancies.count === vacancies.size && <button style={buttonBigStyles}>Следующая страница</button>}
             </div>
         </section>
     );
