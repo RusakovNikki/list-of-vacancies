@@ -1,22 +1,12 @@
 import AppProvider from '@/components/AppProvider';
 import FooterRequestForm from '@/components/FooterRequestForm';
-import type { Metadata } from 'next';
+import { AppProps } from 'next/app';
 import Link from 'next/link';
+import { FC } from 'react';
 
 import '../globals.scss';
 
-export const metadata: Metadata = {
-    title: 'List of vacancies',
-    description: 'Showing vacancies',
-};
-
-export default function VacancyLayout({
-    children,
-    modal,
-}: Readonly<{
-    children: React.ReactNode;
-    modal: React.ReactNode;
-}>) {
+const AppContent: FC<AppProps> = ({ Component, pageProps }) => {
     return (
         <html lang="en">
             <body className="container">
@@ -25,10 +15,7 @@ export default function VacancyLayout({
                         <h1 className="title header__title rubik-light">List of vacancies</h1>
                     </Link>
                 </header>
-                <AppProvider>
-                    {modal}
-                    {children}
-                </AppProvider>
+                <Component />
                 <footer className="footer">
                     <div className="container">
                         <div className="footer__title rubik-light">Leave a request</div>
@@ -70,4 +57,14 @@ export default function VacancyLayout({
             </body>
         </html>
     );
+};
+
+function MyApp(props: AppProps) {
+    return (
+        <AppProvider {...props}>
+            <AppContent {...props} />
+        </AppProvider>
+    );
 }
+
+export default MyApp;

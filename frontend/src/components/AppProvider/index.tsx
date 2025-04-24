@@ -1,14 +1,13 @@
 'use client';
 
+import theme from '@/app/(with_layout)/theme';
 import { ThemeProvider } from '@greensight/gds/emotion';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import theme from './theme';
-
 const queryClient = new QueryClient();
 
-const CommonComponent = ({
+const AppProvider = ({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -21,4 +20,4 @@ const CommonComponent = ({
     );
 };
 
-export default CommonComponent;
+export default AppProvider;
