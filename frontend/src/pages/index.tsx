@@ -1,5 +1,6 @@
-import { getVacancies } from '@/actions/server/getVacancies';
 import { GetServerSideProps } from 'next';
+
+import { getVacancies } from '@api/index';
 
 export { default } from '@views/index';
 

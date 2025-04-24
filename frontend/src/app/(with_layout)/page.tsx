@@ -1,6 +1,6 @@
 'use server';
 
-import { getVacancies } from '@/actions/server/getVacancies';
+import { getVacancies } from '@api/index';
 
 import SearchForm from './components/SearchForm';
 import VacancyList from './components/VacancyList';
