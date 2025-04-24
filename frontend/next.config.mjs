@@ -1,35 +1,35 @@
-import bundleAnalyzer from "@next/bundle-analyzer";
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
+    enabled: process.env.ANALYZE === 'true',
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    emotion: true,
-  },
-  webpack: (config) => {
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
+    compiler: {
+        emotion: true,
+    },
+    webpack: config => {
+        const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'));
 
-    config.module.rules.push(
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/,
-      },
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: ["@svgr/webpack"],
-      },
-    );
+        config.module.rules.push(
+            {
+                ...fileLoaderRule,
+                test: /\.svg$/i,
+                resourceQuery: /url/,
+            },
+            {
+                test: /\.svg$/i,
+                issuer: fileLoaderRule.issuer,
+                resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+                use: ['@svgr/webpack'],
+            }
+        );
 
-    fileLoaderRule.exclude = /\.svg$/i;
+        fileLoaderRule.exclude = /\.svg$/i;
 
-    return config;
-  },
+        return config;
+    },
 };
 
 export default withBundleAnalyzer(nextConfig);

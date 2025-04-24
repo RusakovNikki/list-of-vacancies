@@ -1,8 +1,9 @@
-import { createTheme } from "@greensight/gds/emotion";
-import tokens from "../../../public/tokens.json";
+import { createTheme } from '@greensight/gds/emotion';
+
+import tokens from '../../../public/tokens.json';
 
 const theme = createTheme({
-  tokens,
+    tokens,
 });
 
 export default theme;
