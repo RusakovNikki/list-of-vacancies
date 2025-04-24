@@ -1,3 +1,1 @@
-import NotFoundPage from '@views/404';
-
-export default NotFoundPage;
+export { default } from '@views/404';
