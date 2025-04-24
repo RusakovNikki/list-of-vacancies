@@ -9,7 +9,9 @@ interface HomePage {
     searchParams: TSearchParams;
 }
 
-export default function Home({ searchParams, vacancies }: HomePage) {
+export default function Home(props: HomePage) {
+    const { searchParams, vacancies } = props;
+
     return (
         <div css={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <SearchForm searchParams={searchParams} />

@@ -1,9 +1,5 @@
-'use server';
-
 const FooterRequestForm = () => {
-    async function handleSubmit(formData: FormData) {
-        'use server';
-
+    function handleSubmit(formData: FormData) {
         const name = formData.get('name');
         const email = formData.get('email');
         const phone = formData.get('phone');
