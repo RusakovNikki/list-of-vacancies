@@ -1,8 +1,9 @@
-import AppProvider from '@/components/AppProvider';
 import FooterRequestForm from '@/components/FooterRequestForm';
 import { AppProps } from 'next/app';
 import Link from 'next/link';
 import { FC } from 'react';
+
+import AppProvider from '@components/AppProvider';
 
 import '../globals.scss';
 
