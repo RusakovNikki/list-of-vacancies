@@ -11,7 +11,7 @@ interface HomePage {
 
 export default function Home({ searchParams, vacancies }: HomePage) {
     return (
-        <div className="vacancy-list">
+        <div css={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <SearchForm searchParams={searchParams} />
             <VacancyList vacancies={vacancies} searchParams={searchParams} />
         </div>
