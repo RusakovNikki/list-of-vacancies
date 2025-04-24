@@ -1,10 +1,9 @@
 import VacancyComponent from '@/components/VacancyComponent';
+import { TSearchParams } from '@/pages';
 import { IVacancyWrapper } from '@/schemas/interfaces/vacancy';
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
 import { notFound } from 'next/navigation';
-
-import { TSearchParams } from '@views/index';
 
 export interface IVacancyListProps {
     vacancies: IVacancyWrapper;

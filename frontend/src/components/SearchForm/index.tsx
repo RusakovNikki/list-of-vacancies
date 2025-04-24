@@ -1,8 +1,7 @@
+import { TSearchParams } from '@/pages';
 import useSearchStore from '@/store';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
-import { TSearchParams } from '@views/index';
 
 interface ISearchFormProps {
     searchParams?: TSearchParams;
