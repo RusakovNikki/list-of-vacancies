@@ -1,9 +1,10 @@
-import { useButton } from '@/hooks/useButton';
 import { TSearchParams } from '@/pages';
 import useSearchStore from '@/store';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+
+import { useButton } from '@scripts/hooks/useButton';
 
 import styles from './SearchForm.module.scss';
 

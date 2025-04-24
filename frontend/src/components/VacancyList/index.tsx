@@ -1,10 +1,11 @@
 import VacancyComponent from '@/components/VacancyComponent';
-import { useButton } from '@/hooks/useButton';
 import { TSearchParams } from '@/pages';
 import { IVacancyWrapper } from '@/schemas/interfaces/vacancy';
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
 import { notFound } from 'next/navigation';
+
+import { useButton } from '@scripts/hooks/useButton';
 
 import styles from './VacancyList.module.scss';
 
