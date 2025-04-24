@@ -1,4 +1,13 @@
+import { css } from '@emotion/react';
+
+import { useFooterForm } from '@scripts/hooks/useFooterForm';
+import { useFooterFormField } from '@scripts/hooks/useFooterFormField';
+import { useFooterFormTitle } from '@scripts/hooks/useFooterFormTitle';
+
 const FooterRequestForm = () => {
+    const footerFormStyles = useFooterForm();
+    const footerFormTitleStyles = useFooterFormTitle();
+    const footerFormFieldStyles = useFooterFormField();
     function handleSubmit(formData: FormData) {
         const name = formData.get('name');
         const email = formData.get('email');
@@ -15,21 +24,21 @@ const FooterRequestForm = () => {
 
     return (
         <form action={handleSubmit}>
-            <div className="form-item footer__form">
-                <label htmlFor="name" className="form-item__title rubik-regular">
+            <div css={footerFormStyles}>
+                <label htmlFor="fullName" css={footerFormTitleStyles}>
                     Your name
                 </label>
                 <input
                     id="name"
-                    name="name"
+                    name="fullName"
                     type="text"
                     placeholder="Please introduce yourself"
-                    className="form-item__field rubik-regular"
                     required
+                    css={footerFormFieldStyles}
                 />
             </div>
-            <div className="form-item footer__form">
-                <label htmlFor="email" className="form-item__title rubik-regular">
+            <div css={footerFormStyles}>
+                <label htmlFor="email" css={footerFormTitleStyles}>
                     Email
                 </label>
                 <input
@@ -38,31 +47,21 @@ const FooterRequestForm = () => {
                     type="email"
                     placeholder="ivanov@mail.ru"
                     className="form-item__field"
+                    css={footerFormFieldStyles}
                     required
                 />
             </div>
-            <div className="form-item footer__form">
-                <label htmlFor="phone" className="form-item__title rubik-regular">
+            <div css={footerFormStyles}>
+                <label htmlFor="phone" css={footerFormTitleStyles}>
                     Phone number
                 </label>
-                <input
-                    className="form-item__field rubik-regular"
-                    placeholder="+7(999) 999 9999"
-                    id="phone"
-                    name="phone"
-                />
+                <input css={footerFormFieldStyles} placeholder="+7(999) 999 9999" id="phone" name="phone" />
             </div>
-            <div className="form-item footer__form">
-                <label htmlFor="comment" className="form-item__title rubik-regular">
+            <div css={footerFormStyles}>
+                <label htmlFor="comment" css={footerFormTitleStyles}>
                     Comment
                 </label>
-                <input
-                    id="comment"
-                    type="text"
-                    name="comment"
-                    placeholder="Message text"
-                    className="form-item__field rubik-regular"
-                />
+                <input id="comment" type="text" name="comment" placeholder="Message text" css={footerFormFieldStyles} />
             </div>
             <button type="submit" className="button footer__buttom">
                 Отправить
