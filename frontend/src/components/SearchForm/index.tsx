@@ -26,10 +26,10 @@ const SearchForm = (props: ISearchFormProps) => {
     }, [employmentTypeNameParam, nameParam, setField]);
 
     function getVacanciesByFilterForm(formData: FormData) {
-        const employerType = formData.get('employerType');
+        const employmentTypeName = formData.get('employmentTypeName');
         const name = formData.get('name');
         const params = new URLSearchParams();
-        if (employerType) params.append('employmentTypeName', employerType.toString());
+        if (employmentTypeName) params.append('employmentTypeName', employmentTypeName.toString());
         if (name) params.append('name', name.toString());
         if (page) params.append('page', `${page}`);
         router.push(`/?${params}`);
@@ -48,15 +48,15 @@ const SearchForm = (props: ISearchFormProps) => {
             `}
         >
             <div className={styles['form-item']}>
-                <label htmlFor="employerType" className={styles['form-item__title']}>
+                <label htmlFor="employmentTypeName" className={styles['form-item__title']}>
                     Поиск по типу занятости
                 </label>
                 <input
-                    id="employerType"
+                    id="employmentTypeName"
                     type="text"
                     placeholder="Не указано"
                     className={styles['form-item__field']}
-                    name="employerType"
+                    name="employmentTypeName"
                     value={employmentTypeName}
                     onChange={e => setField(e.target.value, 'employmentTypeName')}
                 />
