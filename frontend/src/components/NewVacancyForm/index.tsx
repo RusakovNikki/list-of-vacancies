@@ -3,11 +3,11 @@ import { useFooterForm } from '@scripts/hooks/useFooterForm';
 import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 
-interface ICreateVacancyFormProps {
+interface INewVacancyFormProps {
     handleCreateVacation: (e: React.FormEvent) => void;
 }
 
-const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
+const NewVacancyForm = (props: INewVacancyFormProps) => {
     const { handleCreateVacation } = props;
 
     const buttonStyles = useButton();
@@ -77,4 +77,4 @@ const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
     );
 };
 
-export default CreateVacancyForm;
+export default NewVacancyForm;

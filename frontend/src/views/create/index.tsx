@@ -2,9 +2,9 @@ import { useRouter } from 'next/navigation';
 
 import useCreateVacancy from '@api/create';
 
-import CreateVacancyForm from '@components/CreateVacancyForm';
+import NewVacancyForm from '@components/NewVacancyForm';
 
-const CreateVacationPage = () => {
+const NewVacationPage = () => {
     const { mutate } = useCreateVacancy();
     const router = useRouter();
 
@@ -30,7 +30,7 @@ const CreateVacationPage = () => {
         );
     };
 
-    return <CreateVacancyForm handleCreateVacation={handleCreateVacation} />;
+    return <NewVacancyForm handleCreateVacation={handleCreateVacation} />;
 };
 
-export default CreateVacationPage;
+export default NewVacationPage;
