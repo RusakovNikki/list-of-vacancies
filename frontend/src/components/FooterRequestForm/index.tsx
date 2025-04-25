@@ -1,3 +1,5 @@
+import FormItemControl from '@components/controls/FormItemControl';
+
 import { useFooterForm } from '@scripts/hooks/useFooterForm';
 import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
@@ -6,6 +8,7 @@ const FooterRequestForm = () => {
     const footerFormStyles = useFooterForm();
     const footerFormTitleStyles = useFormTitle();
     const footerFormFieldStyles = useFormField();
+
     function handleSubmit(formData: FormData) {
         const name = formData.get('name');
         const email = formData.get('email');
@@ -22,45 +25,15 @@ const FooterRequestForm = () => {
 
     return (
         <form action={handleSubmit}>
-            <div css={footerFormStyles}>
-                <label htmlFor="fullName" css={footerFormTitleStyles}>
-                    Your name
-                </label>
-                <input
-                    id="name"
-                    name="fullName"
-                    type="text"
-                    placeholder="Please introduce yourself"
-                    required
-                    css={footerFormFieldStyles}
-                />
-            </div>
-            <div css={footerFormStyles}>
-                <label htmlFor="email" css={footerFormTitleStyles}>
-                    Email
-                </label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="ivanov@mail.ru"
-                    className="form-item__field"
-                    css={footerFormFieldStyles}
-                    required
-                />
-            </div>
+            <FormItemControl labelText="Your name" type="fullName" />
+            <FormItemControl labelText="Email" type="email" />
             <div css={footerFormStyles}>
                 <label htmlFor="phone" css={footerFormTitleStyles}>
                     Phone number
                 </label>
                 <input css={footerFormFieldStyles} placeholder="+7(999) 999 9999" id="phone" name="phone" />
             </div>
-            <div css={footerFormStyles}>
-                <label htmlFor="comment" css={footerFormTitleStyles}>
-                    Comment
-                </label>
-                <input id="comment" type="text" name="comment" placeholder="Message text" css={footerFormFieldStyles} />
-            </div>
+            <FormItemControl labelText="Comment" type="comment" />
             <button type="submit" className="button footer__buttom">
                 Отправить
             </button>
