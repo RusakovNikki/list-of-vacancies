@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { TSearchParams } from 'src/pages';
 import useSearchStore from 'src/store';
@@ -13,10 +12,9 @@ interface ISearchFormProps {
 }
 
 const SearchForm = (props: ISearchFormProps) => {
-    const { employmentTypeName: employmentTypeNameParam, name: nameParam, page } = props.searchParams || {};
+    const { employmentTypeName: employmentTypeNameParam, name: nameParam } = props.searchParams || {};
 
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
-    const router = useRouter();
 
     const stylesButton = useButton(true);
 
@@ -25,19 +23,8 @@ const SearchForm = (props: ISearchFormProps) => {
         setField(nameParam || '', 'name');
     }, [employmentTypeNameParam, nameParam, setField]);
 
-    function getVacanciesByFilterForm(formData: FormData) {
-        const employmentTypeName = formData.get('employmentTypeName');
-        const name = formData.get('name');
-        const params = new URLSearchParams();
-        if (employmentTypeName) params.append('employmentTypeName', employmentTypeName.toString());
-        if (name) params.append('name', name.toString());
-        if (page) params.append('page', `${page}`);
-        router.push(`/?${params}`);
-    }
-
     return (
         <form
-            action={getVacanciesByFilterForm}
             css={css`
                 display: flex;
                 gap: 0.5rem;

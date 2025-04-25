@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
+import { useRouter } from 'next/navigation';
 import { TSearchParams } from 'src/pages';
 
 import VacancyComponent from '@components/VacancyComponent';
@@ -16,55 +17,65 @@ export interface IVacancyListProps {
 
 const VacancyList = (props: IVacancyListProps) => {
     const { vacancies, searchParams } = props;
+    const router = useRouter();
+
+    const { employmentTypeName, name, page } = searchParams;
 
     const buttonStyles = useButton(true);
     const buttonBigStyles = useButton();
 
+    const handleChangePage = (value: number) => {
+        const params = new URLSearchParams();
+        if (employmentTypeName) params.append('employmentTypeName', employmentTypeName.toString());
+        if (name) params.append('name', name.toString());
+        params.append('page', `${parseInt(page || '1') + value}`);
+        console.log(params.get('page'));
+
+        router.push(`/?${params}`);
+    };
+
     return (
         <section>
-            {
-                vacancies?.result.length ? (
-                    vacancies.result.map(vacancy => {
-                        return (
-                            <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-                                <div className={styles['vacancy-list__content']}>
-                                    <Layout
-                                        type="flex"
-                                        direction="column"
-                                        justify="space-between"
-                                        css={css`
-                                            width: 100%;
-                                            height: 100%;
-                                            margin: 0px;
-                                        `}
-                                        style={{
-                                            margin: '0',
-                                        }}
-                                    >
-                                        <div className={styles['vacancy-list__desc']}>
-                                            <div className={styles['vacancy-list__title']}>{vacancy.name}</div>
-                                        </div>
-                                        <div className={styles['vacancy-list__more-btn']}>Подробнее</div>
-                                    </Layout>
-                                    <button
-                                        css={{
-                                            ...buttonStyles,
-                                            alignSelf: 'flex-start',
-                                            minWidth: '200px',
-                                            width: '200px',
-                                        }}
-                                    >
-                                        Удалить
-                                    </button>
-                                </div>
-                            </VacancyComponent>
-                        );
-                    })
-                ) : (
-                    <></>
-                )
-                // notFound()
-            }
+            {vacancies?.result.length ? (
+                vacancies.result.map(vacancy => {
+                    return (
+                        <VacancyComponent key={vacancy.id} vacancy={vacancy}>
+                            <div className={styles['vacancy-list__content']}>
+                                <Layout
+                                    type="flex"
+                                    direction="column"
+                                    justify="space-between"
+                                    css={css`
+                                        width: 100%;
+                                        height: 100%;
+                                        margin: 0px;
+                                    `}
+                                    style={{
+                                        margin: '0',
+                                    }}
+                                >
+                                    <div className={styles['vacancy-list__desc']}>
+                                        <div className={styles['vacancy-list__title']}>{vacancy.name}</div>
+                                    </div>
+                                    <div className={styles['vacancy-list__more-btn']}>Подробнее</div>
+                                </Layout>
+                                <button
+                                    css={{
+                                        ...buttonStyles,
+                                        alignSelf: 'flex-start',
+                                        minWidth: '200px',
+                                        width: '200px',
+                                    }}
+                                >
+                                    Удалить
+                                </button>
+                            </div>
+                        </VacancyComponent>
+                    );
+                })
+            ) : (
+                <></>
+            )}
             <div
                 css={css`
                     display: flex;
@@ -72,10 +83,16 @@ const VacancyList = (props: IVacancyListProps) => {
                     justify-content: space-between;
                 `}
             >
-                {/* {page && parseInt(page) > 1 && ( */}
-                <button style={buttonBigStyles}>Предыдущая страница</button>
-                {/* )} */}
-                {vacancies?.count === vacancies?.size && <button style={buttonBigStyles}>Следующая страница</button>}
+                {page && parseInt(page) > 1 && (
+                    <button style={buttonBigStyles} onClick={() => handleChangePage(-1)}>
+                        Предыдущая страница
+                    </button>
+                )}
+                {vacancies?.count === vacancies?.size && (
+                    <button style={buttonBigStyles} onClick={() => handleChangePage(1)}>
+                        Следующая страница
+                    </button>
+                )}
             </div>
         </section>
     );
