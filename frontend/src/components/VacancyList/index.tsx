@@ -3,6 +3,8 @@ import { Layout } from '@greensight/gds/emotion';
 import { useRouter } from 'next/navigation';
 import { TSearchParams } from 'src/pages';
 
+import { useDeleteVacancy } from '@api/index';
+
 import VacancyComponent from '@components/VacancyComponent';
 
 import { useButton } from '@scripts/hooks/useButton';
@@ -18,6 +20,7 @@ export interface IVacancyListProps {
 const VacancyList = (props: IVacancyListProps) => {
     const { vacancies, searchParams } = props;
     const router = useRouter();
+    const { mutate } = useDeleteVacancy();
 
     const { employmentTypeName, name, page } = searchParams;
 
@@ -32,6 +35,13 @@ const VacancyList = (props: IVacancyListProps) => {
         console.log(params.get('page'));
 
         router.push(`/?${params}`);
+    };
+
+    const handleDeleteVacancy = (vacancyId: number) => {
+        mutate(vacancyId, {
+            onSuccess: () => router.refresh(),
+            onError: error => console.error(error),
+        });
     };
 
     return (
@@ -73,6 +83,7 @@ const VacancyList = (props: IVacancyListProps) => {
                                         minWidth: '200px',
                                         width: '200px',
                                     }}
+                                    onClick={() => handleDeleteVacancy(vacancy.id)}
                                 >
                                     Удалить
                                 </button>
