@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { TSearchParams } from 'src/pages';
 import useSearchStore from 'src/store';
@@ -13,7 +14,7 @@ interface ISearchFormProps {
 
 const SearchForm = (props: ISearchFormProps) => {
     const { employmentTypeName: employmentTypeNameParam, name: nameParam } = props.searchParams || {};
-
+    const router = useRouter();
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
     const stylesButton = useButton(true);
@@ -89,7 +90,7 @@ const SearchForm = (props: ISearchFormProps) => {
                 <button type="submit" style={stylesButton}>
                     Поиск вакансий
                 </button>
-                <button type="button" style={stylesButton}>
+                <button type="button" style={stylesButton} onClick={() => router.push('/create')}>
                     Создать вакансию
                 </button>
             </div>

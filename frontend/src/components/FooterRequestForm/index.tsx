@@ -1,13 +1,11 @@
-import { css } from '@emotion/react';
-
 import { useFooterForm } from '@scripts/hooks/useFooterForm';
-import { useFooterFormField } from '@scripts/hooks/useFooterFormField';
-import { useFooterFormTitle } from '@scripts/hooks/useFooterFormTitle';
+import { useFormField } from '@scripts/hooks/useFormField';
+import { useFormTitle } from '@scripts/hooks/useFormTitle';
 
 const FooterRequestForm = () => {
     const footerFormStyles = useFooterForm();
-    const footerFormTitleStyles = useFooterFormTitle();
-    const footerFormFieldStyles = useFooterFormField();
+    const footerFormTitleStyles = useFormTitle();
+    const footerFormFieldStyles = useFormField();
     function handleSubmit(formData: FormData) {
         const name = formData.get('name');
         const email = formData.get('email');

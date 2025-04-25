@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const useFooterFormField = () => css`
+export const useFormField = () => css`
     font-family: 'Rubik-light';
     border: none;
     width: inherit;

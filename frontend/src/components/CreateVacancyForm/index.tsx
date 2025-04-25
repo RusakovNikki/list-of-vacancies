@@ -1,85 +1,76 @@
+import { useButton } from '@scripts/hooks/useButton';
+import { useFooterForm } from '@scripts/hooks/useFooterForm';
+import { useFormField } from '@scripts/hooks/useFormField';
+import { useFormTitle } from '@scripts/hooks/useFormTitle';
+
 interface ICreateVacancyFormProps {
-    handleCreateVacation: (formData: FormData) => void;
+    handleCreateVacation: (e: React.FormEvent) => void;
 }
 
 const CreateVacancyForm = (props: ICreateVacancyFormProps) => {
     const { handleCreateVacation } = props;
+
+    const buttonStyles = useButton();
+    const formStyles = useFooterForm();
+    const formTitleStyles = useFormTitle();
+    const formFieldStyles = useFormField();
     return (
-        <form action={handleCreateVacation}>
-            <div className="header__position form-item">
-                <label htmlFor="employerType" className="form-item__title rubik-regular">
+        <form onSubmit={handleCreateVacation}>
+            <div css={formStyles}>
+                <label htmlFor="employerType" css={formTitleStyles}>
                     Тип занятости
                 </label>
                 <input
                     id="employerType"
                     type="text"
                     placeholder="Не указано"
-                    className="form-item__field"
+                    css={formFieldStyles}
                     name="employerType"
                 />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="name" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="name" css={formTitleStyles}>
                     Название вакансии
                 </label>
-                <input
-                    id="name"
-                    type="text"
-                    placeholder="Не указано"
-                    className="form-item__field"
-                    name="name"
-                    required
-                />
+                <input id="name" type="text" placeholder="Не указано" css={formFieldStyles} name="name" required />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="logoURL" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="logoURL" css={formTitleStyles}>
                     Ссылка на иконку
                 </label>
-                <input id="logoURL" type="text" placeholder="Не указано" className="form-item__field" name="logoURL" />
+                <input id="logoURL" type="text" placeholder="Не указано" css={formFieldStyles} name="logoURL" />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="URL" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="URL" css={formTitleStyles}>
                     Ссылка на вакансию
                 </label>
-                <input id="URL" type="text" placeholder="Не указано" className="form-item__field" name="URL" />
+                <input id="URL" type="text" placeholder="Не указано" css={formFieldStyles} name="URL" />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="areaName" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="areaName" css={formTitleStyles}>
                     Адрес
                 </label>
-                <input
-                    id="areaName"
-                    type="text"
-                    placeholder="Не указано"
-                    className="form-item__field"
-                    name="areaName"
-                />
+                <input id="areaName" type="text" placeholder="Не указано" css={formFieldStyles} name="areaName" />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="employerName" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="employerName" css={formTitleStyles}>
                     Название компании
                 </label>
                 <input
                     id="employerName"
                     type="text"
                     placeholder="Не указано"
-                    className="form-item__field"
+                    css={formFieldStyles}
                     name="employerName"
                 />
             </div>
-            <div className="header__position form-item">
-                <label htmlFor="description" className="form-item__title rubik-regular">
+            <div css={formStyles}>
+                <label htmlFor="description" css={formTitleStyles}>
                     Описание
                 </label>
-                <input
-                    id="description"
-                    type="text"
-                    placeholder="Не указано"
-                    className="form-item__field"
-                    name="description"
-                />
+                <input id="description" type="text" placeholder="Не указано" css={formFieldStyles} name="description" />
             </div>
-            <button className="button" type="submit">
+            <button type="submit" style={buttonStyles}>
                 Создать
             </button>
         </form>
