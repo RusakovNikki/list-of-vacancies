@@ -1,5 +1,7 @@
 import { IVacancy } from '@scripts/interfaces/vacancy';
 
 export const getVacancy = async (vacancyId: number): Promise<IVacancy> => {
-    return await fetch(`http://localhost:3001/api/vacancies/${vacancyId}`).then(res => res.json());
+    const baseUrl = process.env.NEXT_PUBLIC_API || 'http://localhost:3001';
+
+    return await fetch(`${baseUrl}/api/vacancies/${vacancyId}`).then(res => res.json());
 };

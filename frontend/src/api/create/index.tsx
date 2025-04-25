@@ -5,7 +5,7 @@ import { IVacancy } from '@scripts/interfaces/vacancy';
 const useCreateVacancy = () =>
     useMutation<IVacancy, Error, Omit<IVacancy, 'id'>>({
         mutationFn: async vacancy => {
-            const response = await fetch(`http://localhost:3001/api/vacancies`, {
+            const response = await fetch(`/api/vacancies`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
