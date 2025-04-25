@@ -5,6 +5,15 @@ export const global: Theme['global'] = {
         css: {
             '*': {
                 fontFamily: '"Formular","Rubik-light","Rubik-regular","Roboto"',
+                padding: 0,
+                margin: 0,
+            },
+            a: {
+                textDecoration: 'none',
+                color: 'inherit',
+            },
+            ul: {
+                listStyleType: 'none',
             },
         },
     },
