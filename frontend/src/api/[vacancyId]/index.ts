@@ -1,4 +1,4 @@
-import { IVacancy } from '@scripts/interfaces/vacancy';
+import { IVacancy } from '@api/types/vacancy';
 
 export const getVacancy = async (vacancyId: number): Promise<IVacancy> => {
     const baseUrl = process.env.NEXT_PUBLIC_API || 'http://localhost:3001';

@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation';
 import { TSearchParams } from 'src/pages';
 
 import { useDeleteVacancy } from '@api/index';
+import { IVacancyWrapper } from '@api/types/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
 
 import { useButton } from '@scripts/hooks/useButton';
-import { IVacancyWrapper } from '@scripts/interfaces/vacancy';
 
 import styles from './VacancyList.module.scss';
 

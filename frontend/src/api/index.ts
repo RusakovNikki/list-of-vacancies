@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { TSearchParams } from 'src/pages';
 
-import { IVacancy, IVacancyWrapper } from '@scripts/interfaces/vacancy';
+import { IVacancy, IVacancyWrapper } from '@api/types/vacancy';
 
 export const getVacancies = async (searchParams?: TSearchParams): Promise<IVacancyWrapper> => {
     const params = new URLSearchParams(searchParams).toString();

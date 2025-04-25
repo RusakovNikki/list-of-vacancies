@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { IVacancy } from '@scripts/interfaces/vacancy';
+import { IVacancy } from '@api/types/vacancy';
 
 const useCreateVacancy = () =>
     useMutation<IVacancy, Error, Omit<IVacancy, 'id'>>({

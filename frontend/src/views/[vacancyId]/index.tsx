@@ -1,7 +1,7 @@
+import { IVacancy } from '@api/types/vacancy';
+
 import VacancyComponent from '@components/VacancyComponent';
 import VacancyDescription from '@components/VacancyList/components/VacancyDescription';
-
-import { IVacancy } from '@scripts/interfaces/vacancy';
 
 interface VacancyPage {
     vacancy: IVacancy;
