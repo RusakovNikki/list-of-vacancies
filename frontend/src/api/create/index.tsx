@@ -1,24 +1,24 @@
 import { useMutation } from '@tanstack/react-query';
 
+import { useApiClient } from '@api/hooks/useApiClient';
 import { IVacancy } from '@api/types/vacancy';
 
-const useCreateVacancy = () =>
-    useMutation<IVacancy, Error, Omit<IVacancy, 'id'>>({
-        mutationFn: async vacancy => {
-            const response = await fetch(`/api/vacancies`, {
-                method: 'POST',
+const useCreateVacancy = () => {
+    const apiClient = useApiClient();
+
+    return useMutation<IVacancy, Error, Omit<IVacancy, 'id'>>({
+        mutationFn: data => {
+            return apiClient.post('vacancies', {
+                data,
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(vacancy),
             });
-
-            if (!response.ok) {
-                throw new Error('Failed to create vacancy');
-            }
-
-            return response.json();
+        },
+        onError: error => {
+            throw new Error(error.message);
         },
     });
+};
 
 export default useCreateVacancy;
