@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next';
-
-import { getVacancy } from '@api/[vacancyId]';
+import { getVacancy } from 'src/pages/api/[vacancyId]';
 
 export { default } from '@views/[vacancyId]';
 
