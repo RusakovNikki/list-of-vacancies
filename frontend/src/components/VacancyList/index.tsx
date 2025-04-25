@@ -57,7 +57,14 @@ const VacancyList = (props: IVacancyListProps) => {
                                     <div className={styles['vacancy-list__desc']}>
                                         <div className={styles['vacancy-list__title']}>{vacancy.name}</div>
                                     </div>
-                                    <div className={styles['vacancy-list__more-btn']}>Подробнее</div>
+                                    <div
+                                        className={styles['vacancy-list__more-btn']}
+                                        onClick={() => {
+                                            router.push(`${vacancy.id}`);
+                                        }}
+                                    >
+                                        Подробнее
+                                    </div>
                                 </Layout>
                                 <button
                                     css={{
