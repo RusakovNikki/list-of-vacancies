@@ -1,5 +1,6 @@
-import { IVacancy } from '@/schemas/interfaces/vacancy';
+import { IVacancy } from '@scripts/interfaces/vacancy';
 
+import styles from './VacancyComponent.module.scss';
 import PreviewImage from '/public/preview_company.svg';
 
 interface IVacancyComponentV2Props {
@@ -13,33 +14,33 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
     const { URL, areaName, employerName, employmentTypeName, logoURL } = vacancy;
 
     return (
-        <div className="vacancy-component">
-            <div className="vacancy-component__flex-item">
-                <div className="vacancy-component__logo-container">
+        <div className={styles['vacancy-component']}>
+            <div className={styles['vacancy-component__flex-item']}>
+                <div className={styles['vacancy-component__logo-container']}>
                     {logoURL ? (
-                        <img src={logoURL} alt="логотип компании" className="vacancy-component__logo" />
+                        <img src={logoURL} alt="логотип компании" className={styles['vacancy-component__logo']} />
                     ) : (
-                        <PreviewImage className="vacancy-component__logo--svg" />
+                        <PreviewImage className={styles['vacancy-component__logo--svg']} />
                     )}
                 </div>
-                <div className="vacancy-component__about rubik-regular">
-                    <p className="vacancy-component__type">
+                <div className={styles['vacancy-component__about']}>
+                    <p className={styles['vacancy-component__type']}>
                         Тип занятости:
-                        <span className="vacancy-component__desc"> {employmentTypeName}</span>
+                        <span className={styles['vacancy-component__desc']}> {employmentTypeName}</span>
                     </p>
-                    <p className="vacancy-component__type">
+                    <p className={styles['vacancy-component__type']}>
                         Компания:
-                        <span className="vacancy-component__desc"> {employerName}</span>
+                        <span className={styles['vacancy-component__desc']}> {employerName}</span>
                     </p>
-                    <p className="vacancy-component__type">
+                    <p className={styles['vacancy-component__type']}>
                         Ссылка на вакансию:
-                        <span className="vacancy-component__desc">
+                        <span className={styles['vacancy-component__desc']}>
                             <a href={URL}> {URL}</a>
                         </span>
                     </p>
-                    <p className="vacancy-component__type">
+                    <p className={styles['vacancy-component__type']}>
                         Адрес:
-                        <span className="vacancy-component__desc"> {areaName}</span>
+                        <span className={styles['vacancy-component__desc']}> {areaName}</span>
                     </p>
                 </div>
             </div>

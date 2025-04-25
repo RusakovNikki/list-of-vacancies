@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
 import { TSearchParams } from 'src/pages';
-import { IVacancyWrapper } from 'src/schemas/interfaces/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
 
 import { useButton } from '@scripts/hooks/useButton';
+import { IVacancyWrapper } from '@scripts/interfaces/vacancy';
 
 import styles from './VacancyList.module.scss';
 

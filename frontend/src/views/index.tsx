@@ -1,8 +1,9 @@
 import { TSearchParams } from 'src/pages';
-import { IVacancyWrapper } from 'src/schemas/interfaces/vacancy';
 
 import SearchForm from '@components/SearchForm';
 import VacancyList from '@components/VacancyList';
+
+import { IVacancyWrapper } from '@scripts/interfaces/vacancy';
 
 interface HomePage {
     vacancies: IVacancyWrapper;

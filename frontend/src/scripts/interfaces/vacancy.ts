@@ -1,4 +1,4 @@
-import { EVacancyType } from '../enums/vacancy';
+import { EVacancyType } from '../../scripts/enums/vacancy';
 
 export interface IVacancy {
     id: number;

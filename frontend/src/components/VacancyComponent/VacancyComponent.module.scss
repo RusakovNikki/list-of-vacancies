@@ -1,0 +1,88 @@
+.vacancy-component {
+    max-width: 1196px;
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @media (max-width: 770px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 450px) {
+        width: inherit;
+        flex-direction: column;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__logo-container {
+        width: 446px;
+        height: 126px;
+        overflow: hidden;
+        background-color: #fff;
+        margin-right: 20px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 980px) {
+            width: 250px;
+            height: 70px;
+        }
+
+        @media (max-width: 450px) {
+            width: 232px;
+            height: 59px;
+            margin-bottom: 38px;
+        }
+    }
+
+    &__logo {
+        height: inherit;
+
+        &--svg {
+            height: min-content;
+        }
+    }
+
+    &__specifics {
+        font-size: 16px;
+        line-height: 140%;
+        overflow: hidden;
+
+        color: #000000;
+    }
+
+    &__specifics--height {
+        height: 200px;
+    }
+
+    &__about {
+        font-family: 'Rubik-regular';
+    }
+
+    &__type {
+        margin-bottom: 14px;
+        font-size: 16px;
+        line-height: 140%;
+        /* or 22px */
+
+        /* Dark grey */
+
+        color: #545454;
+    }
+
+    &__desc {
+        color: #000000;
+    }
+
+    &__type:last-child {
+        margin-bottom: 0px;
+    }
+}
