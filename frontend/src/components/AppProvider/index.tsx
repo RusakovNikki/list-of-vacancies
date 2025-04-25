@@ -1,9 +1,10 @@
 'use client';
 
-// import theme from '@/app/(with_layout)/theme';
 import { ThemeProvider } from '@greensight/gds/emotion';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+import { theme } from '@scripts/gds';
 
 const queryClient = new QueryClient();
 
@@ -14,9 +15,7 @@ const AppProvider = ({
 }>) => {
     return (
         <QueryClientProvider client={queryClient}>
-            {/* <ThemeProvider theme={theme}> */}
-            {children}
-            {/* </ThemeProvider> */}
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     );

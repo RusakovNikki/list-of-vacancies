@@ -1,5 +1,5 @@
-import { TSearchParams } from '@/pages';
-import { IVacancyWrapper } from '@/schemas/interfaces/vacancy';
+import { TSearchParams } from 'src/pages';
+import { IVacancyWrapper } from 'src/schemas/interfaces/vacancy';
 
 import SearchForm from '@components/SearchForm';
 import VacancyList from '@components/VacancyList';

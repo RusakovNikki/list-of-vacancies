@@ -1,9 +1,9 @@
-import VacancyComponent from '@/components/VacancyComponent';
-import { TSearchParams } from '@/pages';
-import { IVacancyWrapper } from '@/schemas/interfaces/vacancy';
 import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
-import { notFound } from 'next/navigation';
+import { TSearchParams } from 'src/pages';
+import { IVacancyWrapper } from 'src/schemas/interfaces/vacancy';
+
+import VacancyComponent from '@components/VacancyComponent';
 
 import { useButton } from '@scripts/hooks/useButton';
 

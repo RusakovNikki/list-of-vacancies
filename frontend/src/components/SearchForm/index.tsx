@@ -1,8 +1,8 @@
-import { TSearchParams } from '@/pages';
-import useSearchStore from '@/store';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { TSearchParams } from 'src/pages';
+import useSearchStore from 'src/store';
 
 import { useButton } from '@scripts/hooks/useButton';
 
