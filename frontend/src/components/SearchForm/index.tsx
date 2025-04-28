@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { Layout, scale } from '@greensight/gds/emotion';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { TSearchParams } from 'src/pages';
@@ -17,7 +17,7 @@ interface ISearchFormProps {
 const SearchForm = (props: ISearchFormProps) => {
     const { employmentTypeName: employmentTypeNameParam, name: nameParam } = props.searchParams || {};
     const router = useRouter();
-    const { xxs, sm } = useMedia();
+    const { xxs } = useMedia();
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
     const stylesButton = useButton(true);
@@ -69,37 +69,40 @@ const SearchForm = (props: ISearchFormProps) => {
                     onChange={e => setField(e.target.value, 'name')}
                 />
             </div>
-            <div
-                css={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    gap: '0.5rem',
-
-                    [sm]: {
-                        flexDirection: 'column',
-                    },
-
-                    [xxs]: {
-                        alignItems: 'center',
-                    },
+            <Layout
+                type="flex"
+                align={{
+                    xxxl: 'end',
+                    xxs: 'center',
                 }}
+                gap={scale(1)}
+                direction={{
+                    xs: 'column',
+                }}
+                wrap={false}
             >
-                <button
-                    css={stylesButton}
-                    onClick={() => {
-                        setField('', 'employmentTypeName');
-                        setField('', 'name');
-                    }}
-                >
-                    Сбросить
-                </button>
-                <button type="submit" css={stylesButton}>
-                    Поиск вакансий
-                </button>
-                <button type="button" css={stylesButton} onClick={() => router.push('/create')}>
-                    Создать вакансию
-                </button>
-            </div>
+                <Layout.Item>
+                    <button
+                        css={stylesButton}
+                        onClick={() => {
+                            setField('', 'employmentTypeName');
+                            setField('', 'name');
+                        }}
+                    >
+                        Сбросить
+                    </button>
+                </Layout.Item>
+                <Layout.Item>
+                    <button type="submit" css={stylesButton}>
+                        Поиск вакансий
+                    </button>
+                </Layout.Item>
+                <Layout.Item>
+                    <button type="button" css={stylesButton} onClick={() => router.push('/create')}>
+                        Создать вакансию
+                    </button>
+                </Layout.Item>
+            </Layout>
         </form>
     );
 };

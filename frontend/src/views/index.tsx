@@ -1,3 +1,4 @@
+import { Layout, scale } from '@greensight/gds/emotion';
 import { TSearchParams } from 'src/pages';
 
 import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
@@ -14,9 +15,13 @@ export default function Home(props: HomePage) {
     const { searchParams, vacancies } = props;
 
     return (
-        <div css={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <SearchForm searchParams={searchParams} />
-            <VacancyList vacancies={vacancies} searchParams={searchParams} />
-        </div>
+        <Layout type="flex" direction="column" gap={scale(1)}>
+            <Layout.Item>
+                <SearchForm searchParams={searchParams} />
+            </Layout.Item>
+            <Layout.Item>
+                <VacancyList vacancies={vacancies} searchParams={searchParams} />
+            </Layout.Item>
+        </Layout>
     );
 }

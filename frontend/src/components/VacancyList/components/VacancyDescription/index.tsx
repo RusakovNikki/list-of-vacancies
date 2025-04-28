@@ -1,3 +1,4 @@
+import { Layout } from '@greensight/gds/emotion';
 import Parser from 'html-react-parser';
 
 import { useMedia } from '@scripts/hooks/useMedia';
@@ -14,15 +15,20 @@ const VacancyDescription = (props: IVacancyDescriptionProps) => {
     const { xxs } = useMedia();
 
     return (
-        <div
-            className={styles['vacancy-list_flex-item']}
+        <Layout
+            type="flex"
+            direction="column"
+            justify="space-between"
             css={{
+                width: '100%',
+                height: '100%',
+
                 [xxs]: {
                     marginTop: '16px',
                 },
             }}
         >
-            <div className={styles['vacancy-list_desc']}>
+            <Layout.Item className={styles['vacancy-list_desc']}>
                 <div
                     className={styles['vacancy-list_title']}
                     css={{
@@ -35,8 +41,8 @@ const VacancyDescription = (props: IVacancyDescriptionProps) => {
                     {name}
                 </div>
                 <div>{Parser(String(description || ''))}</div>
-            </div>
-        </div>
+            </Layout.Item>
+        </Layout>
     );
 };
 
