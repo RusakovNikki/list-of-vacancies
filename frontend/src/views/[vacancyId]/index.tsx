@@ -1,4 +1,4 @@
-import { IVacancy } from '@api/types/vacancy';
+import { IVacancy } from '@api/vacancies/types/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
 import VacancyDescription from '@components/VacancyList/components/VacancyDescription';

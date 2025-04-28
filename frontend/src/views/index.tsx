@@ -1,6 +1,6 @@
 import { TSearchParams } from 'src/pages';
 
-import { IVacancyWrapper } from '@api/types/vacancy';
+import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
 import SearchForm from '@components/SearchForm';
 import VacancyList from '@components/VacancyList';

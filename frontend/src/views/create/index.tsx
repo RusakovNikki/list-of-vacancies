@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 
-import useCreateVacancy from '@api/create';
+import { useCreateVacancy } from '@api/vacancies';
 
 import NewVacancyForm from '@components/NewVacancyForm';
 

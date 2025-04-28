@@ -1,4 +1,4 @@
-import { VacancyTypeEnum } from '../../scripts/enums/vacancy';
+import { VacancyTypeEnum } from '@scripts/enums/vacancy';
 
 export interface IVacancy {
     id: number;

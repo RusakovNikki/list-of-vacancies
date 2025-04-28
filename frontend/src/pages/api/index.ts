@@ -1,4 +1,4 @@
-import { IVacancyWrapper } from '@api/types/vacancy';
+import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
 import { TSearchParams } from '..';
 

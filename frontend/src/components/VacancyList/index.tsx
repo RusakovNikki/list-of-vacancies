@@ -3,8 +3,8 @@ import { Layout } from '@greensight/gds/emotion';
 import { useRouter } from 'next/navigation';
 import { TSearchParams } from 'src/pages';
 
-import { useDeleteVacancy } from '@api/index';
-import { IVacancyWrapper } from '@api/types/vacancy';
+import { useDeleteVacancy } from '@api/vacancies';
+import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
 

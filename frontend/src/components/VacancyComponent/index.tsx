@@ -1,4 +1,4 @@
-import { IVacancy } from '@api/types/vacancy';
+import { IVacancy } from '@api/vacancies/types/vacancy';
 
 import styles from './VacancyComponent.module.scss';
 import PreviewImage from '/public/preview_company.svg';

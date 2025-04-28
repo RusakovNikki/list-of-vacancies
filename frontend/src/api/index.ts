@@ -1,13 +1,38 @@
-import { useMutation } from '@tanstack/react-query';
+import { Config } from '@api/common/types';
 
-import { IVacancy } from '@api/types/vacancy';
+export class APIClient {
+    private baseURL: string;
 
-import { useApiClient } from './hooks/useApiClient';
+    constructor(baseURL: string) {
+        this.baseURL = baseURL;
+    }
 
-export const useDeleteVacancy = () => {
-    const apiClient = useApiClient();
+    static async returnJSON(response: Response) {
+        const json = await response.json();
 
-    return useMutation<IVacancy, Error, number>({
-        mutationFn: vacancyId => apiClient.delete(`/vacancies/${vacancyId}`),
-    });
-};
+        if (!response.ok) {
+            const errorMessage = 'Request failed';
+
+            throw new Error(errorMessage);
+        }
+        return json;
+    }
+
+    protected async request<T>(endpoint: string, { method, data, headers }: Config<T>) {
+        const response = await fetch(`${this.baseURL}${endpoint}`, {
+            ...(data && { body: JSON.stringify(data) }),
+            method,
+            headers,
+        });
+
+        return response;
+    }
+
+    public async post<T>(endpoint: string, { data, headers }: Config<T>) {
+        return this.request<T>(endpoint, { method: 'POST', data, headers }).then(APIClient.returnJSON);
+    }
+
+    public async delete<T>(endpoint: string) {
+        return await this.request<T>(endpoint, { method: 'DELETE' }).then(APIClient.returnJSON);
+    }
+}

@@ -1,9 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { useApiClient } from '@api/hooks/useApiClient';
-import { IVacancy } from '@api/types/vacancy';
+import { IVacancy } from '@api/vacancies/types/vacancy';
 
-const useCreateVacancy = () => {
+export const useDeleteVacancy = () => {
+    const apiClient = useApiClient();
+
+    return useMutation<IVacancy, Error, number>({
+        mutationFn: vacancyId => apiClient.delete(`/vacancies/${vacancyId}`),
+    });
+};
+
+export const useCreateVacancy = () => {
     const apiClient = useApiClient();
 
     return useMutation<IVacancy, Error, Omit<IVacancy, 'id'>>({
@@ -20,5 +28,3 @@ const useCreateVacancy = () => {
         },
     });
 };
-
-export default useCreateVacancy;
