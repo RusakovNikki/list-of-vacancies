@@ -1,10 +1,9 @@
 import { css } from '@emotion/react';
 
-export const useFooterForm = () => css`
+export const useFormItem = () => css`
     max-width: 466px;
     height: 67px;
-    width: 438px;
-    margin-bottom: 29px;
+    width: 100%;
 
     @media (max-width: 915px) {
         width: 128px;

@@ -1,5 +1,5 @@
-import { useFooterForm } from '@scripts/hooks/useFooterForm';
 import { useFormField } from '@scripts/hooks/useFormField';
+import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 
 interface FormItemControlProps {
@@ -8,7 +8,7 @@ interface FormItemControlProps {
 }
 
 const FormItemControl = ({ labelText, type }: FormItemControlProps) => {
-    const formStyles = useFooterForm();
+    const formStyles = useFormItem();
     const formTitleStyles = useFormTitle();
     const formFieldStyles = useFormField();
     return (
