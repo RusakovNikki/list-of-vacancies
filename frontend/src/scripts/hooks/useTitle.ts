@@ -8,7 +8,6 @@ export const useTitle = (): Interpolation<Theme> => {
     return {
         fontSize: '64px',
         lineHeight: '76px',
-        fontFamily: 'Rubik-regular',
         color: '#000000',
 
         [xxs]: {

@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { Layout } from '@greensight/gds/emotion';
 import { useRouter } from 'next/navigation';
 import { TSearchParams } from 'src/pages';
@@ -8,6 +7,7 @@ import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
 
+import { typography } from '@scripts/gds';
 import { useButton } from '@scripts/hooks/useButton';
 import { useMedia } from '@scripts/hooks/useMedia';
 
@@ -38,6 +38,8 @@ const VacancyList = (props: IVacancyListProps) => {
 
         router.push(`/?${params}`);
     };
+
+    console.log(typography('h1'));
 
     const handleDeleteVacancy = (vacancyId: number) => {
         mutate(vacancyId, {
@@ -77,7 +79,7 @@ const VacancyList = (props: IVacancyListProps) => {
                                         >
                                             <Layout.Item>
                                                 <div className={styles['vacancy-list_desc']}>
-                                                    <div className={styles['vacancy-list_title']}>{vacancy.name}</div>
+                                                    <div css={{ ...typography('h1') }}>{vacancy.name}</div>
                                                 </div>
                                             </Layout.Item>
                                             <Layout.Item>
@@ -93,6 +95,7 @@ const VacancyList = (props: IVacancyListProps) => {
                                                         [xxs]: {
                                                             alignSelf: 'center',
                                                         },
+                                                        ...typography('caption'),
                                                     }}
                                                 >
                                                     Подробнее

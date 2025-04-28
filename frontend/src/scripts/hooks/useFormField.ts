@@ -1,7 +1,6 @@
 import { Interpolation, Theme, css } from '@emotion/react';
 
 export const useFormField = (): Interpolation<Theme> => css`
-    font-family: 'Rubik-light';
     border: none;
     width: inherit;
     font-size: 16px;

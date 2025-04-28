@@ -17,20 +17,10 @@
         background: rgb(255, 255, 255);
     }
 
-    &_title {
-        font-size: 32px;
-        line-height: 160%; /* or 51px */
-        color: #000000;
-        font-family: 'Roboto';
-    }
-
     &_more-btn {
-        font-size: 16px;
-        line-height: 140%;
         margin-top: 8px;
         text-align: center;
         color: #a3a6a9;
         cursor: pointer;
-        font-family: 'Roboto';
     }
 }

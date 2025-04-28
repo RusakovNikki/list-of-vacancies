@@ -11,7 +11,6 @@ export const useButton = (isSmall?: boolean) => {
         backgroundColor: 'black',
         border: 'none',
         cursor: 'pointer',
-        fontFamily: 'Rubik-light',
     };
 
     if (isSmall) {

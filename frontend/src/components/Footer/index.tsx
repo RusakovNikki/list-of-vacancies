@@ -2,6 +2,7 @@ import { Layout, scale } from '@greensight/gds/emotion';
 
 import FooterRequestForm from '@components/FooterRequestForm';
 
+import { typography } from '@scripts/gds';
 import { useMedia } from '@scripts/hooks/useMedia';
 
 const Footer = () => {
@@ -12,9 +13,7 @@ const Footer = () => {
             <div
                 css={{
                     marginBottom: '74px',
-                    lineHeight: '76px',
-                    fontSize: 'clamp(2rem, 0.364rem + 5.82vw, 4rem)',
-                    fontFamily: 'Rubik-light',
+                    ...typography('h1'),
 
                     [xxs]: {
                         marginBottom: '32px',
@@ -37,10 +36,8 @@ const Footer = () => {
                     <div
                         css={{
                             width: '389px',
-                            fontSize: '14px',
-                            lineHeight: '160%',
+                            ...typography('bodyMd'),
                             marginTop: '43px',
-                            fontFamily: 'Rubik-regular',
 
                             [sm]: {
                                 width: '100%',
@@ -64,15 +61,10 @@ const Footer = () => {
                     </div>
                 </Layout.Item>
                 <Layout.Item>
-                    <div
-                        css={{
-                            fontFamily: 'Rubik-regular',
-                        }}
-                    >
+                    <div>
                         <div
                             css={{
-                                fontSize: 'clamp(0.75rem, 0.443rem + 1.09vw, 1.125rem)',
-
+                                ...typography('bodyMd'),
                                 [xxs]: {
                                     marginTop: '32px',
                                     width: '271px',
@@ -83,13 +75,12 @@ const Footer = () => {
                         </div>
                         <div
                             css={{
-                                fontSize: 'clamp(1rem, 0.182rem + 2.91vw, 2rem)',
-                                lineHeight: '24px',
+                                ...typography('h1'),
                                 marginBottom: '8px',
 
                                 [xxs]: {
                                     marginTop: '33px',
-                                    fontSize: '22px',
+                                    ...typography('h3'),
                                 },
                             }}
                         >
@@ -97,13 +88,12 @@ const Footer = () => {
                         </div>
                         <div
                             css={{
-                                fontSize: 'clamp(1rem, 0.182rem + 2.91vw, 2rem)',
-                                lineHeight: '32px',
+                                ...typography('h1'),
                                 marginBottom: '78px',
 
                                 [xxs]: {
                                     marginTop: '10px',
-                                    fontSize: '22px',
+                                    ...typography('h3'),
                                 },
                             }}
                         >
@@ -111,8 +101,7 @@ const Footer = () => {
                         </div>
                         <div
                             css={{
-                                fontSize: 'clamp(0.75rem, 0.443rem + 1.09vw, 1.125rem)',
-                                lineHeight: '160px',
+                                ...typography('caption'),
                                 width: '275px',
                                 marginBottom: '5px',
                             }}

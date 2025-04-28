@@ -1,6 +1,7 @@
 import { Layout } from '@greensight/gds/emotion';
 import Parser from 'html-react-parser';
 
+import { typography } from '@scripts/gds';
 import { useMedia } from '@scripts/hooks/useMedia';
 
 import styles from '../../VacancyList.module.scss';
@@ -30,12 +31,8 @@ const VacancyDescription = (props: IVacancyDescriptionProps) => {
         >
             <Layout.Item className={styles['vacancy-list_desc']}>
                 <div
-                    className={styles['vacancy-list_title']}
                     css={{
-                        [xxs]: {
-                            fontSize: '22px',
-                            marginBottom: '16px',
-                        },
+                        ...typography('h1'),
                     }}
                 >
                     {name}

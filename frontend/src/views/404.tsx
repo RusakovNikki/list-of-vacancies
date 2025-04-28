@@ -1,3 +1,4 @@
+import { typography } from '@scripts/gds';
 import { useTitle } from '@scripts/hooks/useTitle';
 
 const NotFoundPage = () => {
@@ -6,7 +7,7 @@ const NotFoundPage = () => {
     return (
         <div css={{ textAlign: 'center' }}>
             <p css={titleStyles}>Такая страница не найдена</p>
-            <span css={{ fontSize: '50px' }}>🤧</span>
+            <span css={{ ...typography('h1') }}>🤧</span>
         </div>
     );
 };
