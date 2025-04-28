@@ -32,8 +32,8 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                     },
                 }}
             >
-                <div className={styles['vacancy-component_flex-item']}>
-                    <div
+                <Layout type="flex" direction="column" className={styles['vacancy-component_flex-item']}>
+                    <Layout.Item
                         className={styles['vacancy-component_logo-container']}
                         css={{
                             [md]: {
@@ -52,8 +52,8 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                         ) : (
                             <PreviewImage className={styles['vacancy-component_logo__svg']} />
                         )}
-                    </div>
-                    <div className={styles['vacancy-component_about']}>
+                    </Layout.Item>
+                    <Layout.Item className={styles['vacancy-component_about']}>
                         <p className={styles['vacancy-component_type']}>
                             Тип занятости:
                             <span className={styles['vacancy-component_desc']}> {employmentTypeName}</span>
@@ -72,8 +72,8 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                             Адрес:
                             <span className={styles['vacancy-component_desc']}> {areaName}</span>
                         </p>
-                    </div>
-                </div>
+                    </Layout.Item>
+                </Layout>
                 {children}
             </div>
         </Layout.Item>
