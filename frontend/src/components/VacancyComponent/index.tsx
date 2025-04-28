@@ -20,7 +20,7 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                     {logoURL ? (
                         <img src={logoURL} alt="логотип компании" className={styles['vacancy-component_logo']} />
                     ) : (
-                        <PreviewImage className={styles['vacancy-component_logo--svg']} />
+                        <PreviewImage className={styles['vacancy-component_logo__svg']} />
                     )}
                 </div>
                 <div className={styles['vacancy-component_about']}>
