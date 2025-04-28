@@ -5,10 +5,10 @@ import { TSearchParams } from 'src/pages';
 import { useDeleteVacancy } from '@api/vacancies';
 import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
+import Button from '@components/Button';
 import VacancyComponent from '@components/VacancyComponent';
 
 import { typography } from '@scripts/gds';
-import { useButton } from '@scripts/hooks/useButton';
 import { useMedia } from '@scripts/hooks/useMedia';
 
 import styles from './VacancyList.module.scss';
@@ -25,9 +25,6 @@ const VacancyList = (props: IVacancyListProps) => {
     const { sm, xxs } = useMedia();
 
     const { employmentTypeName, name, page } = searchParams;
-
-    const buttonStyles = useButton(true);
-    const buttonBigStyles = useButton();
 
     const handleChangePage = (value: number) => {
         const params = new URLSearchParams();
@@ -104,9 +101,9 @@ const VacancyList = (props: IVacancyListProps) => {
                                         </Layout>
                                     </Layout.Item>
                                     <Layout.Item>
-                                        <button
+                                        <Button
+                                            isSmall
                                             css={{
-                                                ...buttonStyles,
                                                 alignSelf: 'flex-start',
                                                 minWidth: '200px',
                                                 width: '200px',
@@ -114,7 +111,7 @@ const VacancyList = (props: IVacancyListProps) => {
                                             onClick={() => handleDeleteVacancy(vacancy.id)}
                                         >
                                             Удалить
-                                        </button>
+                                        </Button>
                                     </Layout.Item>
                                 </Layout>
                             </VacancyComponent>
@@ -132,14 +129,10 @@ const VacancyList = (props: IVacancyListProps) => {
                 }}
             >
                 {page && parseInt(page) > 1 && (
-                    <button css={buttonBigStyles} onClick={() => handleChangePage(-1)}>
-                        Предыдущая страница
-                    </button>
+                    <Button onClick={() => handleChangePage(-1)}>Предыдущая страница</Button>
                 )}
                 {vacancies?.count === vacancies?.size && (
-                    <button css={buttonBigStyles} onClick={() => handleChangePage(1)}>
-                        Следующая страница
-                    </button>
+                    <button onClick={() => handleChangePage(1)}>Следующая страница</button>
                 )}
             </div>
         </section>

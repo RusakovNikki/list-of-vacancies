@@ -1,6 +1,11 @@
 import { Interpolation, Theme } from '@emotion/react';
 
-export const useButton = (isSmall?: boolean) => {
+interface IButtonProps
+    extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+    isSmall?: boolean;
+}
+
+const Button = ({ isSmall = false, ...otherProps }: IButtonProps) => {
     const result: Interpolation<Theme> = {
         width: '226px',
         fontSize: '14px',
@@ -17,6 +22,7 @@ export const useButton = (isSmall?: boolean) => {
         result.width = '150px';
         result.padding = '5px';
     }
-
-    return result;
+    return <button {...otherProps} css={result}></button>;
 };
+
+export default Button;

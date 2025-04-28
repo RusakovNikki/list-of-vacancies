@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import { TSearchParams } from 'src/pages';
 import useSearchStore from 'src/store';
 
-import { useButton } from '@scripts/hooks/useButton';
+import Button from '@components/Button';
+
 import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
@@ -20,7 +21,6 @@ const SearchForm = (props: ISearchFormProps) => {
     const { xxs } = useMedia();
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
-    const stylesButton = useButton(true);
     const formItemTitleStyles = useFormTitle();
     const formFieldStyles = useFormField();
     const formStyles = useFormItem();
@@ -82,25 +82,25 @@ const SearchForm = (props: ISearchFormProps) => {
                 wrap={false}
             >
                 <Layout.Item>
-                    <button
-                        css={stylesButton}
+                    <Button
+                        isSmall
                         onClick={() => {
                             setField('', 'employmentTypeName');
                             setField('', 'name');
                         }}
                     >
                         Сбросить
-                    </button>
+                    </Button>
                 </Layout.Item>
                 <Layout.Item>
-                    <button type="submit" css={stylesButton}>
+                    <Button isSmall type="submit">
                         Поиск вакансий
-                    </button>
+                    </Button>
                 </Layout.Item>
                 <Layout.Item>
-                    <button type="button" css={stylesButton} onClick={() => router.push('/create')}>
+                    <Button type="button" isSmall onClick={() => router.push('/create')}>
                         Создать вакансию
-                    </button>
+                    </Button>
                 </Layout.Item>
             </Layout>
         </form>

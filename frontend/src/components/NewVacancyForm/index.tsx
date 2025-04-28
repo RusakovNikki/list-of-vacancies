@@ -1,6 +1,5 @@
+import Button from '@components/Button';
 import FormItemControl from '@components/controls/FormItemControl';
-
-import { useButton } from '@scripts/hooks/useButton';
 
 interface INewVacancyFormProps {
     handleCreateVacation: (e: React.FormEvent) => void;
@@ -9,7 +8,6 @@ interface INewVacancyFormProps {
 const NewVacancyForm = (props: INewVacancyFormProps) => {
     const { handleCreateVacation } = props;
 
-    const buttonStyles = useButton();
     return (
         <form onSubmit={handleCreateVacation}>
             <FormItemControl labelText="Тип занятости" type="employerType" />
@@ -19,9 +17,7 @@ const NewVacancyForm = (props: INewVacancyFormProps) => {
             <FormItemControl labelText="Адрес" type="areaName" />
             <FormItemControl labelText="Название компании" type="employerName" />
             <FormItemControl labelText="Описание" type="description" />
-            <button type="submit" css={buttonStyles}>
-                Создать
-            </button>
+            <Button type="submit">Создать</Button>
         </form>
     );
 };

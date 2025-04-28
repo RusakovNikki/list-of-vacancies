@@ -1,6 +1,6 @@
+import Button from '@components/Button';
 import FormItemControl from '@components/controls/FormItemControl';
 
-import { useButton } from '@scripts/hooks/useButton';
 import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
@@ -9,7 +9,6 @@ const FooterRequestForm = () => {
     const footerFormStyles = useFormItem();
     const footerFormTitleStyles = useFormTitle();
     const footerFormFieldStyles = useFormField();
-    const buttonStyles = useButton();
 
     function handleSubmit(formData: FormData) {
         const name = formData.get('name');
@@ -36,9 +35,7 @@ const FooterRequestForm = () => {
                 <input css={footerFormFieldStyles} placeholder="+7(999) 999 9999" id="phone" name="phone" />
             </div>
             <FormItemControl labelText="Comment" type="comment" />
-            <button type="submit" style={buttonStyles}>
-                Отправить
-            </button>
+            <Button type="submit">Отправить</Button>
         </form>
     );
 };
