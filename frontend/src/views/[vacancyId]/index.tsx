@@ -1,3 +1,5 @@
+import { Layout } from '@greensight/gds/emotion';
+
 import { IVacancy } from '@api/vacancies/types/vacancy';
 
 import VacancyComponent from '@components/VacancyComponent';
@@ -11,9 +13,11 @@ const VacancyPage = (props: VacancyPage) => {
     const { vacancy } = props;
 
     return (
-        <VacancyComponent vacancy={vacancy}>
-            <VacancyDescription name={vacancy.name} description={vacancy.description} />
-        </VacancyComponent>
+        <Layout type="flex">
+            <VacancyComponent vacancy={vacancy}>
+                <VacancyDescription name={vacancy.name} description={vacancy.description} />
+            </VacancyComponent>
+        </Layout>
     );
 };
 
