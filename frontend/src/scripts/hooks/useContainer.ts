@@ -1,13 +1,19 @@
-import { css } from '@emotion/react';
+import { Interpolation, Theme, css } from '@emotion/react';
 
-export const useContainer = () => css`
-    max-width: 1226px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
+import { useMedia } from './useMedia';
 
-    @media (max-width: 450px) {
-        width: 272px;
-    }
-`;
+export const useContainer = (): Interpolation<Theme> => {
+    const { xxs } = useMedia();
+
+    return {
+        maxWidth: '1226px',
+        width: '100%',
+        margin: '0 auto',
+        padding: '0 15px',
+        boxSizing: 'border-box',
+
+        [xxs]: {
+            width: '272px',
+        },
+    };
+};

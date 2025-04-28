@@ -1,17 +1,23 @@
-import { css } from '@emotion/react';
+import { Interpolation, Theme, css } from '@emotion/react';
 
-export const useFormItem = () => css`
-    max-width: 466px;
-    height: 67px;
-    width: 100%;
+import { useMedia } from './useMedia';
 
-    @media (max-width: 915px) {
-        width: 128px;
-        margin-bottom: 16px;
-    }
+export const useFormItem = (): Interpolation<Theme> => {
+    const { xxs, md } = useMedia();
 
-    @media (max-width: 450px) {
-        width: 272px;
-        margin-bottom: 16px;
-    }
-`;
+    return {
+        maxWidth: '466px',
+        height: '67px',
+        width: '100%',
+
+        [md]: {
+            width: '128px',
+            marginBottom: '16px',
+        },
+
+        [xxs]: {
+            width: '272px',
+            marginBottom: '16px',
+        },
+    };
+};

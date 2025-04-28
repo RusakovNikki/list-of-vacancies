@@ -9,6 +9,7 @@ import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 import VacancyComponent from '@components/VacancyComponent';
 
 import { useButton } from '@scripts/hooks/useButton';
+import { useMedia } from '@scripts/hooks/useMedia';
 
 import styles from './VacancyList.module.scss';
 
@@ -21,6 +22,7 @@ const VacancyList = (props: IVacancyListProps) => {
     const { vacancies, searchParams } = props;
     const router = useRouter();
     const { mutate } = useDeleteVacancy();
+    const { sm, xxs } = useMedia();
 
     const { employmentTypeName, name, page } = searchParams;
 
@@ -50,16 +52,23 @@ const VacancyList = (props: IVacancyListProps) => {
                 vacancies.result.map(vacancy => {
                     return (
                         <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-                            <div className={styles['vacancy-list_content']}>
+                            <div
+                                className={styles['vacancy-list_content']}
+                                css={{
+                                    [sm]: {
+                                        flexDirection: 'column',
+                                    },
+                                }}
+                            >
                                 <Layout
                                     type="flex"
                                     direction="column"
                                     justify="space-between"
-                                    css={css`
-                                        width: 100%;
-                                        height: 100%;
-                                        margin: 0px;
-                                    `}
+                                    css={{
+                                        width: '100%',
+                                        height: '100%',
+                                        margin: '0px',
+                                    }}
                                     style={{
                                         margin: '0',
                                     }}
@@ -71,6 +80,14 @@ const VacancyList = (props: IVacancyListProps) => {
                                         className={styles['vacancy-list_more-btn']}
                                         onClick={() => {
                                             router.push(`${vacancy.id}`);
+                                        }}
+                                        css={{
+                                            [sm]: {
+                                                alignSelf: 'start',
+                                            },
+                                            [xxs]: {
+                                                alignSelf: 'center',
+                                            },
                                         }}
                                     >
                                         Подробнее
@@ -95,19 +112,19 @@ const VacancyList = (props: IVacancyListProps) => {
                 <></>
             )}
             <div
-                css={css`
-                    display: flex;
-                    width: 100%;
-                    justify-content: space-between;
-                `}
+                css={{
+                    display: 'flex',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                }}
             >
                 {page && parseInt(page) > 1 && (
-                    <button style={buttonBigStyles} onClick={() => handleChangePage(-1)}>
+                    <button css={buttonBigStyles} onClick={() => handleChangePage(-1)}>
                         Предыдущая страница
                     </button>
                 )}
                 {vacancies?.count === vacancies?.size && (
-                    <button style={buttonBigStyles} onClick={() => handleChangePage(1)}>
+                    <button css={buttonBigStyles} onClick={() => handleChangePage(1)}>
                         Следующая страница
                     </button>
                 )}

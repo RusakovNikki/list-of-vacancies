@@ -1,7 +1,7 @@
-import { CSSProperties } from 'react';
+import { Interpolation, Theme } from '@emotion/react';
 
 export const useButton = (isSmall?: boolean) => {
-    const result: CSSProperties = {
+    const result: Interpolation<Theme> = {
         width: '226px',
         fontSize: '14px',
         lineHeight: '160%',

@@ -9,12 +9,12 @@ const Header = () => {
 
     return (
         <header
-            css={css`
-                width: inherit;
-                min-height: 304px;
-                border: 1px solid transparent;
-                margin-bottom: 30px;
-            `}
+            css={{
+                width: 'inherit',
+                minHeight: '304px',
+                border: '1px solid transparent',
+                marginBottom: '30px',
+            }}
         >
             <Link href="/">
                 <h1 css={titleStyles} style={{ marginTop: '81px', marginBottom: '74px' }}>

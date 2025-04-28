@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
+import { Interpolation, Theme, css } from '@emotion/react';
 
-export const useFormField = () => css`
+export const useFormField = (): Interpolation<Theme> => css`
     font-family: 'Rubik-light';
     border: none;
     width: inherit;

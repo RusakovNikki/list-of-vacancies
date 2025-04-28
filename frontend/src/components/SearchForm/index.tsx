@@ -8,6 +8,7 @@ import { useButton } from '@scripts/hooks/useButton';
 import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
+import { useMedia } from '@scripts/hooks/useMedia';
 
 interface ISearchFormProps {
     searchParams?: TSearchParams;
@@ -16,6 +17,7 @@ interface ISearchFormProps {
 const SearchForm = (props: ISearchFormProps) => {
     const { employmentTypeName: employmentTypeNameParam, name: nameParam } = props.searchParams || {};
     const router = useRouter();
+    const { xxs, sm } = useMedia();
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
     const stylesButton = useButton(true);
@@ -30,14 +32,14 @@ const SearchForm = (props: ISearchFormProps) => {
 
     return (
         <form
-            css={css`
-                display: flex;
-                gap: 0.5rem;
+            css={{
+                display: 'flex',
+                gap: '0.5rem',
 
-                @media (max-width: 450px) {
-                    flex-direction: column;
-                }
-            `}
+                [xxs]: {
+                    flexDirection: 'column',
+                },
+            }}
         >
             <div css={formStyles}>
                 <label htmlFor="employmentTypeName" css={formItemTitleStyles}>
@@ -68,22 +70,22 @@ const SearchForm = (props: ISearchFormProps) => {
                 />
             </div>
             <div
-                css={css`
-                    display: flex;
-                    align-items: flex-end;
-                    gap: 0.5rem;
+                css={{
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    gap: '0.5rem',
 
-                    @media (max-width: 770px) {
-                        flex-direction: column;
-                    }
+                    [sm]: {
+                        flexDirection: 'column',
+                    },
 
-                    @media (max-width: 450px) {
-                        align-items: center;
-                    }
-                `}
+                    [xxs]: {
+                        alignItems: 'center',
+                    },
+                }}
             >
                 <button
-                    style={stylesButton}
+                    css={stylesButton}
                     onClick={() => {
                         setField('', 'employmentTypeName');
                         setField('', 'name');
@@ -91,10 +93,10 @@ const SearchForm = (props: ISearchFormProps) => {
                 >
                     Сбросить
                 </button>
-                <button type="submit" style={stylesButton}>
+                <button type="submit" css={stylesButton}>
                     Поиск вакансий
                 </button>
-                <button type="button" style={stylesButton} onClick={() => router.push('/create')}>
+                <button type="button" css={stylesButton} onClick={() => router.push('/create')}>
                     Создать вакансию
                 </button>
             </div>

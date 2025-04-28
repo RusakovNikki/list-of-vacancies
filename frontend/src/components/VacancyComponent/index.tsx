@@ -1,5 +1,7 @@
 import { IVacancy } from '@api/vacancies/types/vacancy';
 
+import { useMedia } from '@scripts/hooks/useMedia';
+
 import styles from './VacancyComponent.module.scss';
 import PreviewImage from '/public/preview_company.svg';
 
@@ -10,13 +12,38 @@ interface IVacancyComponentV2Props {
 
 const VacancyComponent = (props: IVacancyComponentV2Props) => {
     const { vacancy, children } = props;
+    const { xxs, sm, md } = useMedia();
 
     const { URL, areaName, employerName, employmentTypeName, logoURL } = vacancy;
 
     return (
-        <div className={styles['vacancy-component']}>
+        <div
+            className={styles['vacancy-component']}
+            css={{
+                [sm]: {
+                    flexDirection: 'row',
+                },
+                [xxs]: {
+                    width: 'inherit',
+                    flexDirection: 'column',
+                },
+            }}
+        >
             <div className={styles['vacancy-component_flex-item']}>
-                <div className={styles['vacancy-component_logo-container']}>
+                <div
+                    className={styles['vacancy-component_logo-container']}
+                    css={{
+                        [md]: {
+                            width: '250px',
+                            height: '70px',
+                        },
+                        [xxs]: {
+                            width: '232px',
+                            height: '59px',
+                            marginBottom: '38px',
+                        },
+                    }}
+                >
                     {logoURL ? (
                         <img src={logoURL} alt="логотип компании" className={styles['vacancy-component_logo']} />
                     ) : (
