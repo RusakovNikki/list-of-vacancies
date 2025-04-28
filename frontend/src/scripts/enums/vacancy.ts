@@ -1,4 +1,4 @@
-export enum EVacancyType {
+export enum VacancyTypeEnum {
     FULL_DAY = 'fullDay',
     FLEXIBLE = 'flexible',
     SHIFT = 'shift',

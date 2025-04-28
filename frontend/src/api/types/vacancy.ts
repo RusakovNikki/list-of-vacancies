@@ -1,4 +1,4 @@
-import { EVacancyType } from '../../scripts/enums/vacancy';
+import { VacancyTypeEnum } from '../../scripts/enums/vacancy';
 
 export interface IVacancy {
     id: number;
@@ -6,7 +6,7 @@ export interface IVacancy {
     URL?: string;
     areaName?: string;
     employerName?: string;
-    employmentTypeId?: EVacancyType;
+    employmentTypeId?: VacancyTypeEnum;
     employmentTypeName?: string;
     description?: string;
     logoURL?: string;
