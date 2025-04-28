@@ -19,7 +19,7 @@ const NewVacancyForm = (props: INewVacancyFormProps) => {
             <FormItemControl labelText="Адрес" type="areaName" />
             <FormItemControl labelText="Название компании" type="employerName" />
             <FormItemControl labelText="Описание" type="description" />
-            <button type="submit" style={buttonStyles}>
+            <button type="submit" css={buttonStyles}>
                 Создать
             </button>
         </form>

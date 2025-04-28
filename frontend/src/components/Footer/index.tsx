@@ -1,3 +1,5 @@
+import { Layout, scale } from '@greensight/gds/emotion';
+
 import FooterRequestForm from '@components/FooterRequestForm';
 
 import { useMedia } from '@scripts/hooks/useMedia';
@@ -21,18 +23,16 @@ const Footer = () => {
             >
                 Leave a request
             </div>
-            <div
-                css={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    gap: '1rem',
-
-                    [xxs]: {
-                        flexDirection: 'column',
-                    },
+            <Layout
+                type="flex"
+                justify="space-between"
+                gap={scale(1)}
+                direction={{
+                    xxxl: 'row',
+                    xxs: 'column',
                 }}
             >
-                <div>
+                <Layout.Item>
                     <FooterRequestForm />
                     <div
                         css={{
@@ -62,8 +62,8 @@ const Footer = () => {
                             processing of personal data
                         </a>
                     </div>
-                </div>
-                <div>
+                </Layout.Item>
+                <Layout.Item>
                     <div
                         css={{
                             fontFamily: 'Rubik-regular',
@@ -131,8 +131,8 @@ const Footer = () => {
                             there?
                         </div>
                     </div>
-                </div>
-            </div>
+                </Layout.Item>
+            </Layout>
         </footer>
     );
 };
