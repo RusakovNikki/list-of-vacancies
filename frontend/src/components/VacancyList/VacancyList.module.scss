@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 1rem;
 
-    &__filter-form {
+    &_filter-form {
         display: flex;
         gap: 0.5rem;
 
@@ -12,7 +12,7 @@
         }
     }
 
-    &__buttons {
+    &_buttons {
         display: flex;
         align-items: flex-end;
         gap: 0.5rem;
@@ -26,7 +26,7 @@
         }
     }
 
-    &__content {
+    &_content {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -36,7 +36,7 @@
         }
     }
 
-    &__flex-item {
+    &_flex-item {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -48,11 +48,11 @@
         }
     }
 
-    &__desc {
+    &_desc {
         background: rgb(255, 255, 255);
     }
 
-    &__title {
+    &_title {
         font-size: 32px;
         line-height: 160%; /* or 51px */
         color: #000000;
@@ -63,7 +63,7 @@
         }
     }
 
-    &__more-btn {
+    &_more-btn {
         font-size: 16px;
         line-height: 140%;
         margin-top: 8px;

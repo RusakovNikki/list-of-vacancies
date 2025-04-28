@@ -11,9 +11,9 @@ const VacancyDescription = (props: IVacancyDescriptionProps) => {
     const { description, name } = props;
 
     return (
-        <div className={styles['vacancy-list__flex-item']}>
-            <div className={styles['vacancy-list__desc']}>
-                <div className={styles['vacancy-list__title']}>{name}</div>
+        <div className={styles['vacancy-list_flex-item']}>
+            <div className={styles['vacancy-list_desc']}>
+                <div className={styles['vacancy-list_title']}>{name}</div>
                 <div>{Parser(String(description || ''))}</div>
             </div>
         </div>

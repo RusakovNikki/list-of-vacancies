@@ -50,7 +50,7 @@ const VacancyList = (props: IVacancyListProps) => {
                 vacancies.result.map(vacancy => {
                     return (
                         <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-                            <div className={styles['vacancy-list__content']}>
+                            <div className={styles['vacancy-list_content']}>
                                 <Layout
                                     type="flex"
                                     direction="column"
@@ -64,11 +64,11 @@ const VacancyList = (props: IVacancyListProps) => {
                                         margin: '0',
                                     }}
                                 >
-                                    <div className={styles['vacancy-list__desc']}>
-                                        <div className={styles['vacancy-list__title']}>{vacancy.name}</div>
+                                    <div className={styles['vacancy-list_desc']}>
+                                        <div className={styles['vacancy-list_title']}>{vacancy.name}</div>
                                     </div>
                                     <div
-                                        className={styles['vacancy-list__more-btn']}
+                                        className={styles['vacancy-list_more-btn']}
                                         onClick={() => {
                                             router.push(`${vacancy.id}`);
                                         }}

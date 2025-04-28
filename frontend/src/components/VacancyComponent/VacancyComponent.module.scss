@@ -21,7 +21,7 @@
         margin-bottom: 0;
     }
 
-    &__logo-container {
+    &_logo-container {
         width: 446px;
         height: 126px;
         overflow: hidden;
@@ -43,7 +43,7 @@
         }
     }
 
-    &__logo {
+    &_logo {
         height: inherit;
 
         &--svg {
@@ -51,7 +51,7 @@
         }
     }
 
-    &__specifics {
+    &_specifics {
         font-size: 16px;
         line-height: 140%;
         overflow: hidden;
@@ -59,15 +59,15 @@
         color: #000000;
     }
 
-    &__specifics--height {
+    &_specifics--height {
         height: 200px;
     }
 
-    &__about {
+    &_about {
         font-family: 'Rubik-regular';
     }
 
-    &__type {
+    &_type {
         margin-bottom: 14px;
         font-size: 16px;
         line-height: 140%;
@@ -78,11 +78,11 @@
         color: #545454;
     }
 
-    &__desc {
+    &_desc {
         color: #000000;
     }
 
-    &__type:last-child {
+    &_type:last-child {
         margin-bottom: 0px;
     }
 }
