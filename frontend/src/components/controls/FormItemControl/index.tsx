@@ -1,4 +1,5 @@
-import { useFormField } from '@scripts/hooks/useFormField';
+import FormField from '@components/FormField';
+
 import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 
@@ -10,13 +11,12 @@ interface FormItemControlProps {
 const FormItemControl = ({ labelText, type }: FormItemControlProps) => {
     const formStyles = useFormItem();
     const formTitleStyles = useFormTitle();
-    const formFieldStyles = useFormField();
     return (
         <div css={formStyles}>
             <label htmlFor={type} css={formTitleStyles}>
                 {labelText}
             </label>
-            <input id={type} type="text" placeholder="Не указано" css={formFieldStyles} name={type} />
+            <FormField id={type} type="text" placeholder="Не указано" name={type} />
         </div>
     );
 };

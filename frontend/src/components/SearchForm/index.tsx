@@ -5,8 +5,8 @@ import { TSearchParams } from 'src/pages';
 import useSearchStore from 'src/store';
 
 import Button from '@components/Button';
+import FormField from '@components/FormField';
 
-import { useFormField } from '@scripts/hooks/useFormField';
 import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 import { useMedia } from '@scripts/hooks/useMedia';
@@ -22,7 +22,6 @@ const SearchForm = (props: ISearchFormProps) => {
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
     const formItemTitleStyles = useFormTitle();
-    const formFieldStyles = useFormField();
     const formStyles = useFormItem();
 
     useEffect(() => {
@@ -45,11 +44,10 @@ const SearchForm = (props: ISearchFormProps) => {
                 <label htmlFor="employmentTypeName" css={formItemTitleStyles}>
                     Поиск по типу занятости
                 </label>
-                <input
+                <FormField
                     id="employmentTypeName"
                     type="text"
                     placeholder="Не указано"
-                    css={formFieldStyles}
                     name="employmentTypeName"
                     value={employmentTypeName}
                     onChange={e => setField(e.target.value, 'employmentTypeName')}
@@ -59,11 +57,10 @@ const SearchForm = (props: ISearchFormProps) => {
                 <label htmlFor="name" css={formItemTitleStyles}>
                     Поиск по названию
                 </label>
-                <input
+                <FormField
                     id="name"
                     type="text"
                     placeholder="Не указано"
-                    css={formFieldStyles}
                     name="name"
                     value={name}
                     onChange={e => setField(e.target.value, 'name')}
