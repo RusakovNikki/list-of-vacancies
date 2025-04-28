@@ -1,6 +1,6 @@
-import Button from '@components/Button';
-import FormField from '@components/FormField';
-import FormItem from '@components/FormItem';
+import Button from '@components/controls/Button';
+import FormField from '@components/controls/FormField';
+import FormItem from '@components/controls/FormItem';
 import FormItemControl from '@components/controls/FormItemControl';
 
 const FooterRequestForm = () => {

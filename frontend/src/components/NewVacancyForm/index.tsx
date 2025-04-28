@@ -1,4 +1,4 @@
-import Button from '@components/Button';
+import Button from '@components/controls/Button';
 import FormItemControl from '@components/controls/FormItemControl';
 
 interface INewVacancyFormProps {

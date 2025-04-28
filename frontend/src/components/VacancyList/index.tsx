@@ -5,8 +5,8 @@ import { TSearchParams } from 'src/pages';
 import { useDeleteVacancy } from '@api/vacancies';
 import { IVacancyWrapper } from '@api/vacancies/types/vacancy';
 
-import Button from '@components/Button';
 import VacancyComponent from '@components/VacancyComponent';
+import Button from '@components/controls/Button';
 
 import { typography } from '@scripts/gds';
 import { useMedia } from '@scripts/hooks/useMedia';

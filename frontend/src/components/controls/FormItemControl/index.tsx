@@ -1,5 +1,5 @@
-import FormField from '@components/FormField';
-import FormItem from '@components/FormItem';
+import FormField from '@components/controls/FormField';
+import FormItem from '@components/controls/FormItem';
 
 interface FormItemControlProps {
     type: string;
