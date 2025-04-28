@@ -48,69 +48,71 @@ const VacancyList = (props: IVacancyListProps) => {
 
     return (
         <section>
-            {vacancies?.result.length ? (
-                vacancies.result.map(vacancy => {
-                    return (
-                        <VacancyComponent key={vacancy.id} vacancy={vacancy}>
-                            <div
-                                className={styles['vacancy-list_content']}
-                                css={{
-                                    [sm]: {
-                                        flexDirection: 'column',
-                                    },
-                                }}
-                            >
-                                <Layout
-                                    type="flex"
-                                    direction="column"
-                                    justify="space-between"
+            <Layout type="flex">
+                {vacancies?.result.length ? (
+                    vacancies.result.map(vacancy => {
+                        return (
+                            <VacancyComponent key={vacancy.id} vacancy={vacancy}>
+                                <div
+                                    className={styles['vacancy-list_content']}
                                     css={{
-                                        width: '100%',
-                                        height: '100%',
-                                        margin: '0px',
-                                    }}
-                                    style={{
-                                        margin: '0',
+                                        [sm]: {
+                                            flexDirection: 'column',
+                                        },
                                     }}
                                 >
-                                    <div className={styles['vacancy-list_desc']}>
-                                        <div className={styles['vacancy-list_title']}>{vacancy.name}</div>
-                                    </div>
-                                    <div
-                                        className={styles['vacancy-list_more-btn']}
-                                        onClick={() => {
-                                            router.push(`${vacancy.id}`);
-                                        }}
+                                    <Layout
+                                        type="flex"
+                                        direction="column"
+                                        justify="space-between"
                                         css={{
-                                            [sm]: {
-                                                alignSelf: 'start',
-                                            },
-                                            [xxs]: {
-                                                alignSelf: 'center',
-                                            },
+                                            width: '100%',
+                                            height: '100%',
+                                            margin: '0px',
+                                        }}
+                                        style={{
+                                            margin: '0',
                                         }}
                                     >
-                                        Подробнее
-                                    </div>
-                                </Layout>
-                                <button
-                                    css={{
-                                        ...buttonStyles,
-                                        alignSelf: 'flex-start',
-                                        minWidth: '200px',
-                                        width: '200px',
-                                    }}
-                                    onClick={() => handleDeleteVacancy(vacancy.id)}
-                                >
-                                    Удалить
-                                </button>
-                            </div>
-                        </VacancyComponent>
-                    );
-                })
-            ) : (
-                <></>
-            )}
+                                        <div className={styles['vacancy-list_desc']}>
+                                            <div className={styles['vacancy-list_title']}>{vacancy.name}</div>
+                                        </div>
+                                        <div
+                                            className={styles['vacancy-list_more-btn']}
+                                            onClick={() => {
+                                                router.push(`${vacancy.id}`);
+                                            }}
+                                            css={{
+                                                [sm]: {
+                                                    alignSelf: 'start',
+                                                },
+                                                [xxs]: {
+                                                    alignSelf: 'center',
+                                                },
+                                            }}
+                                        >
+                                            Подробнее
+                                        </div>
+                                    </Layout>
+                                    <button
+                                        css={{
+                                            ...buttonStyles,
+                                            alignSelf: 'flex-start',
+                                            minWidth: '200px',
+                                            width: '200px',
+                                        }}
+                                        onClick={() => handleDeleteVacancy(vacancy.id)}
+                                    >
+                                        Удалить
+                                    </button>
+                                </div>
+                            </VacancyComponent>
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
+            </Layout>
             <div
                 css={{
                     display: 'flex',
