@@ -1,12 +1,9 @@
-import { css } from '@emotion/react';
 import Link from 'next/link';
 import React from 'react';
 
-import { useTitle } from '@scripts/hooks/useTitle';
+import { typography } from '@scripts/gds';
 
 const Header = () => {
-    const titleStyles = useTitle();
-
     return (
         <header
             css={{
@@ -17,7 +14,7 @@ const Header = () => {
             }}
         >
             <Link href="/">
-                <h1 css={titleStyles} style={{ marginTop: '81px', marginBottom: '74px' }}>
+                <h1 css={{ ...typography('h1') }} style={{ marginTop: '81px', marginBottom: '74px' }}>
                     List of vacancies
                 </h1>
             </Link>

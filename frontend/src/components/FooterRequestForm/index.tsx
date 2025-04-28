@@ -3,11 +3,7 @@ import FormField from '@components/FormField';
 import FormItem from '@components/FormItem';
 import FormItemControl from '@components/controls/FormItemControl';
 
-import { useFormTitle } from '@scripts/hooks/useFormTitle';
-
 const FooterRequestForm = () => {
-    const footerFormTitleStyles = useFormTitle();
-
     function handleSubmit(formData: FormData) {
         const name = formData.get('name');
         const email = formData.get('email');
@@ -27,9 +23,7 @@ const FooterRequestForm = () => {
             <FormItemControl labelText="Your name" type="fullName" />
             <FormItemControl labelText="Email" type="email" />
             <FormItem>
-                <label htmlFor="phone" css={footerFormTitleStyles}>
-                    Phone number
-                </label>
+                <label htmlFor="phone">Phone number</label>
                 <FormField placeholder="+7(999) 999 9999" id="phone" name="phone" />
             </FormItem>
             <FormItemControl labelText="Comment" type="comment" />

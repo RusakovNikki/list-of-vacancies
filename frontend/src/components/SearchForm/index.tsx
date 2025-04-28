@@ -8,7 +8,6 @@ import Button from '@components/Button';
 import FormField from '@components/FormField';
 import FormItem from '@components/FormItem';
 
-import { useFormTitle } from '@scripts/hooks/useFormTitle';
 import { useMedia } from '@scripts/hooks/useMedia';
 
 interface ISearchFormProps {
@@ -20,8 +19,6 @@ const SearchForm = (props: ISearchFormProps) => {
     const router = useRouter();
     const { xxs } = useMedia();
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
-
-    const formItemTitleStyles = useFormTitle();
 
     useEffect(() => {
         setField(employmentTypeNameParam || '', 'employmentTypeName');
@@ -40,9 +37,7 @@ const SearchForm = (props: ISearchFormProps) => {
             }}
         >
             <FormItem>
-                <label htmlFor="employmentTypeName" css={formItemTitleStyles}>
-                    Поиск по типу занятости
-                </label>
+                <label htmlFor="employmentTypeName">Поиск по типу занятости</label>
                 <FormField
                     id="employmentTypeName"
                     type="text"
@@ -53,9 +48,7 @@ const SearchForm = (props: ISearchFormProps) => {
                 />
             </FormItem>
             <FormItem>
-                <label htmlFor="name" css={formItemTitleStyles}>
-                    Поиск по названию
-                </label>
+                <label htmlFor="name">Поиск по названию</label>
                 <FormField
                     id="name"
                     type="text"

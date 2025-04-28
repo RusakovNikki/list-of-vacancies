@@ -132,7 +132,7 @@ const VacancyList = (props: IVacancyListProps) => {
                     <Button onClick={() => handleChangePage(-1)}>Предыдущая страница</Button>
                 )}
                 {vacancies?.count === vacancies?.size && (
-                    <button onClick={() => handleChangePage(1)}>Следующая страница</button>
+                    <Button onClick={() => handleChangePage(1)}>Следующая страница</Button>
                 )}
             </div>
         </section>
