@@ -1,4 +1,4 @@
-.vacancy-list {
+.vacancyList {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -7,7 +7,7 @@
         width: 100%;
     }
 
-    &_flex-item {
+    &_flexItem {
         width: 100%;
         flex-direction: column;
         justify-content: space-between;
@@ -17,7 +17,7 @@
         background: rgb(255, 255, 255);
     }
 
-    &_more-btn {
+    &_moreBtn {
         margin-top: 8px;
         text-align: center;
         color: #a3a6a9;

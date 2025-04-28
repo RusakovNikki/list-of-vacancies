@@ -22,7 +22,7 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
     return (
         <Layout.Item css={{ width: '100%' }}>
             <div
-                className={styles['vacancy-component']}
+                className={styles['vacancyComponent']}
                 css={{
                     [sm]: {
                         flexDirection: 'row',
@@ -33,9 +33,9 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                     },
                 }}
             >
-                <Layout type="flex" direction="column" className={styles['vacancy-component_flex-item']}>
+                <Layout type="flex" direction="column" className={styles['vacancyComponent_flexItem']}>
                     <Layout.Item
-                        className={styles['vacancy-component_logo-container']}
+                        className={styles['vacancyComponent_logoContainer']}
                         css={{
                             [md]: {
                                 width: '250px',
@@ -49,35 +49,35 @@ const VacancyComponent = (props: IVacancyComponentV2Props) => {
                         }}
                     >
                         {logoURL ? (
-                            <img src={logoURL} alt="логотип компании" className={styles['vacancy-component_logo']} />
+                            <img src={logoURL} alt="логотип компании" className={styles['vacancyComponent_logo']} />
                         ) : (
-                            <PreviewImage className={styles['vacancy-component_logo__svg']} />
+                            <PreviewImage className={styles['vacancyComponent_logo__svg']} />
                         )}
                     </Layout.Item>
-                    <Layout.Item className={styles['vacancy-component_about']}>
-                        <p css={{ ...typography('bodySm') }} className={styles['vacancy-component_type']}>
+                    <Layout.Item className={styles['vacancyComponent_about']}>
+                        <p css={{ ...typography('bodySm') }} className={styles['vacancyComponent_type']}>
                             Тип занятости:
-                            <span className={styles['vacancy-component_desc']} css={{ ...typography('bodySmBold') }}>
+                            <span className={styles['vacancyComponent_desc']} css={{ ...typography('bodySmBold') }}>
                                 {' '}
                                 {employmentTypeName}
                             </span>
                         </p>
-                        <p css={{ ...typography('bodySm') }} className={styles['vacancy-component_type']}>
+                        <p css={{ ...typography('bodySm') }} className={styles['vacancyComponent_type']}>
                             Компания:
-                            <span className={styles['vacancy-component_desc']} css={{ ...typography('bodySmBold') }}>
+                            <span className={styles['vacancyComponent_desc']} css={{ ...typography('bodySmBold') }}>
                                 {' '}
                                 {employerName}
                             </span>
                         </p>
-                        <p css={{ ...typography('bodySm') }} className={styles['vacancy-component_type']}>
+                        <p css={{ ...typography('bodySm') }} className={styles['vacancyComponent_type']}>
                             Ссылка на вакансию:
-                            <span className={styles['vacancy-component_desc']} css={{ ...typography('bodySmBold') }}>
+                            <span className={styles['vacancyComponent_desc']} css={{ ...typography('bodySmBold') }}>
                                 <a href={URL}> {URL}</a>
                             </span>
                         </p>
-                        <p css={{ ...typography('bodySm') }} className={styles['vacancy-component_type']}>
+                        <p css={{ ...typography('bodySm') }} className={styles['vacancyComponent_type']}>
                             Адрес:
-                            <span className={styles['vacancy-component_desc']} css={{ ...typography('bodySmBold') }}>
+                            <span className={styles['vacancyComponent_desc']} css={{ ...typography('bodySmBold') }}>
                                 {' '}
                                 {areaName}
                             </span>

@@ -63,7 +63,7 @@ const VacancyList = (props: IVacancyListProps) => {
                                         sm: 'column',
                                     }}
                                     wrap={false}
-                                    className={styles['vacancy-list_content']}
+                                    className={styles['vacancyList_content']}
                                 >
                                     <Layout.Item css={{ width: '100%' }}>
                                         <Layout
@@ -78,13 +78,13 @@ const VacancyList = (props: IVacancyListProps) => {
                                             }}
                                         >
                                             <Layout.Item>
-                                                <div className={styles['vacancy-list_desc']}>
+                                                <div className={styles['vacancyList_desc']}>
                                                     <div css={{ ...typography('h1') }}>{vacancy.name}</div>
                                                 </div>
                                             </Layout.Item>
                                             <Layout.Item>
                                                 <div
-                                                    className={styles['vacancy-list_more-btn']}
+                                                    className={styles['vacancyList_moreBtn']}
                                                     onClick={() => {
                                                         router.push(`${vacancy.id}`);
                                                     }}

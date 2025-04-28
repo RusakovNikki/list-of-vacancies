@@ -29,7 +29,7 @@ const VacancyDescription = (props: IVacancyDescriptionProps) => {
                 },
             }}
         >
-            <Layout.Item className={styles['vacancy-list_desc']}>
+            <Layout.Item className={styles['vacancyList_desc']}>
                 <div
                     css={{
                         ...typography('h1'),
