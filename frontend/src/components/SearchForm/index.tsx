@@ -6,8 +6,8 @@ import useSearchStore from 'src/store';
 
 import Button from '@components/Button';
 import FormField from '@components/FormField';
+import FormItem from '@components/FormItem';
 
-import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 import { useMedia } from '@scripts/hooks/useMedia';
 
@@ -22,7 +22,6 @@ const SearchForm = (props: ISearchFormProps) => {
     const { employmentTypeName, name, setField } = useSearchStore(state => state);
 
     const formItemTitleStyles = useFormTitle();
-    const formStyles = useFormItem();
 
     useEffect(() => {
         setField(employmentTypeNameParam || '', 'employmentTypeName');
@@ -40,7 +39,7 @@ const SearchForm = (props: ISearchFormProps) => {
                 },
             }}
         >
-            <div css={formStyles}>
+            <FormItem>
                 <label htmlFor="employmentTypeName" css={formItemTitleStyles}>
                     Поиск по типу занятости
                 </label>
@@ -52,8 +51,8 @@ const SearchForm = (props: ISearchFormProps) => {
                     value={employmentTypeName}
                     onChange={e => setField(e.target.value, 'employmentTypeName')}
                 />
-            </div>
-            <div css={formStyles}>
+            </FormItem>
+            <FormItem>
                 <label htmlFor="name" css={formItemTitleStyles}>
                     Поиск по названию
                 </label>
@@ -65,7 +64,7 @@ const SearchForm = (props: ISearchFormProps) => {
                     value={name}
                     onChange={e => setField(e.target.value, 'name')}
                 />
-            </div>
+            </FormItem>
             <Layout
                 type="flex"
                 align={{

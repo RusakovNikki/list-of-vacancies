@@ -1,6 +1,6 @@
 import FormField from '@components/FormField';
+import FormItem from '@components/FormItem';
 
-import { useFormItem } from '@scripts/hooks/useFormItem';
 import { useFormTitle } from '@scripts/hooks/useFormTitle';
 
 interface FormItemControlProps {
@@ -9,15 +9,14 @@ interface FormItemControlProps {
 }
 
 const FormItemControl = ({ labelText, type }: FormItemControlProps) => {
-    const formStyles = useFormItem();
     const formTitleStyles = useFormTitle();
     return (
-        <div css={formStyles}>
+        <FormItem>
             <label htmlFor={type} css={formTitleStyles}>
                 {labelText}
             </label>
             <FormField id={type} type="text" placeholder="Не указано" name={type} />
-        </div>
+        </FormItem>
     );
 };
 
